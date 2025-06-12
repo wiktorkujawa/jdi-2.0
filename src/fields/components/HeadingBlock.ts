@@ -1,7 +1,7 @@
 import type { Block } from 'payload';
 
 const HeadingBlock: Block = {
-  slug: 'HeadingBlock',
+  slug: 'Heading',
   // imageURL: TODO - add image,
   imageAltText: 'Heading Block component',
   fields: [

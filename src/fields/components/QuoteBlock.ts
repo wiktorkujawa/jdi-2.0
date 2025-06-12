@@ -1,7 +1,7 @@
 import type { Block } from 'payload';
 
 const QuoteBlock: Block = {
-  slug: 'QuoteBlock',
+  slug: 'Quote',
   // imageURL: TODO - add image,
   // imageAltText: TODO - add alt text,
   fields: [
