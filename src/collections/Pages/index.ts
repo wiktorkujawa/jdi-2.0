@@ -47,11 +47,11 @@ export const Pages: CollectionConfig = {
       ]
     },
     MastheadSlider,
-    // {
-    //   name: 'subpages',
-    //   type: 'relationship',
-    //   relationTo: 'pages',
-    //   hasMany: true
-    // }
+    {
+      name: 'subpages',
+      type: 'relationship',
+      relationTo: 'pages',
+      hasMany: true
+    }
   ],
 }
