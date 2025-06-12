@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    socials: Social;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    socials: SocialsSelect<false> | SocialsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -227,6 +229,120 @@ export interface Page {
       };
     };
   };
+  customComponents?:
+    | (
+        | {
+            copy: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'WYSIWYG';
+          }
+        | {
+            author: string;
+            quote: string;
+            decoration?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'Quote';
+          }
+        | {
+            heading?: string | null;
+            level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
+            copy?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'HeadingCopy';
+          }
+        | {
+            heading?: string | null;
+            level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'Heading';
+          }
+        | {
+            slides?:
+              | {
+                  media: string | Media;
+                  heading?: string | null;
+                  copy?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  attribution?: string | null;
+                  button: {
+                    text: string;
+                    url: string;
+                    target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+                    ariaLabel?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            desktop?: {
+              dots?: boolean | null;
+              loop?: boolean | null;
+              arrows?: boolean | null;
+              draggable?: boolean | null;
+              autoplay?: boolean | null;
+              autoplaySpeed?: number | null;
+              slidesPerRow?: number | null;
+            };
+            mobile?: {
+              dots?: boolean | null;
+              loop?: boolean | null;
+              arrows?: boolean | null;
+              draggable?: boolean | null;
+              autoplay?: boolean | null;
+              autoplaySpeed?: number | null;
+              slidesPerRow?: number | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'Slider';
+          }
+      )[]
+    | null;
+  subpages?: (string | Page)[] | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -235,6 +351,17 @@ export interface Page {
      */
     image?: (string | null) | Media;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "socials".
+ */
+export interface Social {
+  id: string;
+  name?: ('linkedin' | 'github' | 'stackoverflow') | null;
+  url?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -256,6 +383,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'socials';
+        value: string | Social;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -389,6 +520,89 @@ export interface PagesSelect<T extends boolean = true> {
                   };
             };
       };
+  customComponents?:
+    | T
+    | {
+        WYSIWYG?:
+          | T
+          | {
+              copy?: T;
+              id?: T;
+              blockName?: T;
+            };
+        Quote?:
+          | T
+          | {
+              author?: T;
+              quote?: T;
+              decoration?: T;
+              id?: T;
+              blockName?: T;
+            };
+        HeadingCopy?:
+          | T
+          | {
+              heading?: T;
+              level?: T;
+              copy?: T;
+              id?: T;
+              blockName?: T;
+            };
+        Heading?:
+          | T
+          | {
+              heading?: T;
+              level?: T;
+              id?: T;
+              blockName?: T;
+            };
+        Slider?:
+          | T
+          | {
+              slides?:
+                | T
+                | {
+                    media?: T;
+                    heading?: T;
+                    copy?: T;
+                    attribution?: T;
+                    button?:
+                      | T
+                      | {
+                          text?: T;
+                          url?: T;
+                          target?: T;
+                          ariaLabel?: T;
+                        };
+                    id?: T;
+                  };
+              desktop?:
+                | T
+                | {
+                    dots?: T;
+                    loop?: T;
+                    arrows?: T;
+                    draggable?: T;
+                    autoplay?: T;
+                    autoplaySpeed?: T;
+                    slidesPerRow?: T;
+                  };
+              mobile?:
+                | T
+                | {
+                    dots?: T;
+                    loop?: T;
+                    arrows?: T;
+                    draggable?: T;
+                    autoplay?: T;
+                    autoplaySpeed?: T;
+                    slidesPerRow?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  subpages?: T;
   meta?:
     | T
     | {
@@ -396,6 +610,16 @@ export interface PagesSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "socials_select".
+ */
+export interface SocialsSelect<T extends boolean = true> {
+  name?: T;
+  url?: T;
   updatedAt?: T;
   createdAt?: T;
 }
