@@ -176,6 +176,57 @@ export interface Page {
   slug?: string | null;
   isMasthead?: boolean | null;
   feature?: ('none' | 'slider' | 'banner') | null;
+  mastheadSlider?: {
+    slides?:
+      | {
+          media: string | Media;
+          heading?: string | null;
+          copy?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+          attribution?: string | null;
+          button: {
+            text: string;
+            url: string;
+            target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+            ariaLabel?: string | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    settings?: {
+      desktop?: {
+        dots?: boolean | null;
+        loop?: boolean | null;
+        arrows?: boolean | null;
+        draggable?: boolean | null;
+        autoplay?: boolean | null;
+        autoplaySpeed?: number | null;
+        slidesPerRow?: number | null;
+      };
+      mobile?: {
+        dots?: boolean | null;
+        loop?: boolean | null;
+        arrows?: boolean | null;
+        draggable?: boolean | null;
+        autoplay?: boolean | null;
+        autoplaySpeed?: number | null;
+        slidesPerRow?: number | null;
+      };
+    };
+  };
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -291,6 +342,53 @@ export interface PagesSelect<T extends boolean = true> {
   slug?: T;
   isMasthead?: T;
   feature?: T;
+  mastheadSlider?:
+    | T
+    | {
+        slides?:
+          | T
+          | {
+              media?: T;
+              heading?: T;
+              copy?: T;
+              attribution?: T;
+              button?:
+                | T
+                | {
+                    text?: T;
+                    url?: T;
+                    target?: T;
+                    ariaLabel?: T;
+                  };
+              id?: T;
+            };
+        settings?:
+          | T
+          | {
+              desktop?:
+                | T
+                | {
+                    dots?: T;
+                    loop?: T;
+                    arrows?: T;
+                    draggable?: T;
+                    autoplay?: T;
+                    autoplaySpeed?: T;
+                    slidesPerRow?: T;
+                  };
+              mobile?:
+                | T
+                | {
+                    dots?: T;
+                    loop?: T;
+                    arrows?: T;
+                    draggable?: T;
+                    autoplay?: T;
+                    autoplaySpeed?: T;
+                    slidesPerRow?: T;
+                  };
+            };
+      };
   meta?:
     | T
     | {

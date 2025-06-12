@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { revalidatePage } from './hooks/revalidatePage'
+import MastheadSlider from '@/fields/elements/MastheadSlider'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -34,6 +35,9 @@ export const Pages: CollectionConfig = {
     },
     {
       name: 'feature',
+      admin: {
+        condition: (data) => data.isMasthead,
+      },
       type: 'select',
       defaultValue: 'slider',
       options: [
@@ -42,6 +46,7 @@ export const Pages: CollectionConfig = {
         { label: 'Banner', value: 'banner' }
       ]
     },
+    MastheadSlider,
     // {
     //   name: 'subpages',
     //   type: 'relationship',
