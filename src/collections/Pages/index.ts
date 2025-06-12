@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { revalidatePage } from './hooks/revalidatePage'
 import MastheadSlider from '@/fields/elements/MastheadSlider'
+import { WYSIWYGBlock, QuoteBlock, HeadingCopyBlock, HeadingBlock, SliderBlock } from '@/fields/components'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -47,6 +48,18 @@ export const Pages: CollectionConfig = {
       ]
     },
     MastheadSlider,
+    {
+      name: "customComponents",
+      type: "blocks",
+      maxRows: 20,
+      blocks: [
+        WYSIWYGBlock,
+        QuoteBlock,
+        HeadingCopyBlock,
+        HeadingBlock,
+        SliderBlock
+      ],
+    },
     {
       name: 'subpages',
       type: 'relationship',
