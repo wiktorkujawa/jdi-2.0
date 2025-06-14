@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { revalidatePage } from './hooks/revalidatePage'
+import MastheadSlider from '@/fields/elements/MastheadSlider'
+import { WYSIWYGBlock, QuoteBlock, HeadingCopyBlock, HeadingBlock, SliderBlock } from '@/fields/components'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -34,6 +36,9 @@ export const Pages: CollectionConfig = {
     },
     {
       name: 'feature',
+      admin: {
+        condition: (data) => data.isMasthead,
+      },
       type: 'select',
       defaultValue: 'slider',
       options: [
@@ -42,11 +47,24 @@ export const Pages: CollectionConfig = {
         { label: 'Banner', value: 'banner' }
       ]
     },
-    // {
-    //   name: 'subpages',
-    //   type: 'relationship',
-    //   relationTo: 'pages',
-    //   hasMany: true
-    // }
+    MastheadSlider,
+    {
+      name: "customComponents",
+      type: "blocks",
+      maxRows: 20,
+      blocks: [
+        WYSIWYGBlock,
+        QuoteBlock,
+        HeadingCopyBlock,
+        HeadingBlock,
+        SliderBlock
+      ],
+    },
+    {
+      name: 'subpages',
+      type: 'relationship',
+      relationTo: 'pages',
+      hasMany: true
+    }
   ],
 }
