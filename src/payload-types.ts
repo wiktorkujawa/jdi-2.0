@@ -90,8 +90,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    navigation: Navigation;
+  };
+  globalsSelect: {
+    navigation: NavigationSelect<false> | NavigationSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -709,6 +713,42 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation".
+ */
+export interface Navigation {
+  id: string;
+  page?: (string | Page)[] | null;
+  pages?:
+    | {
+        slug?: string | null;
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socials?: (string | Social)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation_select".
+ */
+export interface NavigationSelect<T extends boolean = true> {
+  page?: T;
+  pages?:
+    | T
+    | {
+        slug?: T;
+        name?: T;
+        id?: T;
+      };
+  socials?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
