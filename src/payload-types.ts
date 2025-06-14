@@ -96,6 +96,7 @@ export interface Config {
     projectList: ProjectList;
     experience: Experience;
     education: Education;
+    brief: Brief;
   };
   globalsSelect: {
     navigation: NavigationSelect<false> | NavigationSelect<true>;
@@ -103,6 +104,7 @@ export interface Config {
     projectList: ProjectListSelect<false> | ProjectListSelect<true>;
     experience: ExperienceSelect<false> | ExperienceSelect<true>;
     education: EducationSelect<false> | EducationSelect<true>;
+    brief: BriefSelect<false> | BriefSelect<true>;
   };
   locale: null;
   user: User & {
@@ -821,6 +823,32 @@ export interface Education {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brief".
+ */
+export interface Brief {
+  id: string;
+  heading?: string | null;
+  level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
+  copy?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "navigation_select".
  */
 export interface NavigationSelect<T extends boolean = true> {
@@ -916,6 +944,18 @@ export interface EducationSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brief_select".
+ */
+export interface BriefSelect<T extends boolean = true> {
+  heading?: T;
+  level?: T;
+  copy?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
