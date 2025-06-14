@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     pages: Page;
     socials: Social;
+    projects: Project;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -81,6 +82,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     socials: SocialsSelect<false> | SocialsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -367,6 +369,30 @@ export interface Social {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  media?: (string | null) | Media;
+  mediaUrl?: string | null;
+  buttons?:
+    | {
+        button: {
+          text: string;
+          url: string;
+          target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+          ariaLabel?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -387,6 +413,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'socials';
         value: string | Social;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: string | Project;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -620,6 +650,31 @@ export interface PagesSelect<T extends boolean = true> {
 export interface SocialsSelect<T extends boolean = true> {
   name?: T;
   url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  media?: T;
+  mediaUrl?: T;
+  buttons?:
+    | T
+    | {
+        button?:
+          | T
+          | {
+              text?: T;
+              url?: T;
+              target?: T;
+              ariaLabel?: T;
+            };
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
