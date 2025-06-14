@@ -92,9 +92,13 @@ export interface Config {
   };
   globals: {
     navigation: Navigation;
+    footer: Footer;
+    projectList: ProjectList;
   };
   globalsSelect: {
     navigation: NavigationSelect<false> | NavigationSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    projectList: ProjectListSelect<false> | ProjectListSelect<true>;
   };
   locale: null;
   user: User & {
@@ -734,6 +738,51 @@ export interface Navigation {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  address: {
+    street: string;
+    city: string;
+    country: string;
+  };
+  phone?:
+    | {
+        number?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  emails?:
+    | {
+        email?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socials?: (string | Social)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projectList".
+ */
+export interface ProjectList {
+  id: string;
+  media?: (string | null) | Media;
+  mediaUrl?: string | null;
+  button: {
+    text: string;
+    url: string;
+    target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+    ariaLabel?: string | null;
+  };
+  projectsList?: (string | Project)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "navigation_select".
  */
 export interface NavigationSelect<T extends boolean = true> {
@@ -746,6 +795,55 @@ export interface NavigationSelect<T extends boolean = true> {
         id?: T;
       };
   socials?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  address?:
+    | T
+    | {
+        street?: T;
+        city?: T;
+        country?: T;
+      };
+  phone?:
+    | T
+    | {
+        number?: T;
+        id?: T;
+      };
+  emails?:
+    | T
+    | {
+        email?: T;
+        id?: T;
+      };
+  socials?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projectList_select".
+ */
+export interface ProjectListSelect<T extends boolean = true> {
+  media?: T;
+  mediaUrl?: T;
+  button?:
+    | T
+    | {
+        text?: T;
+        url?: T;
+        target?: T;
+        ariaLabel?: T;
+      };
+  projectsList?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
