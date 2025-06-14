@@ -9,7 +9,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 
 import { Users, Media, Pages, Socials, Projects } from './collections'
-import { Navigation, Footer, ProjectList, Experience } from './globals';
+import { Navigation, Footer, ProjectList, Experience, Education } from './globals';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +22,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages, Socials, Projects],
-  globals: [Navigation, Footer, ProjectList, Experience],
+  globals: [Navigation, Footer, ProjectList, Experience, Education],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
