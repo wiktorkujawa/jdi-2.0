@@ -27,8 +27,6 @@
     "graphql": "^16.8.1",
     "next": "15.3.0",
     "payload": "3.39.1",
-    "payload-cloudinary": "^1.7.0",
-    "payload-cloudinary-plugin": "^0.1.14",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sharp": "0.32.6"
