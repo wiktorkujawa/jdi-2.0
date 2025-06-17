@@ -176,21 +176,6 @@ export interface Media {
 export interface Page {
   id: string;
   title?: string | null;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   slug?: string | null;
   isMasthead?: boolean | null;
   feature?: ('none' | 'slider' | 'banner') | null;
@@ -513,7 +498,6 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
-  content?: T;
   slug?: T;
   isMasthead?: T;
   feature?: T;

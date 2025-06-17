@@ -21,10 +21,6 @@ export const Pages: CollectionConfig = {
       unique: true,
     },
     {
-      name: 'content',
-      type: 'richText',
-    },
-    {
       name: 'slug',
       type: 'text',
       unique: true,

@@ -10,9 +10,11 @@ import { seoPlugin } from '@payloadcms/plugin-seo'
 
 import { Users, Media, Pages, Socials, Projects } from './collections'
 import { Navigation, Footer, ProjectList, Experience, Education, Brief } from './globals';
+import { cloudinaryPlugin } from './utils/cloudinaryPlugin'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
 
 export default buildConfig({
   admin: {
@@ -33,6 +35,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    cloudinaryPlugin(),
     payloadCloudPlugin(),
     seoPlugin({
       collections: ["pages"],
