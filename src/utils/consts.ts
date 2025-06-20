@@ -1,3 +1,6 @@
+export const MIN_EXPERIENCE_YEAR = 2011;
+
+
 export const VIDEO_EXTENSIONS = [
     "mp4",
     "webm",
