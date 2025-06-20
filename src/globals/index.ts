@@ -4,3 +4,4 @@ export { ProjectList } from "./ProjectList";
 export { Experience } from "./Experience";
 export { Education } from "./Education";
 export { Brief } from "./Brief";
+export { Config } from "./Config";
