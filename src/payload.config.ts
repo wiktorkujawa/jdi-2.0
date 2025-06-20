@@ -8,8 +8,8 @@ import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 
-import { Users, Media, Pages, Socials, Projects } from './collections'
-import { Navigation, Footer, ProjectList, Experience, Education, Brief } from './globals';
+import { Users, Media, Pages, Socials, Projects, Themes } from './collections'
+import { Navigation, Footer, ProjectList, Experience, Education, Brief, Config } from './globals';
 import { cloudinaryPlugin } from './utils/cloudinaryPlugin'
 
 const filename = fileURLToPath(import.meta.url)
@@ -23,8 +23,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages, Socials, Projects],
-  globals: [Navigation, Footer, ProjectList, Experience, Education, Brief],
+  collections: [Users, Media, Pages, Socials, Projects, Themes],
+  globals: [Navigation, Footer, ProjectList, Experience, Education, Brief, Config],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
