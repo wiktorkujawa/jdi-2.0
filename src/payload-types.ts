@@ -781,6 +781,46 @@ export interface Experience {
   positions?:
     | {
         position?: string | null;
+        company?: string | null;
+        startDate?:
+          | (
+              | '2011'
+              | '2012'
+              | '2013'
+              | '2014'
+              | '2015'
+              | '2016'
+              | '2017'
+              | '2018'
+              | '2019'
+              | '2020'
+              | '2021'
+              | '2022'
+              | '2023'
+              | '2024'
+              | '2025'
+            )
+          | null;
+        endDate?:
+          | (
+              | '2011'
+              | '2012'
+              | '2013'
+              | '2014'
+              | '2015'
+              | '2016'
+              | '2017'
+              | '2018'
+              | '2019'
+              | '2020'
+              | '2021'
+              | '2022'
+              | '2023'
+              | '2024'
+              | '2025'
+              | 'now'
+            )
+          | null;
         description?: string | null;
         id?: string | null;
       }[]
@@ -908,6 +948,9 @@ export interface ExperienceSelect<T extends boolean = true> {
     | T
     | {
         position?: T;
+        company?: T;
+        startDate?: T;
+        endDate?: T;
         description?: T;
         id?: T;
       };
