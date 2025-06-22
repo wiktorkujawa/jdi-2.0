@@ -1,6 +1,8 @@
+
+
 export const MIN_EXPERIENCE_YEAR = 2011;
 
-
+export const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
 export const VIDEO_EXTENSIONS = [
     "mp4",
     "webm",

@@ -2,7 +2,13 @@ import configPromise from '@payload-config'
 import { NextRequest } from 'next/server'
 import { getPayload } from 'payload'
 
-export const GET = async (req: NextRequest) => {
+export const GET = async (
+  _: NextRequest,
+  { params }: { params: Promise <{ slug: string }> }
+) => {
+
+  const { slug } = await params;
+
   const payload = await getPayload({
     config: configPromise,
   })
@@ -11,10 +17,14 @@ export const GET = async (req: NextRequest) => {
     collection: 'pages',
     where: {
       slug: {
-        equals: req.nextUrl.pathname,
+        equals: slug === 'home' ? "" : slug,
       },
     },
-  })
+  });
 
-  return Response.json(data)
+  if (!data.docs[0]) {
+    return Response.json({ error: 'Page not found' }, { status: 404 })
+  }
+
+  return Response.json(data.docs[0]);
 }
