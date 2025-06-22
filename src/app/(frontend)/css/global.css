@@ -3,6 +3,7 @@
 
 @theme {
 
+  --color-main: rgb(0, 1000, 1000);
   --container-padding-inline: 20px;
   --container-2xl-content-max-width: 1400px; /* 1440px - 2 * 20px */
   --container-xl-content-max-width: 1224px; /* 1440px - 2 * 108px */
@@ -12,6 +13,7 @@
   --color-white: rgb(1000, 1000, 1000);
   --color-black: rgb(0, 0, 0);
   --color-gray-60: rgb(60, 60, 60);
+  
   
   --font-sans: system-ui;
   --font-mono: 'Roboto Mono', monospace;
@@ -50,4 +52,5 @@
   --container-md: 768px;
   --container-sm: 640px;
   --container-xs: 480px;
+
 }

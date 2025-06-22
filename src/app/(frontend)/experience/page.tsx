@@ -1,11 +1,11 @@
 import React from 'react'
-import DynamicTemplateComponent from './themes/templateMapper'
+import DynamicTemplateComponent from '../themes/templateMapper';
 import { serverURL } from '@/utils/consts';
 import { Page } from '@/payload-types';
 import { notFound } from 'next/navigation';
 
 const getPageData = async () => {
-  const pageRes = await fetch(`${serverURL}/read-api/pages/home`, {
+  const pageRes = await fetch(`${serverURL}/read-api/pages/experience`, {
     cache: 'force-cache'
   });
   const page: Page = await pageRes.json();
@@ -20,7 +20,7 @@ const getConfig = async () => {
   return config.json();
 }
 
-export default async function HomePage() {
+export default async function ExperiencePage() {
 
   const data = await getPageData();
   const config = await getConfig();
@@ -33,21 +33,8 @@ export default async function HomePage() {
   return (
     <DynamicTemplateComponent 
       theme={themeName} 
-      templateType="HomeTemplate" 
+      templateType="ExperienceTemplate" 
       data={data} 
     />
-    // <div className="home">
-    //   <section className="o-container o-container--lg my-12">
-    //     <div className="bg-main">
-    //       <h2>First section</h2>
-    //     </div>
-    //   </section>
-
-    //   <section className="o-container o-container--md my-12">
-    //     <div className="bg-main">
-    //       <h2>Second section</h2>
-    //     </div>
-    //   </section>
-    // </div>
   )
 }

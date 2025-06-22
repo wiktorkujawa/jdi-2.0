@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* define new values */
+@theme {
+
+}
+
+/* override default values */
+@layer theme {
+  body[data-theme="legacy"] {
+    --color-main: rgb(0, 1000, 1000); /* The cyan color */
+
+    --container-padding: 1rem;
+    --container-2xl: 1200px;
+    --container-xl: 1000px;
+    --container-lg: 800px;
+    --container-md: 600px;
+    --container-sm: 400px;
+    --container-xs: 200px;
+
+    --container-padding-inline: 20px;
+    --container-2xl-content-max-width: 1200px; /* 1240px - 2 * 20px */
+    --container-xl-content-max-width: 1000px; /* 1240px - 2 * 120px */
+    --container-lg-content-max-width: 800px; /* 1240px - 2 * 220px */
+    --container-md-content-max-width: 600px; /* 1240px - 2 * 320px */
+  }
+}
