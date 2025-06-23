@@ -3,6 +3,7 @@ import { Navigation as NavigationType } from "@/payload-types";
 
 const getHeaderData = async () => {
   const res = await fetch(`${serverURL}/read-api/navigation`, {
+    cache: 'force-cache',
     next: {
       tags: ["navigation"],
     },

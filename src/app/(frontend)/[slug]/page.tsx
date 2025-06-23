@@ -7,7 +7,9 @@ import type { Metadata } from 'next';
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-    const pagesRes = await fetch(`${serverURL}/read-api/pages`);
+    const pagesRes = await fetch(`${serverURL}/read-api/pages`, {
+        cache: 'force-cache'
+    });
     const pagesCollection: PaginatedDocs<PageType> = await pagesRes.json();
    
     return pagesCollection.docs.map((page) => ({
@@ -17,7 +19,9 @@ export async function generateStaticParams() {
 
 
 const getPageData = async (slug: string) => {
-    const pageRes = await fetch(`${serverURL}/read-api/pages/${slug}`);
+    const pageRes = await fetch(`${serverURL}/read-api/pages/${slug}`, {
+        cache: 'force-cache'
+    });
     if (!pageRes.ok) {
         return null;
     }
@@ -26,7 +30,9 @@ const getPageData = async (slug: string) => {
 }
 
 const getConfig = async () => {
-    const config = await fetch(`${serverURL}/read-api/config`);
+    const config = await fetch(`${serverURL}/read-api/config`, {
+        cache: 'force-cache'
+    });
     return config.json();
 }
 
