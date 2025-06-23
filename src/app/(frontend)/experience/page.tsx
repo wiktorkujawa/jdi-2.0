@@ -16,7 +16,9 @@ const getPageData = async () => {
 }
 
 const getConfig = async () => {
-  const config = await fetch(`${serverURL}/read-api/config`);
+  const config = await fetch(`${serverURL}/read-api/config`, {
+    cache: 'force-cache'
+  });
   return config.json();
 }
 

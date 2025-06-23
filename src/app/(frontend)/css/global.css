@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import './object/o-container.css';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
 
   --color-main: rgb(0, 1000, 1000);

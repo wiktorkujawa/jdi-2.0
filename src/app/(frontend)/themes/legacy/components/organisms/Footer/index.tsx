@@ -3,7 +3,9 @@ import { serverURL } from "@/utils/consts";
 
 
 const getFooterData = async () => {
-    const footerRes = await fetch(`${serverURL}/read-api/footer`);
+    const footerRes = await fetch(`${serverURL}/read-api/footer`, {
+        cache: 'force-cache'
+    });
     const footer: FooterType = await footerRes.json();
     return footer;
 }
