@@ -1,5 +1,7 @@
-import { DarkModeDemo } from '@/components/DarkModeDemo'
+import { DarkModeDemo } from '@/app/(frontend)/themes/default/components/organisms/DarkModeDemo'
 
 export default function DemoPage() {
-  return <DarkModeDemo />
+  return <>
+  <DarkModeDemo />
+  </>
 } 

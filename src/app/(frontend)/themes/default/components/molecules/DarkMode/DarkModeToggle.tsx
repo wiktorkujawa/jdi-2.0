@@ -1,6 +1,6 @@
 'use client'
 
-import { useDarkMode } from '@/hooks/useDarkMode'
+import { useDarkMode } from '@/app/(frontend)/hooks/useDarkMode'
 
 interface DarkModeToggleProps {
   className?: string

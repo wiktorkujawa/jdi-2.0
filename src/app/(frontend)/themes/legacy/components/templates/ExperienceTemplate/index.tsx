@@ -4,7 +4,7 @@ const ExperienceTemplate = async ({ data }: { data: Page }) => {
 
     console.log("pageData", data);
     return (
-        <div className="l-home">
+        <div className="l-experience">
             Hello template
         </div>
     )

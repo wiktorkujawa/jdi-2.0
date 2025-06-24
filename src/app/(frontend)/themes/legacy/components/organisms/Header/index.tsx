@@ -12,7 +12,7 @@ const getHeaderData = async () => {
   return data;
 };
 
-const CHeader = async () => {
+const Header = async () => {
 
   const { page, pages } = await getHeaderData();
 
@@ -23,4 +23,4 @@ const CHeader = async () => {
   );
 };
 
-export default CHeader;
+export default Header;
