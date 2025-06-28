@@ -1,7 +1,7 @@
 'use client'
 
-import { useDarkMode } from '@/hooks/useDarkMode'
-import { DarkModeToggle } from './DarkModeToggle'
+import { useDarkMode } from '@/app/(frontend)/hooks/useDarkMode'
+import { DarkModeToggle } from '../molecules/DarkMode/DarkModeToggle'
 
 export const DarkModeDemo = () => {
   const { isDarkMode } = useDarkMode()

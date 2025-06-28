@@ -11,7 +11,7 @@ const getHeaderData = async () => {
   return header;
 }
 
-const Header = async () => {
+export const Header = async () => {
 
   const data = await getHeaderData();
 
@@ -31,4 +31,3 @@ const Header = async () => {
     </header>
   )
 } 
-export default Header;

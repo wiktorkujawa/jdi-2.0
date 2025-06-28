@@ -1,10 +1,14 @@
-import { Footer as FooterType } from "@/payload-types";
+import SVG from "@/app/(frontend)/themes/default/components/atoms/SVG";
+import { Footer as FooterType, Social } from "@/payload-types";
 import { serverURL } from "@/utils/consts";
 
 
 const getFooterData = async () => {
     const footerRes = await fetch(`${serverURL}/read-api/footer`, {
-        cache: 'force-cache'
+        cache: 'force-cache',
+        next: {
+            tags: ['footer']
+        }
     });
     const footer: FooterType = await footerRes.json();
     return footer;
@@ -12,7 +16,9 @@ const getFooterData = async () => {
 
 
 export default async function Footer() {
+
     const data = await getFooterData();
+    
     return (
         <footer className="c-footer dark:bg-dark-bg-window bg-theme-bg-window dark:text-dark-font-primary text-theme-font-primary">
             <div className="o-container o-container--lg child:py-8 child:border-b-1 dark:child:border-dark-border child:border-theme-border last:child:border-none">
@@ -60,14 +66,15 @@ export default async function Footer() {
             <div className="flex">
             <p className="font-bold w-28 text-p1">SOCIAL</p>
             <address className="flex gap-x-4">
-                {/* {data?.socials?.map(({ id, name, url }) => (
-                <a className="block" key={id} target="_blank" href={url}>
-                    <Asvg name={name} className="hover:opacity-60" />
-                </a>
-                ))} */}
-                </address>
-                </div>
+                {data?.socials?.map((social) => {
+                    const socialData = social as Social;
+                    return <a className="block" key={socialData.id} target="_blank" href={socialData.url ?? ''}>
+                        <SVG name={socialData.name ?? ''} className="hover:opacity-60" />
+                    </a>
+                })}
+            </address>
             </div>
+        </div>
         </footer>
     )
 }

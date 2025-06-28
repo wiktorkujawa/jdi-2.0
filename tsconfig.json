@@ -33,6 +33,7 @@
     "target": "ES2022",
   },
   "include": [
+    // "svg.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
