@@ -6,9 +6,9 @@ import Header from './components/organisms/Header'
 export default function ThemeLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body data-theme="legacy">
+            <body className="min-h-screen flex flex-col" data-theme="legacy">
                 <Header />
-                <main className="min-h-screen">{children}</main>
+                <main className="flex-1">{children}</main>
                 <Footer />
             </body>
         </html>

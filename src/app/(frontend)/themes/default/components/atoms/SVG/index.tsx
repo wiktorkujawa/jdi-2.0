@@ -10,7 +10,7 @@ const iconsClasses: IconsClasses = {
   github: 'dark:fill-white'
 };
 
-const DynamicComponent = (name: string) => dynamic(() => import(`@/public/assets/svg/${name}.svg`));
+const DynamicComponent = (name: string) => dynamic(() => import(`@/app/(frontend)/assets/svg/${name}.svg`));
 
 const SVG: FC<SVGProps<SVGSVGElement> & { name: string }> = ({ name, className, ...props }) => {
   const Icon = DynamicComponent(name) as React.ComponentType<SVGProps<SVGSVGElement>>

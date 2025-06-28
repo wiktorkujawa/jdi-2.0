@@ -5,7 +5,10 @@ import { Footer as FooterType } from '@/payload-types';
 
 const getFooterData = async () => {
   const footerRes = await fetch(`${serverURL}/read-api/footer`, {
-      cache: 'force-cache'
+      cache: 'force-cache',
+      next: {
+        tags: ['footer']
+      }
   });
   const footer: FooterType = await footerRes.json();
   return footer;
@@ -26,7 +29,7 @@ export const Footer = async () => {
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               Building amazing digital experiences with modern web technologies.
             </p>
-            <SocialMedia />
+            {data?.socials && <SocialMedia data={data.socials} />}
           </div>
 
           {/* Quick Links */}
@@ -59,9 +62,19 @@ export const Footer = async () => {
               Contact
             </h4>
             <div className="space-y-2 text-gray-600 dark:text-gray-300">
-              <p>contact@company.com</p>
-              <p>+1 (555) 123-4567</p>
-              <p>123 Main St, City, State</p>
+              {data?.emails?.map((emailItem, index) => (
+                <p key={index}>{emailItem.email}</p>
+              )) || <p>contact@company.com</p>}
+              
+              {data?.phone?.map((phoneItem, index) => (
+                <p key={index}>{phoneItem.number}</p>
+              )) || <p>+1 (555) 123-4567</p>}
+              
+              {data?.address && (
+                <p>
+                  {data.address.street}, {data.address.city}, {data.address.country}
+                </p>
+              ) || <p>123 Main St, City, State</p>}
             </div>
           </div>
         </div>
