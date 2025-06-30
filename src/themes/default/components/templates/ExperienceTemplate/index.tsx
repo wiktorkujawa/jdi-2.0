@@ -1,11 +1,11 @@
 import { Page } from '@/payload-types';
+import { CustomComponents } from '@/themes/default/CustomComponents';
 
 const ExperienceTemplate = async ({ data }: { data: Page }) => {
 
-    console.log("pageData", data);
     return (
         <div className="l-experience">
-            Hello template
+            {data.customComponents && <CustomComponents blocks={data.customComponents} />}
         </div>
     )
 }

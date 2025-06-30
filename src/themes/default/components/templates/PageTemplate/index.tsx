@@ -1,12 +1,10 @@
 import { Page } from '@/payload-types';
-
+import { CustomComponents } from '@/themes/default/CustomComponents';
 const PageTemplate = async ({ data }: { data: Page }) => {
    
-    console.log("What is the page data?", data);
-
     return (
         <div className="l-page">
-            Hello landing page
+            {data.customComponents && <CustomComponents blocks={data.customComponents} />}
         </div>
     )
 }
