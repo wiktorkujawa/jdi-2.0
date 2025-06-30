@@ -1,10 +1,13 @@
-import { serverURL } from "@/utils/consts";
-import DynamicTemplateComponent from "../themes/templateMapper";
 import { Page as PageType } from "@/payload-types";
 import { PaginatedDocs } from "payload";
-import { generateMeta } from "@/utils/generateMetadata";
 import type { Metadata } from 'next';
 import { notFound } from "next/navigation";
+
+import { getConfig } from "@/lib/api/config";
+import { serverURL } from "@/utils/consts";
+import DynamicTemplateComponent from "@/themes/templateMapper";
+import { generateMeta } from "@/utils/generateMetadata";
+import { getPageData } from "@/lib/api/pages";
 
 export async function generateStaticParams() {
     const pagesRes = await fetch(`${serverURL}/read-api/pages`, {
@@ -17,24 +20,6 @@ export async function generateStaticParams() {
     }))
   }
 
-
-const getPageData = async (slug: string) => {
-    const pageRes = await fetch(`${serverURL}/read-api/pages/${slug}`, {
-        cache: 'force-cache'
-    });
-    if (!pageRes.ok) {
-        return null;
-    }
-    const pageData: PageType = await pageRes.json();
-    return pageData;
-}
-
-const getConfig = async () => {
-    const config = await fetch(`${serverURL}/read-api/config`, {
-        cache: 'force-cache'
-    });
-    return config.json();
-}
 
 type Props = {
     params: Promise<{ slug: string }>

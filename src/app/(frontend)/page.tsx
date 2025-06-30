@@ -1,31 +1,14 @@
-import React from 'react'
-import DynamicTemplateComponent from './themes/templateMapper'
-import { serverURL } from '@/utils/consts';
-import { Page } from '@/payload-types';
 import { notFound } from 'next/navigation';
 
-const getPageData = async () => {
-  const pageRes = await fetch(`${serverURL}/read-api/pages/home`, {
-    cache: 'force-cache'
-  });
-  const page: Page = await pageRes.json();
-  if (!pageRes.ok) {
-    return null;
-  }
-  return page;
-}
-
-const getConfig = async () => {
-  const config = await fetch(`${serverURL}/read-api/config`, {
-    cache: 'force-cache'
-  });
-  return config.json();
-}
+import DynamicTemplateComponent from '@/themes/templateMapper'
+import { getConfig } from '@/lib/api/config';
+import { getPageData } from '@/lib/api/pages';
 
 export default async function HomePage() {
 
   const data = await getPageData();
   const config = await getConfig();
+
   const themeName = config?.selectedTheme?.name || 'default';
 
   if (!data) {

@@ -1,30 +1,13 @@
-import React from 'react'
-import DynamicTemplateComponent from '../themes/templateMapper';
-import { serverURL } from '@/utils/consts';
-import { Page } from '@/payload-types';
 import { notFound } from 'next/navigation';
 
-const getPageData = async () => {
-  const pageRes = await fetch(`${serverURL}/read-api/pages/experience`, {
-    cache: 'force-cache'
-  });
-  const page: Page = await pageRes.json();
-  if (!pageRes.ok) {
-    return null;
-  }
-  return page;
-}
+import DynamicTemplateComponent from '@/themes/templateMapper';
+import { getConfig } from '@/lib/api/config';
+import { getPageData } from '@/lib/api/pages';
 
-const getConfig = async () => {
-  const config = await fetch(`${serverURL}/read-api/config`, {
-    cache: 'force-cache'
-  });
-  return config.json();
-}
 
 export default async function ExperiencePage() {
 
-  const data = await getPageData();
+  const data = await getPageData('experience');
   const config = await getConfig();
   const themeName = config?.selectedTheme?.name || 'default';
 

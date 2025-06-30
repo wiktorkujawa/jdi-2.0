@@ -1,4 +1,4 @@
-import { formatSlug } from "@/app/utils/formatSlug";
+import { formatSlug } from "@/utils/formatSlug";
 import { Page } from "@/payload-types"
 import { revalidatePath } from "next/cache"
 import { CollectionAfterChangeHook } from "payload"
