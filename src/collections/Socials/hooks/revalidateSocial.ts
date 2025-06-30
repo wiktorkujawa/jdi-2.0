@@ -4,4 +4,5 @@ import { CollectionAfterChangeHook } from "payload"
 
 export const revalidateSocial: CollectionAfterChangeHook<Social> = async ({ doc }) => {
     revalidateTag('footer');
+    revalidateTag('navigation');
 }
