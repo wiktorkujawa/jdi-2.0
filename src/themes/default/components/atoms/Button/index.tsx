@@ -10,7 +10,7 @@ interface ButtonProps {
   disabled?: boolean
 }
 
-export const Button = ({ 
+const Button = ({ 
   children, 
   icon, 
   variant = 'primary', 
@@ -48,3 +48,5 @@ export const Button = ({
     </button>
   )
 } 
+
+export default Button;

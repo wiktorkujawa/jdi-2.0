@@ -28,7 +28,7 @@ export const Media: CollectionConfig = {
   // upload: true,
   upload: {
     adminThumbnail: ({ doc }) => {
-      const cloudName = process.env.CLOUDINARY_NAME;
+      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_NAME;
       const fromattedDoc = doc as MediaDoc;
       
       if(fromattedDoc?.mimeType?.includes('video')) {

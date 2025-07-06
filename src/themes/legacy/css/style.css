@@ -23,5 +23,41 @@
     --container-xl-content-max-width: 1000px; /* 1240px - 2 * 120px */
     --container-lg-content-max-width: 800px; /* 1240px - 2 * 220px */
     --container-md-content-max-width: 600px; /* 1240px - 2 * 320px */
+
+
+
+    /* h1: [`${40 / 16}rem`, {
+      lineHeight: '1.5'
+    }],
+    h2: [`${36 / 16}rem`, {
+      lineHeight: '1.5'
+    }],
+    h3: [`${32 / 16}rem`, {
+      lineHeight: '1.5'
+    }],
+    h4: [`${28 / 16}rem`, {
+      lineHeight: '1.5'
+    }],
+    h5: [`${24 / 16}rem`, {
+      lineHeight: '1.5'
+    }],
+    h6: [`${20 / 16}rem`, {
+      lineHeight: '1.5'
+    }],
+    h7: [`${16 / 16}rem`, {
+      lineHeight: '1.5'
+    }],
+    p1: [`${16 / 16}rem`, {
+      lineHeight: '2'
+    }],
+    p2: [`${14 / 16}rem`, {
+      lineHeight: '2'
+    }],
+    p3: [`${12 / 16}rem`, {
+      lineHeight: '2'
+    }], */
+
+
+
   }
 }
