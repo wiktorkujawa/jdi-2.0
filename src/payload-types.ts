@@ -345,6 +345,11 @@ export interface Page {
             blockName?: string | null;
             blockType: 'Slider';
           }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ProjectsList';
+          }
       )[]
     | null;
   subpages?: (string | Page)[] | null;
@@ -645,6 +650,12 @@ export interface PagesSelect<T extends boolean = true> {
                     autoplaySpeed?: T;
                     slidesPerRow?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        ProjectsList?:
+          | T
+          | {
               id?: T;
               blockName?: T;
             };

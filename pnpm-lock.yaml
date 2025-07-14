@@ -35,6 +35,9 @@ importers:
       cloudinary:
         specifier: ^2.6.1
         version: 2.6.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
