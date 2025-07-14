@@ -1,19 +1,15 @@
 import React from 'react';
-import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { RichText } from '@payloadcms/richtext-lexical/react';
+import { Page } from '@/payload-types';
 
-interface WYSIWYGProps {
-  copy: SerializedEditorState;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'WYSIWYG';
-}
+type CustomComponents = NonNullable<Page['customComponents']>;
+type WYSIWYGProps = Extract<CustomComponents[number], { blockType: 'WYSIWYG' }>;
 
-const WYSIWYG: React.FC<WYSIWYGProps> = ({ copy }) => {
+const WYSIWYG: React.FC<WYSIWYGProps> = ({ copy, blockName }) => {
   return (
-    <section className="c-wysiwyg-block">
+    <section id={blockName || undefined} className="c-wysiwyg-block">
       <div className="o-container o-container--lg">
-        <div className="wysiwyg-content">
+        <div className="o-rich-text">
           <RichText data={copy} />
         </div>
       </div>

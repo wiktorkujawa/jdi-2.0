@@ -1,9 +1,131 @@
+@import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* define new values */
 @theme {
 
+  --header-height: 80px;
+
+  --color-dark-bg: #030303;
+  --color-dark-bg-window: #1A1A1B;
+  --color-dark-font-primary: #D7DADC;
+  --color-dark-font-secondary: #818384;
+  --color-dark-border: #343536;
+
+  --color-theme-bg: #DAE0E6;
+  --color-theme-bg-window: #FFFFFF;
+  --color-theme-font-primary: #222222;
+  --color-theme-font-secondary: #878A8C;
+  --color-theme-border: #ccc;
+
+  --color-menu: #fdfdfd;
+  --color-eerie-black: #212121;
+  --color-mine-shaft: #303030;
+  --color-white-smoke: #f0f0f0;
+  --color-accent-dark: #ffffff1f;
+  --color-accent-light: #000001f;
+  --color-linkedin: #0e76a8;
+  --color-pink-hover: #d63384;
+  --color-red-hover: #dc3545;
+
+  /* Custom typography scale from legacy theme */
+  --text-h1: 2.5rem;
+  --text-h1--line-height: 1.5;
+  --text-h2: 2.25rem;
+  --text-h2--line-height: 1.5;
+  --text-h3: 2rem;
+  --text-h3--line-height: 1.5;
+  --text-h4: 1.75rem;
+  --text-h4--line-height: 1.5;
+  --text-h5: 1.5rem;
+  --text-h5--line-height: 1.5;
+  --text-h6: 1.25rem;
+  --text-h6--line-height: 1.5;
+  --text-h7: 1rem;
+  --text-h7--line-height: 1.5;
+  --text-p1: 1rem;
+  --text-p1--line-height: 2;
+  --text-p2: 0.875rem;
+  --text-p2--line-height: 2;
+  --text-p3: 0.75rem;
+  --text-p3--line-height: 2;
 }
+
+/* Theme window utility class for legacy theme */
+.o-theme-window {
+  background-color: var(--color-theme-bg-window);
+  border-color: var(--color-theme-border);
+}
+
+.o-theme-window:hover {
+  border-color: var(--color-theme-font-secondary);
+}
+
+.o-rich-text {
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+  }
+
+  h4 {
+    font-size: var(--text-h4);
+    line-height: var(--text-h4--line-height);
+  }
+
+  h5 {
+    font-size: var(--text-h5);
+    line-height: var(--text-h5--line-height);
+  }
+
+  h6 {
+    font-size: var(--text-h6);
+    line-height: var(--text-h6--line-height);
+  }
+
+  h7 {
+    font-size: var(--text-h7);
+    line-height: var(--text-h7--line-height);
+  }
+  
+  p {
+    font-size: var(--text-p1);
+    line-height: var(--text-p1--line-height);
+  }
+  
+  
+
+}
+
+/* Dark mode overrides for legacy theme */
+:where(.dark, .dark *) .o-theme-window {
+  background-color: var(--color-dark-bg-window);
+  border-color: var(--color-dark-border);
+}
+
+:where(.dark, .dark *) .o-theme-window:hover {
+  border-color: var(--color-dark-font-secondary);
+}
+
+body {
+  background-color: var(--color-theme-bg);
+  color: var(--color-theme-font-primary);
+}
+
+:where(.dark, .dark *) body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-font-primary);
+}
+
 
 /* override default values */
 @layer theme {
@@ -24,7 +146,27 @@
     --container-lg-content-max-width: 800px; /* 1240px - 2 * 220px */
     --container-md-content-max-width: 600px; /* 1240px - 2 * 320px */
 
+    /* --color-dark-bg: #030303;
+    --color-dark-bg-window: #1A1A1B;
+    --color-dark-font-primary: #D7DADC;
+    --color-dark-font-secondary: #818384;
+    --color-dark-border: #343536;
 
+    --color-theme-bg: #DAE0E6;
+    --color-theme-bg-window: #FFFFFF;
+    --color-theme-font-primary: #222222;
+    --color-theme-font-secondary: #878A8C;
+    --color-theme-border: #ccc;
+
+    --color-menu: #fdfdfd;
+    --color-eerie-black: #212121;
+    --color-mine-shaft: #303030;
+    --color-white-smoke: #f0f0f0;
+    --color-accent-dark: #ffffff1f;
+    --color-accent-light: #000001f;
+    --color-linkedin: #0e76a8;
+    --color-pink-hover: #d63384;
+    --color-red-hover: #dc3545; */
 
     /* h1: [`${40 / 16}rem`, {
       lineHeight: '1.5'
@@ -56,8 +198,5 @@
     p3: [`${12 / 16}rem`, {
       lineHeight: '2'
     }], */
-
-
-
   }
 }

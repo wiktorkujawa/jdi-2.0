@@ -17,17 +17,17 @@ const Heading: React.FC<HeadingProps> = ({
     
     switch (level) {
       case 'h1':
-        return <h1 className="heading-text">{heading}</h1>;
+        return <h1 className="text-h1">{heading}</h1>;
       case 'h2':
-        return <h2 className="heading-text">{heading}</h2>;
+        return <h2 className="text-h2">{heading}</h2>;
       case 'h3':
-        return <h3 className="heading-text">{heading}</h3>;
+        return <h3 className="text-h3">{heading}</h3>;
       case 'h4':
-        return <h4 className="heading-text">{heading}</h4>;
+        return <h4 className="text-h4">{heading}</h4>;
       case 'h5':
-        return <h5 className="heading-text">{heading}</h5>;
+        return <h5 className="text-h5">{heading}</h5>;
       default:
-        return <h2 className="heading-text">{heading}</h2>;
+        return <h2 className="text-h2">{heading}</h2>;
     }
   };
 
