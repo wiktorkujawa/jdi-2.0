@@ -1,9 +1,8 @@
 import React from 'react';
 import { RichText } from '@payloadcms/richtext-lexical/react';
-import { Page } from '@/payload-types';
+import { BlockProps } from '@/utils/types';
 
-type CustomComponents = NonNullable<Page['customComponents']>;
-type WYSIWYGProps = Extract<CustomComponents[number], { blockType: 'WYSIWYG' }>;
+type WYSIWYGProps = BlockProps<'WYSIWYG'>;
 
 const WYSIWYG: React.FC<WYSIWYGProps> = ({ copy, blockName }) => {
   return (

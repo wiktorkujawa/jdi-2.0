@@ -1,16 +1,12 @@
 import React from 'react';
+import { BlockProps } from '@/utils/types';
 
-interface HeadingProps {
-  heading?: string | null;
-  level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'Heading';
-}
+type HeadingProps = BlockProps<'Heading'>;
 
 const Heading: React.FC<HeadingProps> = ({ 
   heading, 
-  level = 'h2' 
+  level = 'h2',
+  blockName
 }) => {
   const renderHeading = () => {
     if (!heading) return null;
@@ -32,7 +28,7 @@ const Heading: React.FC<HeadingProps> = ({
   };
 
   return (
-    <section className="c-heading-block my-8">
+    <section id={blockName || undefined} className="c-heading-block my-8">
         <div className="o-container o-container--lg">
             {renderHeading()}
         </div>

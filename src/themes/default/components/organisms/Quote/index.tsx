@@ -1,17 +1,11 @@
 import React from 'react';
+import { BlockProps } from '@/utils/types';
 
-interface QuoteProps {
-  author: string;
-  quote: string;
-  decoration?: boolean | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'Quote';
-}
+type QuoteProps = BlockProps<'Quote'>;
 
-const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false }) => {
+const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockName }) => {
   return (
-    <section className="c-quote-block my-8">
+    <section id={blockName || undefined} className="c-quote-block my-8">
         <div className="o-container o-container--md">
         <blockquote className="quote-block my-8 p-6 border-l-4 border-primary bg-gray-50">
         {decoration && (

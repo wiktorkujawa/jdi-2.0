@@ -1,19 +1,15 @@
 import React from 'react'
-import { Project, ProjectList } from '@/payload-types'
-
+import { Project } from '@/payload-types'
+import { BlockProps } from '@/utils/types';
 import { getProjectListData } from '@/lib/api/projectList'
 import styles from './ProjectsList.module.css'
 
 import ProjectItem from '@/themes/legacy/components/molecules/ProjectItem'
 import ProjectListItem from '@/themes/legacy/components/molecules/ProjectListItem'
 
+type ProjectsListProps = BlockProps<'ProjectsList'>;
 
-interface ProjectsListBlockProps {
-  blockName?: string | null;
-  blockType: 'ProjectsList';
-}
-
-const ProjectsList = async ({ blockName }: ProjectsListBlockProps) => {
+const ProjectsList = async ({ blockName }: ProjectsListProps) => {
 
   const projectList = await getProjectListData();
 
