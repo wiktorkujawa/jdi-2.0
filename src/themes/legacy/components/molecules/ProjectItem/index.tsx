@@ -1,6 +1,6 @@
 import { Project, Media } from "@/payload-types";
-import Link from "next/link";
-import Button from "@/themes/legacy/components/atoms/Button";
+import NextLink from "next/link";
+import Link from "@/themes/legacy/components/atoms/Link";
 import styles from "./ProjectItem.module.css";
 import clsx from "clsx";
 import Image from "next/image";
@@ -32,7 +32,7 @@ const ProjectItem = (field: Project) => {
       )}
     >
       <figure>
-        <Link target="_blank" href={mediaUrl || "#"}>
+        <NextLink target="_blank" href={mediaUrl || "#"}>
           <h3 className={clsx(styles["m-project-item--header"])}>
             Project{" "}
           </h3>
@@ -59,7 +59,7 @@ const ProjectItem = (field: Project) => {
               />
             </div>
           )}
-        </Link>
+        </NextLink>
       </figure>
 
       <div className="flex flex-col justify-between">
@@ -69,10 +69,8 @@ const ProjectItem = (field: Project) => {
           {
             buttons?.map(({ button }) => {
               return (
-                <Link key={button.url} href={button.url} target="_blank" className="w-full flex justify-center lg:w-auto">
-                  <Button aria-label={button.text} className="w-full">
+                <Link key={button.url} aria-label={button.text} href={button.url} target="_blank" className="w-full flex justify-center lg:w-auto">
                     {button.text}
-                  </Button>
                 </Link>
               );
             })

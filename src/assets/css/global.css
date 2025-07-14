@@ -2,6 +2,8 @@
 @import './object/o-container.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant child (& > *);
+@custom-variant child-hover (& > *:hover);
 
 @theme {
 
@@ -21,28 +23,6 @@
   
   --font-sans: system-ui;
   --font-mono: 'Roboto Mono', monospace;
-  
-  /* Custom typography scale from legacy theme */
-  --text-h1: 2.5rem;
-  --text-h1--line-height: 1.5;
-  --text-h2: 2.25rem;
-  --text-h2--line-height: 1.5;
-  --text-h3: 2rem;
-  --text-h3--line-height: 1.5;
-  --text-h4: 1.75rem;
-  --text-h4--line-height: 1.5;
-  --text-h5: 1.5rem;
-  --text-h5--line-height: 1.5;
-  --text-h6: 1.25rem;
-  --text-h6--line-height: 1.5;
-  --text-h7: 1rem;
-  --text-h7--line-height: 1.5;
-  --text-p1: 1rem;
-  --text-p1--line-height: 2;
-  --text-p2: 0.875rem;
-  --text-p2--line-height: 2;
-  --text-p3: 0.75rem;
-  --text-p3--line-height: 2;
   
   --text-base: 18px;
   --text-base--line-height: calc(32 / 18);

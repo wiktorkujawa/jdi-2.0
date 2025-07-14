@@ -1,84 +1,102 @@
-'use client'
+'use client';
+import clsx from "clsx";
+import Link from "next/link";
+import { FC, useState } from "react";
+import styles from "./NavigationBar.module.css";
+import { usePathname } from 'next/navigation'
+import useScrollDetect from "@/hooks/useScrollDetect";
+import Logo from "@/assets/svg/logo.svg";
+import useRWD from "@/hooks/useRWD";
+import { Page } from "@/payload-types";
+import { CustomPage } from "@/utils/types";
+import { DarkModeToggle } from "../../molecules/DarkMode/DarkModeToggle";
 
-import { useState } from 'react'
-import { HomeIcon, UserIcon, SettingsIcon, MenuIcon, CloseIcon } from '@/assets/svg'
+type NavItem = (Page | CustomPage) & { subpages?: NavItem[] };
 
-interface NavigationBarProps {
-  className?: string
+interface Props {
+  nav: (Page | CustomPage)[];
 }
 
-export const NavigationBar = ({ className = '' }: NavigationBarProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+const relativeLink = (link: string) => link[0] == "/" ? link : `/${link}`;
 
-  const navItems = [
-    { icon: HomeIcon, label: 'Home', href: '/' },
-    { icon: UserIcon, label: 'Profile', href: '/profile' },
-    { icon: SettingsIcon, label: 'Settings', href: '/settings' },
-  ]
+const NavigationBar: FC<Props> = ({ nav }) => {
+  const pathname = usePathname();
+  const scrolling = useScrollDetect();
+  const { isDesktop } = useRWD();
+  const [openNav, setOpenNav] = useState(false);
 
   return (
-    <nav className={`bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 shadow-lg transition-colors duration-300 ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <h1 className="text-xl font-bold text-white">
-                Legacy Logo
-              </h1>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-white hover:text-cyan-100 hover:bg-cyan-600 dark:hover:bg-cyan-800 transition-all duration-200"
-                >
-                  <item.icon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-200" />
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-cyan-100 hover:bg-cyan-600 dark:hover:bg-cyan-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-all duration-200"
-            >
-              {isMenuOpen ? (
-                <CloseIcon className="w-6 h-6 hover:scale-110 transition-transform duration-200" />
-              ) : (
-                <MenuIcon className="w-6 h-6 hover:scale-110 transition-transform duration-200" />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-cyan-600 dark:bg-cyan-700">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="group flex items-center px-3 py-2 rounded-md text-base font-medium text-white hover:text-cyan-100 hover:bg-cyan-700 dark:hover:bg-cyan-800 transition-all duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <item.icon className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
+    <div
+      className={clsx(
+        styles.wrapperComponent,
+        " dark:text-dark-font-primary text-theme-font-primary"
       )}
-    </nav>
-  )
-} 
+    >
+      <div className={clsx("absolute transition-transform left-0 top-0 h-full w-full -translate-y-full bg-theme-bg-window/40 dark:bg-dark-bg-window/40", (scrolling || (openNav && !isDesktop)) && "translate-y-0 backdrop-blur-xs")} />
+      <div className={styles.content}>
+        <Link aria-label="Homepage" className='z-10' href={"/"}>
+          <Logo className={clsx(styles.logo, "dark:fill-white")} />
+        </Link>
+        <button
+          aria-label="Toggle Menu"
+          className={clsx(
+            styles.button,
+            { [styles.openButton]: openNav },
+            "dark:border-dark-font-primary border-theme-font-primary"
+          )}
+          onClick={() => setOpenNav((prev) => !prev)}
+        >
+          <div
+            className={clsx(
+              styles.icon,
+              "dark:bg-dark-font-primary bg-theme-font-primary"
+            )}
+          />
+        </button>
+        <nav
+          className={clsx(
+            styles.nav,
+            { [styles.openNav]: openNav && !isDesktop },
+            "lg:bg-transparent dark:lg:bg-transparent dark:bg-dark-bg-window bg-theme-bg-window"
+          )}
+        >
+          {nav.map((page) => (
+            <div
+              className="relative group"
+              key={page.id}
+            >
+              <Link
+                onClick={() => setOpenNav(false)}
+                className={clsx(styles.link, pathname == relativeLink(page.slug || "") ? "text-pink-500" : "")}
+                href={relativeLink(page.slug || "")}
+              >
+                {page.title}
+              </Link>
+
+              {"subpages" in page && Array.isArray(page.subpages) && (
+                <div className="lg:hidden block lg:absolute min-w-full lg:text-center lg:pl-0 pl-5 right-0 top-full lg:pt-4 z-50 dark:bg-dark-bg-window bg-theme-bg-window lg:group-hover:block">
+                  {(page.subpages as Page[]).map((subpage) => {
+                    return (
+                      <Link
+                        key={subpage.id}
+                        onClick={() => setOpenNav(false)}
+                        className={clsx(styles.sublink, pathname == relativeLink(subpage.slug || "") ? "text-pink-500" : "")}
+                        href={relativeLink(subpage.slug || "")}
+                      >
+                        {subpage.title}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+              
+            </div>
+          ))}
+        </nav>
+        <DarkModeToggle />
+      </div>
+    </div>
+  );
+};
+
+export default NavigationBar;

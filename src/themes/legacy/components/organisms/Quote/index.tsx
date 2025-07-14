@@ -9,9 +9,9 @@ interface QuoteProps {
   blockType: 'Quote';
 }
 
-const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false }) => {
+const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockName }) => {
   return (
-    <section className="c-quote-block my-8">
+    <section id={blockName || undefined} className="c-quote-block my-8">
       <div className="o-container o-container--md">
         <blockquote className="quote-content">
           {decoration && (

@@ -1,6 +1,6 @@
 import { ProjectList, Media } from "@/payload-types";
-import Link from "next/link";
-import Button from "@/themes/legacy/components/atoms/Button";
+import NextLink from "next/link";
+import Link from "@/themes/legacy/components/atoms/Link";
 import styles from "./ProjectListItem.module.css";
 import clsx from "clsx";
 import Image from "next/image";
@@ -30,7 +30,7 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
       )}
     >
       <figure>
-        <Link target="_blank" href={mediaUrl || "#"}>
+        <NextLink target="_blank" href={mediaUrl || "#"}>
           {resourceType === "video" ? (
               <video
                 poster="logowhite.svg"
@@ -52,15 +52,13 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
               />
             </div>
           )}
-        </Link>
+        </NextLink>
       </figure>
 
       <div className="flex flex-col justify-between">
         <div className="flex flex-wrap justify-between">
-          <Link href={button.url} target="_blank" className="w-full flex justify-center">
-            <Button aria-label={button.text} className="w-full">
+          <Link aria-label={button.text} href={button.url} target="_blank" className="w-full flex justify-center">
               {button.text}
-            </Button>
           </Link>
         </div>
       </div>

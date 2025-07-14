@@ -56,8 +56,6 @@ export default async function Page({
     if (!pageData) {
         return notFound();
     }
-
-    console.log("pageData", pageData);
     
     return (
         <DynamicTemplateComponent 
