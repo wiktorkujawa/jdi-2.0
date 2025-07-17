@@ -1,13 +1,7 @@
 import React from 'react';
+import { BlockProps } from '@/utils/types';
 
-interface QuoteProps {
-  author: string;
-  quote: string;
-  decoration?: boolean | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'Quote';
-}
+type QuoteProps = BlockProps<'Quote'>;
 
 const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockName }) => {
   return (

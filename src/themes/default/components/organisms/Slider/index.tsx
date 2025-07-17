@@ -1,56 +1,25 @@
 import React from 'react';
-import { Media } from '@/payload-types';
-import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { RichText } from '@payloadcms/richtext-lexical/react';
+import { BlockProps } from '@/utils/types';
 
-interface Slide {
-  media: string | Media;
-  heading?: string | null;
-  copy?: SerializedEditorState | null;
-  attribution?: string | null;
-  button: {
-    text: string;
-    url: string;
-    target?: ('_self' | '_blank' | '_parent' | '_top') | null;
-    ariaLabel?: string | null;
-  };
-  id?: string | null;
-}
-
-interface SliderSettings {
-  dots?: boolean | null;
-  loop?: boolean | null;
-  arrows?: boolean | null;
-  draggable?: boolean | null;
-  autoplay?: boolean | null;
-  autoplaySpeed?: number | null;
-  slidesPerRow?: number | null;
-}
-
-interface SliderProps {
-  slides?: Slide[] | null;
-  desktop?: SliderSettings;
-  mobile?: SliderSettings;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'Slider';
-}
+type SliderProps = BlockProps<'Slider'>;
 
 const Slider: React.FC<SliderProps> = ({ 
+  blockName,
   slides = [], 
   desktop = {}, 
   mobile = {} 
 }) => {
   if (!slides || slides.length === 0) {
     return (
-      <div className="slider-block my-8">
+      <div id={blockName || undefined} className="c-slider-block my-8">
         <p className="text-gray-500 text-center">No slides to display</p>
       </div>
     );
   }
 
   return (
-    <section className="c-slider-block my-8">
+    <section id={blockName || undefined} className="c-slider-block my-8">
       <div className="slider-container relative">
         {/* For now, we'll render slides as a simple list */}
         {/* TODO: Implement proper slider functionality with settings */}

@@ -1,20 +1,15 @@
 import React from 'react';
-import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { RichText } from '@payloadcms/richtext-lexical/react';
+import { BlockProps } from '@/utils/types';
 
-interface HeadingCopyProps {
-  heading?: string | null;
-  level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
-  copy?: SerializedEditorState | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'HeadingCopy';
-}
+type HeadingCopyProps = BlockProps<'HeadingCopy'>;
+
 
 const HeadingCopy: React.FC<HeadingCopyProps> = ({ 
   heading, 
   level = 'h2', 
-  copy 
+  copy,
+  blockName
 }) => {
   const renderHeading = () => {
     if (!heading) return null;
@@ -36,7 +31,7 @@ const HeadingCopy: React.FC<HeadingCopyProps> = ({
   };
 
   return (
-    <section className="c-heading-copy-block my-8">
+    <section id={blockName || undefined} className="c-heading-copy-block my-8">
       <div className="o-container o-container--lg">
         {renderHeading()}
         {copy && (
