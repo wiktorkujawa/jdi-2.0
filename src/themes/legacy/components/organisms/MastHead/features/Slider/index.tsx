@@ -102,6 +102,7 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
 
 
                 {resourceType === "video" ? (
+                  <div className="overflow-hidden">
                     <video
                       poster="logowhite.svg"
                       className={clsx("aspect-2/1 w-full max-h-screen min-h-80 overflow-hidden opacity-50 object-cover mx-auto transition-transform", lazy && 'lazy')}
@@ -111,6 +112,7 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
                       playsInline
                       src={media?.url || ''}
                     />
+                  </div>
                 ) : (
                   <div className="aspect-2/1 w-full max-h-screen overflow-hidden min-h-80">
                     <Image

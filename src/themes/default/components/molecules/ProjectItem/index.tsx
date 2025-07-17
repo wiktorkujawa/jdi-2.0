@@ -39,6 +39,7 @@ const ProjectItem = (field: Project) => {
           <h4 title={name || ''} className="text-h3 font-bold mb-4 line-clamp-1">{name}</h4>
 
           {resourceType === "video" ? (
+            <div className="overflow-hidden">
               <video
                 poster="logowhite.svg"
                 className="lazy aspect-2/1 object-contain mx-auto hover:scale-150 transition-transform"
@@ -48,6 +49,7 @@ const ProjectItem = (field: Project) => {
                 playsInline
                 src={media.url || ''}
               />
+              </div>
           ) : (
             <div className="aspect-2/1 relative overflow-hidden">
               <Image

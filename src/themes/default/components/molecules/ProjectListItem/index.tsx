@@ -33,6 +33,7 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
       <figure>
         <Link target="_blank" href={mediaUrl || "#"}>
           {resourceType === "video" ? (
+            <div className="overflow-hidden">
               <video
                 poster="logowhite.svg"
                 className="lazy aspect-2/1 object-contain mx-auto hover:scale-150 transition-transform"
@@ -42,6 +43,7 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
                 playsInline
                 src={media.url || ''}
               />
+            </div>
           ) : (
             <div className="aspect-2/1 relative overflow-hidden">
               <Image
