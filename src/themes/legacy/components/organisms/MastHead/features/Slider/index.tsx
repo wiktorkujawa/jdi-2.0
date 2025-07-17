@@ -13,6 +13,7 @@ import { Page } from '@/payload-types';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 
 const Dots = dynamic(() => import('./partials/Dots'));
+// TODO - in progress
 // const Arrows = dynamic(() => import('./partials/Arrows'));
 
 type SliderProps = Page['mastheadSlider'] & {
@@ -133,12 +134,14 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
               {isDesktop ? (
                 <>
                   {settings?.desktop?.dots && <Dots slides={slides as any} currentSlide={currentSlide} instanceRef={instanceRef} />}
+                  {/* TODO - in progress */}
                   {/* {desktop.arrows && <Arrows currentSlide={currentSlide} instanceRef={instanceRef} />} */}
                 </>
 
               ) : (
                 <>
                   {settings?.mobile?.dots && <Dots slides={slides as any} currentSlide={currentSlide} instanceRef={instanceRef} />}
+                  {/* TODO - in progress */}
                   {/* {mobile.arrows && <Arrows currentSlide={currentSlide} instanceRef={instanceRef} />} */}
                 </>
               )
