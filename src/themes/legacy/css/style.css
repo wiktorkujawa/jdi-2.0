@@ -51,10 +51,13 @@
   --text-p3--line-height: 2;
 }
 
-/* Theme window utility class for legacy theme */
 .o-theme-window {
   background-color: var(--color-theme-bg-window);
   border-color: var(--color-theme-border);
+}
+
+&:not(:has(.c-masthead)) {
+  padding-top: calc(var(--header-height) + 15px);
 }
 
 .o-theme-window:hover {
@@ -101,9 +104,51 @@
     font-size: var(--text-p1);
     line-height: var(--text-p1--line-height);
   }
-  
-  
 
+  & > *:not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  & > h1:not(:first-child),
+  & > h2:not(:first-child),
+  & > h3:not(:first-child),
+  & > h4:not(:first-child),
+  & > h5:not(:first-child),
+  & > h6:not(:first-child) {
+    margin-top: 3.5rem;
+  }
+
+  & > figure:not(:first-child) {
+    margin-top: 3.5rem;
+  }
+
+  & ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  & li {
+    margin-bottom: 8px;
+  }
+
+  & ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  & a {
+    color: var(--color-red-hover);
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}
+
+*, html {
+  scroll-behavior: smooth;
 }
 
 /* Dark mode overrides for legacy theme */

@@ -8,7 +8,7 @@ const Header = async () => {
   const { page, pages } = await getHeaderData();
 
   return (
-    <header className="c-header sticky top-0 z-50 dark:text-dark-font-primary text-theme-font-primary">
+    <header className="c-header w-full fixed top-0 z-50 dark:text-dark-font-primary text-theme-font-primary">
       <NavigationBar nav={[...page as Page[], ...pages as CustomPage[]]} />
     </header>
   )
