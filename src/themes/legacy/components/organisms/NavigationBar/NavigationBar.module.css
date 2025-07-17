@@ -1,6 +1,9 @@
 .wrapperComponent {
   padding-left: 1rem;
   padding-right: 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
   height: var(--header-height);
 
   .content {
@@ -23,7 +26,7 @@
   top: var(--header-height);
   height: calc(100vh - var(--header-height));
   z-index: 50;
-  /* position: fixed; */
+  position: fixed;
   width: 250px;
   font-weight: bold;
   border-width: 1px 1px 1px 0;
