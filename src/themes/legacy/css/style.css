@@ -56,8 +56,10 @@
   border-color: var(--color-theme-border);
 }
 
-&:not(:has(.c-masthead)) {
-  padding-top: calc(var(--header-height) + 15px);
+main {
+  &:not(:has(.c-masthead)) {
+    padding-top: calc(var(--header-height) + 15px);
+  }
 }
 
 .o-theme-window:hover {
