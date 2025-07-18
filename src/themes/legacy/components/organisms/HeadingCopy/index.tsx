@@ -1,7 +1,7 @@
 import React from 'react';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 import { BlockProps } from '@/utils/types';
-
+import Container from '../../templates/ContainerTemplate';
 type HeadingCopyProps = BlockProps<'HeadingCopy'>;
 
 
@@ -33,12 +33,14 @@ const HeadingCopy: React.FC<HeadingCopyProps> = ({
   return (
     <section id={blockName || undefined} className="c-heading-copy-block my-8">
       <div className="o-container o-container--lg">
-        {renderHeading()}
-        {copy && (
-          <div className="o-rich-text">
-            <RichText data={copy} />
-          </div>
-        )}
+        <Container>
+          {renderHeading()}
+          {copy && (
+            <div className="o-rich-text">
+              <RichText data={copy} />
+            </div>
+          )}
+        </Container>
       </div>
     </section>
   );
