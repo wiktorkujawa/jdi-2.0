@@ -2,14 +2,19 @@ import React from 'react';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 import { BlockProps } from '@/utils/types';
 import Container from '../../templates/ContainerTemplate';
-type HeadingCopyProps = BlockProps<'HeadingCopy'>;
+import SVG from '@/themes/legacy/components/atoms/SVG';
+
+type HeadingCopyProps = BlockProps<'HeadingCopy'> & {
+  arrowScroll?: string;
+};
 
 
 const HeadingCopy: React.FC<HeadingCopyProps> = ({ 
   heading, 
   level = 'h2', 
   copy,
-  blockName
+  blockName,
+  arrowScroll
 }) => {
   const renderHeading = () => {
     if (!heading) return null;
@@ -34,7 +39,22 @@ const HeadingCopy: React.FC<HeadingCopyProps> = ({
     <section id={blockName || undefined} className="c-heading-copy-block my-8">
       <div className="o-container o-container--lg">
         <Container>
+        {arrowScroll ? (
+          <a
+            role="button"
+            aria-label="Scrol to projects"
+            href={`#${arrowScroll}`}
+            className="right-8 sm:right-16 top-24 sm:top-12 absolute"
+          >
+            <SVG
+              className="dark:fill-white w-full scale-150 fill-black hover:fill-red-hover dark:hover:fill-red-hover"
+              name={"arrow-down-circle-thin"}
+            />
+          </a>
+        ) : null}
+        <div className="text-center font-bold mb-10">
           {renderHeading()}
+        </div>
           {copy && (
             <div className="o-rich-text">
               <RichText data={copy} />

@@ -1,15 +1,16 @@
 import { Page } from '@/payload-types';
 import { CustomComponents } from '@/themes/legacy/CustomComponents';
 import Masthead from '../../organisms/MastHead';
-const HomeTemplate = async ({ data }: { data: Page }) => {
+import Brief from '../../organisms/Brief';
 
-    console.log("data.isMasthead", data.isMasthead);
+const HomeTemplate = async ({ data }: { data: Page }) => {
 
     return (
         <div className="l-home">
             {
                 data?.isMasthead && <Masthead feature={data.feature} mastheadSlider={data.mastheadSlider} />
             }
+            <Brief arrowScroll="list" />
             {data.customComponents && <CustomComponents blocks={data.customComponents} />}
         </div>
     )
