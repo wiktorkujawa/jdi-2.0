@@ -38,7 +38,6 @@ export const Pages: CollectionConfig = {
       type: 'select',
       defaultValue: 'slider',
       options: [
-        { label: 'None', value: 'none' },
         { label: 'Slider', value: 'slider' },
         { label: 'Banner', value: 'banner' }
       ]

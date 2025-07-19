@@ -7,13 +7,20 @@ type SlidesProps = NonNullable<Page['mastheadSlider']>['slides'];
 const Dots = ({
   slides,
   currentSlide,
-  instanceRef
+  instanceRef,
+  isDesktop,
+  isMobile
 }: {
   slides: SlidesProps[]
   currentSlide: number
   instanceRef: any
+  isDesktop: boolean
+  isMobile: boolean
 }) => {
-  return <div className={styles.dots}>
+  return <div className={clsx(styles.dots, {
+    'block lg:hidden': isMobile,
+    'hidden lg:block': isDesktop,
+  })}>
     {slides.map((_, idx) => {
       return (
         <button
