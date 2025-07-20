@@ -11,8 +11,6 @@ import { Page } from "@/payload-types";
 import { CustomPage } from "@/utils/types";
 import { DarkModeToggle } from "../../molecules/DarkMode/DarkModeToggle";
 
-type NavItem = (Page | CustomPage) & { subpages?: NavItem[] };
-
 interface Props {
   nav: (Page | CustomPage)[];
 }
