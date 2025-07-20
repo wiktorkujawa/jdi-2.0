@@ -74,7 +74,6 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
   );
 
   return (
-    <>
       <div className={styles["navigation-wrapper"]}>
         <div ref={sliderRef} className="keen-slider max-h-screen">
           {
@@ -104,7 +103,7 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
                 {resourceType === "video" ? (
                   <div className="overflow-hidden">
                     <video
-                      poster="logowhite.svg"
+                      poster={media.thumbnailURL || ''}
                       className={clsx("aspect-2/1 w-full max-h-screen min-h-80 overflow-hidden opacity-50 object-cover mx-auto transition-transform", lazy && 'lazy')}
                       autoPlay
                       muted
@@ -144,8 +143,6 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
           )
         }
       </div>
-
-    </>
   )
 };
 

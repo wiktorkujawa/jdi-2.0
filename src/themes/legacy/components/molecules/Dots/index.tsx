@@ -1,8 +1,8 @@
 import clsx from "clsx"
-import styles from '../Slider.module.css';
-import { Page } from "@/payload-types";
+import styles from './Dots.module.css';
+import { BlockProps } from "@/utils/types";
 
-type SlidesProps = NonNullable<Page['mastheadSlider']>['slides'];
+type SlidesProps = BlockProps<'Slider'>['slides'];
 
 const Dots = ({
   slides,

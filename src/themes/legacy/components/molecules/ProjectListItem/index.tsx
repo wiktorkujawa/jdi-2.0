@@ -34,7 +34,7 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
           {resourceType === "video" ? (
             <div className="overflow-hidden">
               <video
-                poster="logowhite.svg"
+                poster={media.thumbnailURL || ''}
                 className="lazy aspect-2/1 object-contain mx-auto hover:scale-150 transition-transform"
                 autoPlay
                 muted
