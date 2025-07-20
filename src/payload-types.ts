@@ -182,7 +182,7 @@ export interface Page {
   title?: string | null;
   slug?: string | null;
   isMasthead?: boolean | null;
-  feature?: ('none' | 'slider' | 'banner') | null;
+  feature?: ('slider' | 'banner') | null;
   mastheadSlider?: {
     slides?:
       | {
@@ -323,23 +323,25 @@ export interface Page {
                   id?: string | null;
                 }[]
               | null;
-            desktop?: {
-              dots?: boolean | null;
-              loop?: boolean | null;
-              arrows?: boolean | null;
-              draggable?: boolean | null;
-              autoplay?: boolean | null;
-              autoplaySpeed?: number | null;
-              slidesPerRow?: number | null;
-            };
-            mobile?: {
-              dots?: boolean | null;
-              loop?: boolean | null;
-              arrows?: boolean | null;
-              draggable?: boolean | null;
-              autoplay?: boolean | null;
-              autoplaySpeed?: number | null;
-              slidesPerRow?: number | null;
+            settings?: {
+              desktop?: {
+                dots?: boolean | null;
+                loop?: boolean | null;
+                arrows?: boolean | null;
+                draggable?: boolean | null;
+                autoplay?: boolean | null;
+                autoplaySpeed?: number | null;
+                slidesPerRow?: number | null;
+              };
+              mobile?: {
+                dots?: boolean | null;
+                loop?: boolean | null;
+                arrows?: boolean | null;
+                draggable?: boolean | null;
+                autoplay?: boolean | null;
+                autoplaySpeed?: number | null;
+                slidesPerRow?: number | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -628,27 +630,31 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
-              desktop?:
+              settings?:
                 | T
                 | {
-                    dots?: T;
-                    loop?: T;
-                    arrows?: T;
-                    draggable?: T;
-                    autoplay?: T;
-                    autoplaySpeed?: T;
-                    slidesPerRow?: T;
-                  };
-              mobile?:
-                | T
-                | {
-                    dots?: T;
-                    loop?: T;
-                    arrows?: T;
-                    draggable?: T;
-                    autoplay?: T;
-                    autoplaySpeed?: T;
-                    slidesPerRow?: T;
+                    desktop?:
+                      | T
+                      | {
+                          dots?: T;
+                          loop?: T;
+                          arrows?: T;
+                          draggable?: T;
+                          autoplay?: T;
+                          autoplaySpeed?: T;
+                          slidesPerRow?: T;
+                        };
+                    mobile?:
+                      | T
+                      | {
+                          dots?: T;
+                          loop?: T;
+                          arrows?: T;
+                          draggable?: T;
+                          autoplay?: T;
+                          autoplaySpeed?: T;
+                          slidesPerRow?: T;
+                        };
                   };
               id?: T;
               blockName?: T;

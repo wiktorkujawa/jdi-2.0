@@ -74,7 +74,6 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
   );
 
   return (
-    <>
       <div className={styles["navigation-wrapper"]}>
         <div ref={sliderRef} className="keen-slider max-h-screen">
           {
@@ -89,7 +88,7 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
             
 
               
-              return <div key={id} className={`keen-slider__slide`}>
+              return <div key={id} className={'keen-slider__slide max-w-full min-w-full'}>
 
                 <div className='absolute whitespace-normal flex flex-col justify-center z-50 top-0 pl-6 pt-14 pb-12 left-0 h-full lg:w-1/2 w-11/12' >
                   <h3 className='lg:text-h2 md:text-h4 text-h5 font-bold pb-2'>{heading}</h3>
@@ -104,7 +103,7 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
                 {resourceType === "video" ? (
                   <div className="overflow-hidden">
                     <video
-                      poster="logowhite.svg"
+                      poster={media.thumbnailURL || ''}
                       className={clsx("aspect-2/1 w-full max-h-screen min-h-80 overflow-hidden opacity-50 object-cover mx-auto transition-transform", lazy && 'lazy')}
                       autoPlay
                       muted
@@ -133,28 +132,17 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
         {
           loaded && instanceRef.current && (
             <>
-              {isDesktop ? (
-                <>
-                  {settings?.desktop?.dots && <Dots slides={slides as any} currentSlide={currentSlide} instanceRef={instanceRef} />}
-                  {/* TODO - in progress */}
-                  {/* {desktop.arrows && <Arrows currentSlide={currentSlide} instanceRef={instanceRef} />} */}
-                </>
-
-              ) : (
-                <>
-                  {settings?.mobile?.dots && <Dots slides={slides as any} currentSlide={currentSlide} instanceRef={instanceRef} />}
-                  {/* TODO - in progress */}
-                  {/* {mobile.arrows && <Arrows currentSlide={currentSlide} instanceRef={instanceRef} />} */}
-                </>
-              )
-              }
-
+            <Dots 
+              isDesktop={!!settings?.desktop?.dots} 
+              isMobile={!!settings?.mobile?.dots} 
+              slides={slides as any} 
+              currentSlide={currentSlide} 
+              instanceRef={instanceRef} 
+            />
             </>
           )
         }
       </div>
-
-    </>
   )
 };
 
