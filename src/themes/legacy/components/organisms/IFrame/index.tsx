@@ -21,6 +21,7 @@ const IFrame: React.FC<IFrameProps> = ({
         <iframe
           ref={iframeRef}
           allowFullScreen
+          loading="lazy"
           className="w-full dark:border-white border-2 border-double border-black aspect-[800/600] max-h-iframe-height"
           src={url || ''}
           title={blockName || ''}
