@@ -7,6 +7,7 @@ export const getPageData = async (slug: string = 'home') => {
       cache: 'force-cache'
     });
     const page: Page = await pageRes.json();
+
     if (!pageRes.ok) {
       return null;
     }

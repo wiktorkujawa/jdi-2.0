@@ -4,10 +4,14 @@ import { getPayload } from 'payload'
 
 export const GET = async (
   _: NextRequest,
-  { params }: { params: Promise <{ slug: string }> }
+  { params }: { params: Promise <{ slug: string | string[] }> }
 ) => {
 
   const { slug } = await params;
+
+  console.log('WTF slug',slug);
+
+  const joinedSlug = Array.isArray(slug) ? slug.join('/') : slug;
 
   const payload = await getPayload({
     config: configPromise,
@@ -17,7 +21,7 @@ export const GET = async (
     collection: 'pages',
     where: {
       slug: {
-        equals: slug === 'home' ? "" : slug,
+        equals: joinedSlug === 'home' ? "" : joinedSlug,
       },
     },
   });

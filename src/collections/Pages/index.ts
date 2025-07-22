@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { revalidatePage } from './hooks/revalidatePage'
 import MastheadSlider from '@/fields/elements/MastheadSlider'
-import { WYSIWYGBlock, QuoteBlock, HeadingCopyBlock, HeadingBlock, SliderBlock, ProjectsListBlock } from '@/fields/components'
+import { WYSIWYGBlock, QuoteBlock, HeadingCopyBlock, HeadingBlock, SliderBlock, ProjectsListBlock, IFrameBlock } from '@/fields/components'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -53,7 +53,8 @@ export const Pages: CollectionConfig = {
         HeadingCopyBlock,
         HeadingBlock,
         SliderBlock,
-        ProjectsListBlock
+        ProjectsListBlock,
+        IFrameBlock
       ],
     },
     {
