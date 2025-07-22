@@ -4,4 +4,4 @@ export { default as HeadingBlock } from './HeadingBlock';
 export { default as HeadingCopyBlock } from './HeadingCopyBlock';
 export { default as SliderBlock } from './SliderBlock';
 export { default as ProjectsListBlock } from './ProjectsListBlock';
-
+export { default as IFrameBlock } from './IFrameBlock';

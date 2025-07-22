@@ -46,3 +46,6 @@ export const VIDEO_EXTENSIONS = [
     "xml",
     "md",
   ];
+
+
+  export const STATIC_PAGES = ['experience'];

@@ -352,6 +352,14 @@ export interface Page {
             blockName?: string | null;
             blockType: 'ProjectsList';
           }
+        | {
+            url?: string | null;
+            frameControls?: boolean | null;
+            lockKeyboard?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'IFrame';
+          }
       )[]
     | null;
   subpages?: (string | Page)[] | null;
@@ -662,6 +670,15 @@ export interface PagesSelect<T extends boolean = true> {
         ProjectsList?:
           | T
           | {
+              id?: T;
+              blockName?: T;
+            };
+        IFrame?:
+          | T
+          | {
+              url?: T;
+              frameControls?: T;
+              lockKeyboard?: T;
               id?: T;
               blockName?: T;
             };
