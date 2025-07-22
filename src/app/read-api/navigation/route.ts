@@ -8,6 +8,18 @@ export const GET = async () => {
 
   const data = await payload.findGlobal({
     slug: 'navigation',
+    depth: 4,
+    select: {
+      page: true,
+      pages: true,
+    },
+    populate: {
+      pages: {
+        subpages: true,
+        slug: true,
+        title: true,
+      }
+    }
   })
 
   return Response.json(data)

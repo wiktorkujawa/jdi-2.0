@@ -18,6 +18,14 @@
   }
 }
 
+.navGroup {
+  position: relative;
+}
+
+.navGroup:hover > .submenu {
+  display: block;
+}
+
 .nav {
   transition-property: transform;
   transition-duration: 300ms;
@@ -82,6 +90,7 @@
 }
 
 .button {
+  cursor: pointer;
   position: relative;
   width: 2.5rem;
   height: 2.5rem;
@@ -125,11 +134,11 @@
     .icon {
       height: 0;
       &::before {
-        transform: rotate(45deg) translateX(-0.5rem) translateY(1px);
+        transform: rotate(45deg) translateX(-0.3rem) translateY(5px);
         transform-origin: top left;
       }
       &::after {
-        transform: rotate(-45deg) translateX(-0.5rem);
+        transform: rotate(-45deg) translateX(-0.25rem) translateY(-6px);
         transform-origin: bottom left;
       }
     }
