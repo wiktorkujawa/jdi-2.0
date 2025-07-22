@@ -9,8 +9,8 @@ export default async function Footer() {
     
     return (
         <footer className="c-footer dark:bg-dark-bg-window bg-theme-bg-window dark:text-dark-font-primary text-theme-font-primary">
-            <div className="o-container o-container--lg child:py-8 child:border-b-1 dark:child:border-dark-border child:border-theme-border last:child:border-none">
-            <div className="flex">
+            <div className="o-container o-container--lg">
+            <div className="flex py-8 border-b border-theme-border dark:border-dark-border">
             <p className="font-bold w-28 text-p1">ADDRESS</p>
             <address className="text-p1">
                 {data?.address.street} <br />
@@ -19,7 +19,7 @@ export default async function Footer() {
             </address>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center py-8 border-b border-theme-border dark:border-dark-border">
             <p className="font-bold w-28 text-p1">PHONE</p>
             <address>
                 {data?.phone?.map(({ id, number }) => (
@@ -36,7 +36,7 @@ export default async function Footer() {
             </address>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center py-8 border-b border-theme-border dark:border-dark-border">
             <p className="font-bold w-28 text-p1">EMAIL</p>
             <address>
                 {data?.emails?.map(({ id, email }) => (
@@ -51,7 +51,7 @@ export default async function Footer() {
             </address>
             </div>
 
-            <div className="flex">
+            <div className="flex py-8">
             <p className="font-bold w-28 text-p1">SOCIAL</p>
             <address className="flex gap-x-4">
                 {data?.socials?.map((social) => {
