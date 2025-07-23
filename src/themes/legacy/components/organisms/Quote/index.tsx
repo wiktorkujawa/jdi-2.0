@@ -12,7 +12,7 @@ const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockN
           <blockquote className="quote-content">
             {decoration && (
               <div className="quote-decoration">
-                "
+                &ldquo;
               </div>
             )}
             <p className="quote-text">

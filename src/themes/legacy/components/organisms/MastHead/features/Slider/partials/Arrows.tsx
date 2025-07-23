@@ -1,9 +1,11 @@
-
+import { MutableRefObject } from "react";
+import { KeenSliderInstance } from "keen-slider/react";
+import { MouseEvent } from "react";
 
 function Arrow(props: {
   disabled: boolean
   left?: boolean
-  onClick: (e: any) => void
+  onClick: (e: MouseEvent<SVGSVGElement>) => void
 }) {
   const disabled = props.disabled ? " arrow--disabled" : ""
   return (
@@ -29,23 +31,25 @@ const Arrows = ({
   instanceRef
 }: {
   currentSlide: number
-  instanceRef: any
+  instanceRef: MutableRefObject<KeenSliderInstance | null>
 }) => {
   return <><Arrow
     left
-    onClick={(e: any) =>
-      e.stopPropagation() || instanceRef.current?.prev()
-    }
+    onClick={(e: MouseEvent<SVGSVGElement>) => {
+      e.stopPropagation();
+      instanceRef.current?.prev();
+    }}
     disabled={currentSlide === 0}
   />
 
     <Arrow
-      onClick={(e: any) =>
-        e.stopPropagation() || instanceRef.current?.next()
-      }
+      onClick={(e: MouseEvent<SVGSVGElement>) => {
+        e.stopPropagation();
+        instanceRef.current?.next();
+      }}
       disabled={
         currentSlide ===
-        instanceRef.current.track.details.slides.length - 1
+        (instanceRef.current?.track.details.slides.length || 0) - 1
       }
     />
   </>

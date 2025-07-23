@@ -5,11 +5,6 @@ import { getConfig } from '@/lib/api/config';
 import { getPageData } from '@/lib/api/pages';
 import { Metadata } from 'next';
 import { generateMeta } from '@/utils/generateMetadata';
-
-type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
  
 export async function generateMetadata(): Promise<Metadata> {
 
@@ -35,12 +30,10 @@ export default async function HomePage() {
   }
 
   return (
-    <>
     <DynamicTemplateComponent 
       theme={themeName} 
       templateType="HomeTemplate" 
       data={data} 
     />
-    </>
   )
 }

@@ -31,7 +31,7 @@ const NavItem: React.FC<NavItemProps> = ({ page, closeNav, pathname, level = 0 }
         styles.submenu
 
       )}>
-    {(page.subpages as any[]).map((subpage, idx) => (
+    {(page.subpages as Page[]).map((subpage, idx) => (
       typeof subpage === 'object' && subpage !== null ? (
         <NavItem
           key={subpage.id || subpage.slug || idx}

@@ -18,16 +18,6 @@ const Slider: React.FC<SliderProps> = ({
   settings,
   blockName
 }) => {
-  if (!slides || slides.length === 0) {
-    return (
-      <section id={blockName || undefined} className="slider-block">
-        <div className="container">
-          <p>No slides to display</p>
-        </div>
-      </section>
-    );
-  }
-
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false);
   const { isDesktop } = useRWD();
@@ -88,6 +78,16 @@ const Slider: React.FC<SliderProps> = ({
       },
     ] : [],
   );
+
+  if (!slides || slides.length === 0) {
+    return (
+      <section id={blockName || undefined} className="slider-block">
+        <div className="container">
+          <p>No slides to display</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id={blockName || undefined} className="c-slider lg:my-16 my-10">
@@ -174,16 +174,14 @@ const Slider: React.FC<SliderProps> = ({
         </div>
 
         {
-          loaded && instanceRef.current && (
-            <>
+          loaded && instanceRef.current && slides?.length > 1 && (
             <Dots 
               isDesktop={!!settings?.desktop?.dots} 
               isMobile={!!settings?.mobile?.dots} 
-              slides={slides as any} 
+              slides={slides} 
               currentSlide={currentSlide} 
               instanceRef={instanceRef} 
             />
-            </>
           )
         }
       </div>
