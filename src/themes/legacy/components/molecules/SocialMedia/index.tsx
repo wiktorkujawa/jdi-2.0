@@ -1,5 +1,5 @@
-import LinkedInIcon from '@/assets/svg/linkedin.svg'
 import GithubIcon from '@/assets/svg/github.svg'
+import LinkedInIcon from '@/assets/svg/linkedin.svg'
 
 interface SocialMediaProps {
   className?: string

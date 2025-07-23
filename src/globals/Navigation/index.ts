@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload'
+
 import { revalidateNavigation } from './hooks/revalidateNavigation'
 
 export const Navigation: GlobalConfig = {

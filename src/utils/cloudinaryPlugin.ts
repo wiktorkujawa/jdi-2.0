@@ -1,6 +1,7 @@
-import { v2 as cloudinary, UploadApiResponse } from 'cloudinary'
-import type { HandleUpload, HandleDelete } from '@payloadcms/plugin-cloud-storage/types'
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
+import type { HandleDelete, HandleUpload } from '@payloadcms/plugin-cloud-storage/types'
+import { UploadApiResponse, v2 as cloudinary } from 'cloudinary'
+
 import { getResourceType } from '@/utils/helpers'
 
 cloudinary.config({

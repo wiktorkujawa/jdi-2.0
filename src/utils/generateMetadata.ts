@@ -1,5 +1,6 @@
-import { Page, Media } from '@/payload-types'
 import { Metadata } from 'next'
+
+import { Media, Page } from '@/payload-types'
 
 const getImageMetadata = (image?: string | Media | null) => {
   if (image && typeof image === 'object' && image.url) {

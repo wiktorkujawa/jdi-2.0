@@ -1,5 +1,6 @@
 import { Page } from '@/payload-types'
-import { CustomComponents } from '@/themes/legacy/CustomComponents'
+
+import CustomComponents from '../../../CustomComponents'
 import Education from '../../organisms/Education'
 import Experience from '../../organisms/Experience'
 import Masthead from '../../organisms/MastHead'

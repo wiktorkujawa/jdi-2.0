@@ -1,5 +1,6 @@
-import Container from '@/themes/legacy/components/templates/ContainerTemplate'
 import { getExperienceData } from '@/lib/api/experience'
+
+import Container from '../../templates/ContainerTemplate'
 
 const Experience = async () => {
   const { header, positions } = await getExperienceData()

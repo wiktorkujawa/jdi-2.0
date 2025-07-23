@@ -1,9 +1,12 @@
 'use client'
+
 import React from 'react'
-import { BlockProps } from '@/utils/types'
-import Button from '../../atoms/Button'
+
 import FullscreenIcon from '@/assets/svg/fullscreen.svg'
 import { useFrameControls } from '@/hooks/useFrameControls'
+import { BlockProps } from '@/utils/types'
+
+import Button from '../../atoms/Button'
 
 type IFrameProps = BlockProps<'IFrame'>
 

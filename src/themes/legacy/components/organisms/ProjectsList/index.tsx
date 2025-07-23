@@ -1,11 +1,14 @@
 import React from 'react'
-import { Project } from '@/payload-types'
-import { BlockProps } from '@/utils/types'
-import { getProjectListData } from '@/lib/api/projectList'
-import styles from './ProjectsList.module.css'
 
-import ProjectItem from '@/themes/legacy/components/molecules/ProjectItem'
-import ProjectListItem from '@/themes/legacy/components/molecules/ProjectListItem'
+import { Project } from '@/payload-types'
+
+import { getProjectListData } from '@/lib/api/projectList'
+import { BlockProps } from '@/utils/types'
+
+import ProjectItem from '../../molecules/ProjectItem'
+import ProjectListItem from '../../molecules/ProjectListItem'
+
+import styles from './ProjectsList.module.css'
 
 type ProjectsListProps = BlockProps<'ProjectsList'>
 

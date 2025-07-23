@@ -1,7 +1,8 @@
 import React from 'react'
-import './css/style.css'
-import { Header } from './components/organisms/Header'
+
 import { Footer } from './components/organisms/Footer'
+import { Header } from './components/organisms/Header'
+import './css/style.css'
 
 export default function ThemeLayout({ children }: { children: React.ReactNode }) {
   return (

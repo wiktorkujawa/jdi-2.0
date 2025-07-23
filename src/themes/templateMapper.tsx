@@ -1,5 +1,7 @@
-import dynamic from 'next/dynamic'
 import React from 'react'
+
+import dynamic from 'next/dynamic'
+
 import { Page } from '@/payload-types'
 
 const DynamicTemplate = (theme: string, templateType: string) =>

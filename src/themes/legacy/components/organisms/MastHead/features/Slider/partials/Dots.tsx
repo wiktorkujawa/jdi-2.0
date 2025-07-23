@@ -1,8 +1,11 @@
-import clsx from 'clsx'
-import styles from '../Slider.module.css'
-import { Page } from '@/payload-types'
-import { KeenSliderInstance } from 'keen-slider/react'
 import { MutableRefObject } from 'react'
+
+import clsx from 'clsx'
+import { KeenSliderInstance } from 'keen-slider/react'
+
+import { Page } from '@/payload-types'
+
+import styles from '../Slider.module.css'
 
 type SlidesProps = NonNullable<Page['mastheadSlider']>['slides']
 

@@ -1,6 +1,7 @@
-import { NavigationBar } from '@/themes/default/components/organisms/NavigationBar'
-import { SocialMedia } from '@/themes/default/components/molecules/SocialMedia'
 import { getHeaderData } from '@/lib/api/header'
+
+import SocialMedia from '../../molecules/SocialMedia'
+import NavigationBar from '../../organisms/NavigationBar'
 
 export const Header = async () => {
   const data = await getHeaderData()

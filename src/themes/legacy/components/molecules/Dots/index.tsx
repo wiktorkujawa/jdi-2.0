@@ -1,9 +1,13 @@
 import React from 'react'
 import { MutableRefObject } from 'react'
-import { KeenSliderInstance } from 'keen-slider/react'
+
 import clsx from 'clsx'
-import styles from './Dots.module.css'
+import { KeenSliderInstance } from 'keen-slider/react'
+
 import { BlockProps } from '@/utils/types'
+
+import styles from './Dots.module.css'
+
 type SlidesProps = BlockProps<'Slider'>['slides']
 
 const Dots = ({

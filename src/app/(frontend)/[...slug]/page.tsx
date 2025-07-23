@@ -1,13 +1,15 @@
-import { Page as PageType } from '@/payload-types'
-import { PaginatedDocs } from 'payload'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { PaginatedDocs } from 'payload'
+
+import { Page as PageType } from '@/payload-types'
+
 import { getConfig } from '@/lib/api/config'
-import { serverURL } from '@/utils/consts'
-import DynamicTemplateComponent from '@/themes/templateMapper'
-import { generateMeta } from '@/utils/generateMetadata'
 import { getPageData } from '@/lib/api/pages'
+import DynamicTemplateComponent from '@/themes/templateMapper'
+import { serverURL } from '@/utils/consts'
+import { generateMeta } from '@/utils/generateMetadata'
 
 export async function generateStaticParams() {
   const pagesRes = await fetch(`${serverURL}/read-api/pages/top-level`, {

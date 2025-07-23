@@ -1,16 +1,23 @@
 'use client'
-import clsx from 'clsx'
-import Link from 'next/link'
+
 import { FC, useState } from 'react'
-import styles from './NavigationBar.module.css'
+
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import useScrollDetect from '@/hooks/useScrollDetect'
+
+import clsx from 'clsx'
+
+import { Page } from '@/payload-types'
+
 import Logo from '@/assets/svg/logo.svg'
 import useRWD from '@/hooks/useRWD'
-import { Page } from '@/payload-types'
+import useScrollDetect from '@/hooks/useScrollDetect'
 import { CustomPage } from '@/utils/types'
+
 import { DarkModeToggle } from '../../molecules/DarkMode/DarkModeToggle'
 import NavItem from '../../molecules/NavItem'
+
+import styles from './NavigationBar.module.css'
 
 interface Props {
   nav: (Page | CustomPage)[]

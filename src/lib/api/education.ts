@@ -1,4 +1,5 @@
 import { Education } from '@/payload-types'
+
 import { serverURL } from '@/utils/consts'
 
 export const getEducationData = async () => {

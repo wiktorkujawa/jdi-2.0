@@ -1,5 +1,7 @@
 import { CollectionConfig } from 'payload'
+
 import { Button } from '@/fields/elements'
+
 import { revalidateProject } from './hooks/revalidateProject'
 
 export const Projects: CollectionConfig = {

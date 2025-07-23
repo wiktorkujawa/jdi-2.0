@@ -1,6 +1,7 @@
 import { Page } from '@/payload-types'
-import { CustomComponents } from '@/themes/legacy/CustomComponents'
-import Masthead from '@/themes/legacy/components/organisms/MastHead'
+
+import CustomComponents from '../../../CustomComponents'
+import Masthead from '../../organisms/MastHead'
 
 const PageTemplate = async ({ data }: { data: Page }) => {
   return (

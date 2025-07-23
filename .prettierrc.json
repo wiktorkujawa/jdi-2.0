@@ -6,5 +6,13 @@
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "importOrder": ["^react$", "^next", "<THIRD_PARTY_MODULES>", "^@/.*", "^[./]"]
+  "importOrder": [
+    "^react$",
+    "^next",
+    "<THIRD_PARTY_MODULES>",
+    "^@/payload-types$",
+    "^@/.*",
+    "^[.]{2}/",
+    "^./"
+  ]
 }

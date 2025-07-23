@@ -1,5 +1,6 @@
 import { Page } from '@/payload-types'
-import { CustomComponents } from '@/themes/default/CustomComponents'
+
+import CustomComponents from '../../../CustomComponents'
 
 const HomeTemplate = async ({ data }: { data: Page }) => {
   return (

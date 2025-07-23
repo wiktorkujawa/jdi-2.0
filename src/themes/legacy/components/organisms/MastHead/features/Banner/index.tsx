@@ -1,5 +1,6 @@
-import { Page } from '@/payload-types'
 import Image from 'next/image'
+
+import { Page } from '@/payload-types'
 
 type BannerProps = Pick<Page, 'title' | 'meta'>
 

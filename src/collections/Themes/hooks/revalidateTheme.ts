@@ -1,4 +1,5 @@
 import { revalidateTag } from 'next/cache'
+
 import { CollectionAfterChangeHook } from 'payload'
 
 import { Theme } from '@/payload-types'

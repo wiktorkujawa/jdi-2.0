@@ -1,15 +1,14 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
-import { buildConfig } from 'payload'
-
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import path from 'path'
+import { buildConfig } from 'payload'
+import sharp from 'sharp'
+import { fileURLToPath } from 'url'
 
-import { Users, Media, Pages, Socials, Projects, Themes } from './collections'
-import { Navigation, Footer, ProjectList, Experience, Education, Brief, Config } from './globals'
+import { Media, Pages, Projects, Socials, Themes, Users } from './collections'
+import { Brief, Config, Education, Experience, Footer, Navigation, ProjectList } from './globals'
 import { cloudinaryPlugin } from './utils/cloudinaryPlugin'
 
 const filename = fileURLToPath(import.meta.url)

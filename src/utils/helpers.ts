@@ -1,4 +1,4 @@
-import { RAW_EXTENSIONS, IMAGE_EXTENSIONS, VIDEO_EXTENSIONS } from './consts'
+import { IMAGE_EXTENSIONS, RAW_EXTENSIONS, VIDEO_EXTENSIONS } from './consts'
 
 export const getResourceType = (ext: string): string => {
   if (VIDEO_EXTENSIONS.includes(ext)) return 'video'

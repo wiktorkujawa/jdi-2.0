@@ -1,4 +1,5 @@
 import { ProjectList } from '@/payload-types'
+
 import { serverURL } from '@/utils/consts'
 
 export const getProjectListData = async () => {

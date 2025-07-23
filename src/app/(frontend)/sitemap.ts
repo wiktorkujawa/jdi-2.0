@@ -1,5 +1,6 @@
-import { getPagesData } from '@/lib/api/pages'
 import { MetadataRoute } from 'next'
+
+import { getPagesData } from '@/lib/api/pages'
 
 const relativeLink = (link: string) => (link[0] == '/' ? link : `/${link}`)
 

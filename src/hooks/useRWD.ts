@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
+
 import { TABLET_WIDTH } from '@/utils/consts'
-import { useState, useEffect } from 'react'
 
 const useRWD = () => {
   const [isDesktop, setIsDesktop] = useState(false)

@@ -1,4 +1,5 @@
 import { Navigation } from '@/payload-types'
+
 import { serverURL } from '@/utils/consts'
 
 export const getHeaderData = async () => {

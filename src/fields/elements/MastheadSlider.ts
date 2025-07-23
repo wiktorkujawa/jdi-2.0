@@ -1,4 +1,5 @@
 import type { Field } from 'payload'
+
 import Slider from './Slider'
 
 const MastheadSlider: Field = {

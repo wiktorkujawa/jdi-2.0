@@ -1,4 +1,5 @@
 import { FC, SVGProps } from 'react'
+
 import dynamic from 'next/dynamic'
 
 interface IconsClasses {

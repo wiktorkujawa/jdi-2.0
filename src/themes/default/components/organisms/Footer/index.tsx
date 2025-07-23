@@ -1,6 +1,8 @@
-import { getFooterData } from '@/lib/api/footer'
-import { SocialMedia } from '@/themes/default/components/molecules/SocialMedia'
 import Link from 'next/link'
+
+import { getFooterData } from '@/lib/api/footer'
+
+import SocialMedia from '../../molecules/SocialMedia'
 
 export const Footer = async () => {
   const data = await getFooterData()

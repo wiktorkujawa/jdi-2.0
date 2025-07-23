@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { HomeIcon, UserIcon, SettingsIcon, MenuIcon, CloseIcon } from '@/assets/svg'
+
+import { CloseIcon, HomeIcon, MenuIcon, SettingsIcon, UserIcon } from '@/assets/svg'
 
 interface NavigationBarProps {
   className?: string
 }
 
-export const NavigationBar = ({ className = '' }: NavigationBarProps) => {
+const NavigationBar = ({ className = '' }: NavigationBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
@@ -82,3 +83,5 @@ export const NavigationBar = ({ className = '' }: NavigationBarProps) => {
     </nav>
   )
 }
+
+export default NavigationBar

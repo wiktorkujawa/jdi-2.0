@@ -1,5 +1,6 @@
-import Container from '@/themes/legacy/components/templates/ContainerTemplate'
 import { getEducationData } from '@/lib/api/education'
+
+import Container from '../../templates/ContainerTemplate'
 
 const Education = async () => {
   const { header, institutions } = await getEducationData()

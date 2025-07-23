@@ -1,7 +1,8 @@
 import { Social } from '@/payload-types'
-import SVG from '@/themes/default/components/atoms/SVG'
 
-export const SocialMedia = ({ data }: { data?: (string | Social)[] }) => {
+import SVG from '../../atoms/SVG'
+
+const SocialMedia = ({ data }: { data?: (string | Social)[] }) => {
   const socialLinks = data?.map((social) => {
     // Handle both string IDs and populated Social objects
     if (typeof social === 'string') {
@@ -39,3 +40,5 @@ export const SocialMedia = ({ data }: { data?: (string | Social)[] }) => {
     </div>
   )
 }
+
+export default SocialMedia

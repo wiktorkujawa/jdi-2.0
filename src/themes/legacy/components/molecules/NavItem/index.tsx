@@ -1,6 +1,9 @@
-import { Page } from '@/payload-types'
 import Link from 'next/link'
+
 import clsx from 'clsx'
+
+import { Page } from '@/payload-types'
+
 import styles from './NavItem.module.css'
 
 interface NavItemProps {

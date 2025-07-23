@@ -1,15 +1,20 @@
 'use client'
+
 import React, { useState } from 'react'
-import 'keen-slider/keen-slider.min.css'
-import { RichText } from '@payloadcms/richtext-lexical/react'
-import { BlockProps } from '@/utils/types'
-import { useKeenSlider } from 'keen-slider/react'
-import { TABLET_WIDTH } from '@/utils/consts'
-import useRWD from '@/hooks/useRWD'
-import Image from 'next/image'
 import { HTMLAttributeAnchorTarget } from 'react'
-import Dots from '../../molecules/Dots'
+
+import Image from 'next/image'
+
+import { RichText } from '@payloadcms/richtext-lexical/react'
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react'
+
+import useRWD from '@/hooks/useRWD'
+import { TABLET_WIDTH } from '@/utils/consts'
+import { BlockProps } from '@/utils/types'
+
 import Link from '../../atoms/Link'
+import Dots from '../../molecules/Dots'
 
 type SliderProps = BlockProps<'Slider'>
 

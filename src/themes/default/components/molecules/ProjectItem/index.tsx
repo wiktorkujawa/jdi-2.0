@@ -1,10 +1,15 @@
-import { Project, Media } from '@/payload-types'
-import Link from 'next/link'
-import Button from '@/themes/default/components/atoms/Button'
-import styles from './ProjectItem.module.css'
-import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
+
+import clsx from 'clsx'
+
+import { Media, Project } from '@/payload-types'
+
 import { TABLET_WIDTH } from '@/utils/consts'
+
+import Button from '../../atoms/Button'
+
+import styles from './ProjectItem.module.css'
 
 const ProjectItem = (field: Project) => {
   const media = field.media as Media

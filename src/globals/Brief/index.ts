@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+
 import { revalidateBrief } from './hooks/revalidateBrief'
 
 export const Brief: GlobalConfig = {

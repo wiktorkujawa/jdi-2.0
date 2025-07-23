@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { BlockProps } from '@/utils/types'
 
 type QuoteProps = BlockProps<'Quote'>

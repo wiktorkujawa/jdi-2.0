@@ -1,6 +1,8 @@
 import type { GlobalConfig } from 'payload'
-import { revalidateProjectList } from './hooks/revalidateProjectList'
+
 import Button from '@/fields/elements/Button'
+
+import { revalidateProjectList } from './hooks/revalidateProjectList'
 
 export const ProjectList: GlobalConfig = {
   slug: 'projectList',

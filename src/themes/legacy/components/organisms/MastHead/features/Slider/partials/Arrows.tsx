@@ -1,6 +1,7 @@
 import { MutableRefObject } from 'react'
-import { KeenSliderInstance } from 'keen-slider/react'
 import { MouseEvent } from 'react'
+
+import { KeenSliderInstance } from 'keen-slider/react'
 
 function Arrow(props: {
   disabled: boolean

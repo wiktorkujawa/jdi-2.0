@@ -1,16 +1,22 @@
 'use client'
-import { useKeenSlider } from 'keen-slider/react'
+
 import { HTMLAttributeAnchorTarget, useState } from 'react'
-import 'keen-slider/keen-slider.min.css'
-import Image from 'next/image'
-import styles from './Slider.module.css'
-import Link from 'next/link'
-import useRWD from '@/hooks/useRWD'
+
 import dynamic from 'next/dynamic'
-import { TABLET_WIDTH } from '@/utils/consts'
-import clsx from 'clsx'
-import { Page } from '@/payload-types'
+import Image from 'next/image'
+import Link from 'next/link'
+
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import clsx from 'clsx'
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react'
+
+import { Page } from '@/payload-types'
+
+import useRWD from '@/hooks/useRWD'
+import { TABLET_WIDTH } from '@/utils/consts'
+
+import styles from './Slider.module.css'
 
 const Dots = dynamic(() => import('./partials/Dots'))
 // TODO - in progress

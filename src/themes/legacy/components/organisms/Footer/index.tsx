@@ -1,6 +1,8 @@
-import SVG from '@/themes/default/components/atoms/SVG'
 import { Social } from '@/payload-types'
+
 import { getFooterData } from '@/lib/api/footer'
+
+import SVG from '../../atoms/SVG'
 
 export default async function Footer() {
   const data = await getFooterData()

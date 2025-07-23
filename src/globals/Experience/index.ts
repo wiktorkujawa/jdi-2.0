@@ -1,7 +1,8 @@
 import type { GlobalConfig } from 'payload'
 
-import { revalidateExperience } from './hooks/revalidateExperience'
 import { MIN_EXPERIENCE_YEAR } from '@/utils/consts'
+
+import { revalidateExperience } from './hooks/revalidateExperience'
 
 export const Experience: GlobalConfig = {
   slug: 'experience',

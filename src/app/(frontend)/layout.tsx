@@ -1,8 +1,10 @@
 import React from 'react'
-import '@/assets/css/global.css'
-import DynamicTheme from '@/themes/themeMapper'
-import { getConfig } from '@/lib/api/config'
+
 import { Metadata, Viewport } from 'next'
+
+import '@/assets/css/global.css'
+import { getConfig } from '@/lib/api/config'
+import DynamicTheme from '@/themes/themeMapper'
 
 export const metadata: Metadata = {
   manifest: `${process.env.APP_URL}/manifest.webmanifest`,

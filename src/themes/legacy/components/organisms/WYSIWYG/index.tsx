@@ -1,7 +1,11 @@
 import React from 'react'
+
 import { RichText } from '@payloadcms/richtext-lexical/react'
+
 import { BlockProps } from '@/utils/types'
+
 import Container from '../../templates/ContainerTemplate'
+
 type WYSIWYGProps = BlockProps<'WYSIWYG'>
 
 const WYSIWYG: React.FC<WYSIWYGProps> = ({ copy, blockName }) => {

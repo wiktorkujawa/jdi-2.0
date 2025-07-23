@@ -1,4 +1,5 @@
 import type { Field } from 'payload'
+
 import Button from './Button'
 
 const Slider: Field[] = [

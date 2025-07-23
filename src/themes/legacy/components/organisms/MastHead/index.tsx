@@ -1,7 +1,9 @@
-import { Page } from '@/payload-types'
 import React from 'react'
-import Slider from './features/Slider'
+
+import { Page } from '@/payload-types'
+
 import Banner from './features/Banner'
+import Slider from './features/Slider'
 
 type MastheadProps = Pick<Page, 'mastheadSlider' | 'feature' | 'title' | 'meta'>
 

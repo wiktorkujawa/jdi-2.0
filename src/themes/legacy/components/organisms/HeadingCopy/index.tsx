@@ -1,8 +1,11 @@
 import React from 'react'
+
 import { RichText } from '@payloadcms/richtext-lexical/react'
+
 import { BlockProps } from '@/utils/types'
+
+import SVG from '../../atoms/SVG'
 import Container from '../../templates/ContainerTemplate'
-import SVG from '@/themes/legacy/components/atoms/SVG'
 
 type HeadingCopyProps = BlockProps<'HeadingCopy'> & {
   arrowScroll?: string

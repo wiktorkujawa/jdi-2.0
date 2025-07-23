@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { BlockProps } from '@/utils/types'
+
 import Container from '../../templates/ContainerTemplate'
 
 type HeadingProps = BlockProps<'Heading'>

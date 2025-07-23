@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { RichText } from '@payloadcms/richtext-lexical/react'
+
 import { BlockProps } from '@/utils/types'
 
 type HeadingCopyProps = BlockProps<'HeadingCopy'>

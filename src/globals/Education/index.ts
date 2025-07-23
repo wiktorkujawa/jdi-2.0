@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+
 import { revalidateEducation } from './hooks/revalidateEducation'
 
 export const Education: GlobalConfig = {

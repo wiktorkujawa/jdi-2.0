@@ -1,5 +1,6 @@
-import configPromise from '@payload-config'
 import { NextRequest } from 'next/server'
+
+import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 export const GET = async (

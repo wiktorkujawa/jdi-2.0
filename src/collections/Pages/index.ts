@@ -1,15 +1,17 @@
 import type { CollectionConfig } from 'payload'
-import { revalidatePage } from './hooks/revalidatePage'
-import MastheadSlider from '@/fields/elements/MastheadSlider'
+
 import {
-  WYSIWYGBlock,
-  QuoteBlock,
-  HeadingCopyBlock,
   HeadingBlock,
-  SliderBlock,
-  ProjectsListBlock,
+  HeadingCopyBlock,
   IFrameBlock,
+  ProjectsListBlock,
+  QuoteBlock,
+  SliderBlock,
+  WYSIWYGBlock,
 } from '@/fields/components'
+import MastheadSlider from '@/fields/elements/MastheadSlider'
+
+import { revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',

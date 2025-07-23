@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+
 import { getResourceType } from '@/utils/helpers'
 
 type MediaDoc = {

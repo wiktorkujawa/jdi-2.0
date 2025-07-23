@@ -1,10 +1,15 @@
-import { ProjectList, Media } from '@/payload-types'
-import NextLink from 'next/link'
-import Link from '@/themes/legacy/components/atoms/Link'
-import styles from './ProjectListItem.module.css'
-import clsx from 'clsx'
 import Image from 'next/image'
+import NextLink from 'next/link'
+
+import clsx from 'clsx'
+
+import { Media, ProjectList } from '@/payload-types'
+
 import { TABLET_WIDTH } from '@/utils/consts'
+
+import Link from '../../atoms/Link'
+
+import styles from './ProjectListItem.module.css'
 
 const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
   const media = field.media as Media

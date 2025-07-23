@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
+
 import { revalidateSocial } from './hooks/revalidateSocial'
+
 export const Socials: CollectionConfig = {
   slug: 'socials',
   access: {

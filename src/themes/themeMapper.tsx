@@ -1,5 +1,6 @@
-import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
+
+import dynamic from 'next/dynamic'
 
 const DynamicComponent = (theme: string) => dynamic(() => import(`./${theme}/ThemeLayout`))
 

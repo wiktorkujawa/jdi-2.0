@@ -1,7 +1,9 @@
-import NavigationBar from '@/themes/legacy/components/organisms/NavigationBar'
-import { getHeaderData } from '@/lib/api/header'
 import { Page } from '@/payload-types'
+
+import { getHeaderData } from '@/lib/api/header'
 import { CustomPage } from '@/utils/types'
+
+import NavigationBar from '../../organisms/NavigationBar'
 
 const Header = async () => {
   const { page, pages } = await getHeaderData()

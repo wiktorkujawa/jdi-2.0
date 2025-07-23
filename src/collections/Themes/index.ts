@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+
 import { revalidateTheme } from './hooks/revalidateTheme'
 
 export const Themes: CollectionConfig = {
