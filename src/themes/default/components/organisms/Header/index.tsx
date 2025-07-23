@@ -4,7 +4,7 @@ import SocialMedia from '../../molecules/SocialMedia'
 import NavigationBar from '../../organisms/NavigationBar'
 
 export const Header = async () => {
-  const data = await getHeaderData()
+  const _data = await getHeaderData()
 
   return (
     <header className="c-header sticky top-0 z-50">
