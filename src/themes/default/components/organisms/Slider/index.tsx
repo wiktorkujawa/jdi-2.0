@@ -7,19 +7,18 @@ type SliderProps = BlockProps<'Slider'>;
 const Slider: React.FC<SliderProps> = ({ 
   blockName,
   slides = [], 
-  desktop = {}, 
-  mobile = {} 
+  settings
 }) => {
   if (!slides || slides.length === 0) {
     return (
-      <div id={blockName || undefined} className="c-slider-block my-8">
+      <div id={blockName || undefined} className="c-slider-block lg:my-16 my-10">
         <p className="text-gray-500 text-center">No slides to display</p>
       </div>
     );
   }
 
   return (
-    <section id={blockName || undefined} className="c-slider-block my-8">
+    <section id={blockName || undefined} className="c-slider-block lg:my-16 my-10">
       <div className="slider-container relative">
         {/* For now, we'll render slides as a simple list */}
         {/* TODO: Implement proper slider functionality with settings */}
@@ -69,11 +68,11 @@ const Slider: React.FC<SliderProps> = ({
           <div className="grid grid-cols-2 gap-4">
             <div>
               <strong>Desktop:</strong>
-              <pre>{JSON.stringify(desktop, null, 2)}</pre>
+              <pre>{JSON.stringify(settings?.desktop, null, 2)}</pre>
             </div>
             <div>
               <strong>Mobile:</strong>
-              <pre>{JSON.stringify(mobile, null, 2)}</pre>
+              <pre>{JSON.stringify(settings?.mobile, null, 2)}</pre>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ type WYSIWYGProps = BlockProps<'WYSIWYG'>;
 
 const WYSIWYG: React.FC<WYSIWYGProps> = ({ copy, blockName }) => {
   return (
-    <section id={blockName || undefined} className="c-wysiwyg-block">
+    <section id={blockName || undefined} className="c-wysiwyg-block lg:my-16 my-10">
       <div className="o-container o-container--lg">
         <Container>
           <div className="o-rich-text">

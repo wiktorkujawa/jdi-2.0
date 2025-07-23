@@ -35,7 +35,5 @@ export const GET = async () => {
     },
   })
 
-  console.log(data.docs);
-
   return Response.json(data)
 }

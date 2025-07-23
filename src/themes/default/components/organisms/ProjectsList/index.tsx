@@ -26,7 +26,7 @@ const ProjectsList = async ({ blockName }: ProjectsListProps) => {
   return (
     <section
       id={blockName || undefined}
-      className="c-project-list my-16"
+      className="c-project-list lg:my-16 my-10"
     >
       <div className="o-container o-container--lg">
       {isMain && <ProjectListItem {...main} />}

@@ -55,8 +55,6 @@ export async function generateStaticParams() {
     pagesCollection.docs.forEach((page) => {
       processPage(page);
     });
-
-    console.log('Generated params:', params);
     
     return params;
   }

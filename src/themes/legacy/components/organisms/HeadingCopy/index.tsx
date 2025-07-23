@@ -36,7 +36,7 @@ const HeadingCopy: React.FC<HeadingCopyProps> = ({
   };
 
   return (
-    <section id={blockName || undefined} className="c-heading-copy-block my-8">
+    <section id={blockName || undefined} className="c-heading-copy-block lg:my-16 my-10">
       <div className="o-container o-container--lg">
         <Container>
         {arrowScroll ? (

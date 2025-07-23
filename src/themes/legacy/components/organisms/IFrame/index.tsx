@@ -16,7 +16,7 @@ const IFrame: React.FC<IFrameProps> = ({
   const { handleFullscreen, iframeRef } = useFrameControls({ lockKeyboard: lockKeyboard || false });
 
   return (
-    <section id={blockName || undefined} className="c-iframe my-16">
+    <section id={blockName || undefined} className="c-iframe lg:my-16 my-10">
       <div className="o-container o-container--xl">
         <iframe
           ref={iframeRef}

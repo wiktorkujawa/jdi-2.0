@@ -15,10 +15,10 @@ const relativeLink = (link: string) => link[0] == "/" ? link : `/${link}`;
 const NavItem: React.FC<NavItemProps> = ({ page, closeNav, pathname, level = 0 }) => {
 
   return (
-  <div className={clsx(`relative`, styles.navGroup, { "pl-4": level > 0 })}>
+  <div className={clsx(`relative`, styles.navGroup, { "pl-4 w-40": level > 0 })}>
     <Link
       onClick={closeNav}
-      className={clsx(styles.link, pathname == relativeLink(page.slug || "") ? "text-pink-500" : "")}
+      className={clsx(level > 0 ? styles.sublink : styles.link, pathname == relativeLink(page.slug || "") ? "text-pink-500" : "", 'text-ellipsis overflow-hidden')}
       href={relativeLink(page.slug || "")}
     >
       {page.title}

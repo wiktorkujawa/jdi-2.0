@@ -6,7 +6,8 @@ const Experience = async () => {
   const { header, positions } = await getExperienceData()
   
   return (
-    <section className="my-16 o-container o-container--lg">
+    <section className="c-experience lg:my-16 my-10">
+      <div className="o-container o-container--lg">
         <Container>
         <h1 className="text-h1 text-center mb-16 font-bold">
             {header}
@@ -18,8 +19,9 @@ const Experience = async () => {
                 <p>{item.description}</p>
             </li>
             ))}
-        </ul>
+          </ul>
         </Container>
+      </div>
     </section>
   )
 }
