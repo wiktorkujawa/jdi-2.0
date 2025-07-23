@@ -1,23 +1,21 @@
 import { v2 as cloudinary, UploadApiResponse } from 'cloudinary'
-import type { HandleUpload, HandleDelete } from '@payloadcms/plugin-cloud-storage/types';
-import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage';
-import { getResourceType } from '@/utils/helpers';
+import type { HandleUpload, HandleDelete } from '@payloadcms/plugin-cloud-storage/types'
+import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
+import { getResourceType } from '@/utils/helpers'
 
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
   transformation: [
-    { quality: "auto", fetch_format: "auto" },
-    { if: "w_gt_1000", width: 1000 },
+    { quality: 'auto', fetch_format: 'auto' },
+    { if: 'w_gt_1000', width: 1000 },
   ],
-});
+})
 
 const cloudinaryAdapter = () => ({
   name: 'cloudinary-adapter',
-  async handleUpload({
-    file,
-  }: Parameters<HandleUpload>[0]) {
+  async handleUpload({ file }: Parameters<HandleUpload>[0]) {
     try {
       const uploadResult = await new Promise<UploadApiResponse>((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
@@ -33,7 +31,7 @@ const cloudinaryAdapter = () => ({
             resolve(result)
           },
         )
-        uploadStream.end(file.buffer) 
+        uploadStream.end(file.buffer)
       })
       file.filename = uploadResult.public_id
       file.mimeType = `${uploadResult.format}`
@@ -45,11 +43,10 @@ const cloudinaryAdapter = () => ({
 
   async handleDelete({ filename }: Parameters<HandleDelete>[0]) {
     try {
-      const resourceType = getResourceType(filename.split('.').pop() || '');
-        await cloudinary.uploader.destroy(`media/${filename.split('.').slice(0, -1).join('')}`, {
-          resource_type: resourceType
-        })
-      
+      const resourceType = getResourceType(filename.split('.').pop() || '')
+      await cloudinary.uploader.destroy(`media/${filename.split('.').slice(0, -1).join('')}`, {
+        resource_type: resourceType,
+      })
     } catch (error) {
       // if something error occured we will catch the error and respond the error in console
       console.error('Cloudinary Delete Error:', error)
@@ -60,19 +57,20 @@ const cloudinaryAdapter = () => ({
   },
 })
 
-export const cloudinaryPlugin = () => cloudStoragePlugin({
-  collections: {
-    media: {
-      adapter: cloudinaryAdapter,
-      disableLocalStorage: true,
-      generateFileURL: ({ filename }) => {
-        const resourceType = getResourceType(filename.split('.').pop() || '');
+export const cloudinaryPlugin = () =>
+  cloudStoragePlugin({
+    collections: {
+      media: {
+        adapter: cloudinaryAdapter,
+        disableLocalStorage: true,
+        generateFileURL: ({ filename }) => {
+          const resourceType = getResourceType(filename.split('.').pop() || '')
 
-        return cloudinary.url(`media/${filename.split('.').slice(0, -1).join('')}`, {
-          secure: true,
-          resource_type: resourceType,
-        });
+          return cloudinary.url(`media/${filename.split('.').slice(0, -1).join('')}`, {
+            secure: true,
+            resource_type: resourceType,
+          })
+        },
       },
     },
-  },
-});
+  })

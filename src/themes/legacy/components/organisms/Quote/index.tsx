@@ -1,8 +1,8 @@
-import React from 'react';
-import { BlockProps } from '@/utils/types';
-import Container from '../../templates/ContainerTemplate';
+import React from 'react'
+import { BlockProps } from '@/utils/types'
+import Container from '../../templates/ContainerTemplate'
 
-type QuoteProps = BlockProps<'Quote'>;
+type QuoteProps = BlockProps<'Quote'>
 
 const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockName }) => {
   return (
@@ -10,22 +10,14 @@ const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockN
       <div className="o-container o-container--md">
         <Container>
           <blockquote className="quote-content">
-            {decoration && (
-              <div className="quote-decoration">
-                &ldquo;
-              </div>
-            )}
-            <p className="quote-text">
-              {quote}
-            </p>
-            <footer className="quote-author">
-              — {author}
-            </footer>
+            {decoration && <div className="quote-decoration">&ldquo;</div>}
+            <p className="quote-text">{quote}</p>
+            <footer className="quote-author">— {author}</footer>
           </blockquote>
         </Container>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Quote; 
+export default Quote

@@ -1,14 +1,14 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react'
 
 const Container = ({ children }: PropsWithChildren) => {
-    return (
-      <div
-        className="o-theme-window relative rounded border 
+  return (
+    <div
+      className="o-theme-window relative rounded border 
         py-8 lg:px-8 md:px-6 px-4"
-      >
-        {children}
-      </div>
-    );
-  };
+    >
+      {children}
+    </div>
+  )
+}
 
-export default Container;
+export default Container

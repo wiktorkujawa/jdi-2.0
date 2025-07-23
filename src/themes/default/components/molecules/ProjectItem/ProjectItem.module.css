@@ -1,15 +1,13 @@
 .m-project-item {
-  
 }
 
 .m-project-item--header {
-
   font-size: var(--text-h3);
   line-height: var(--text-h3--line-height);
   text-transform: uppercase;
-  font-weight: bold;        
+  font-weight: bold;
   &::after {
-    counter-increment: counter +1;
-    content: counter(counter)!important;
+    counter-increment: counter + 1;
+    content: counter(counter) !important;
   }
 }

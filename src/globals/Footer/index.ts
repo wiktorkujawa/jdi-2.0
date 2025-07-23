@@ -1,35 +1,35 @@
-import { GlobalConfig } from "payload";
-import { revalidateFooter } from "./hooks/revalidateFooter";
+import { GlobalConfig } from 'payload'
+import { revalidateFooter } from './hooks/revalidateFooter'
 
 export const Footer: GlobalConfig = {
-  slug: "footer",
+  slug: 'footer',
   access: {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidateFooter]
+    afterChange: [revalidateFooter],
   },
   fields: [
     {
-      type: "group",
+      type: 'group',
       name: 'address',
       fields: [
         {
           type: 'text',
           name: 'street',
-          required: true
+          required: true,
         },
         {
           type: 'text',
           name: 'city',
-          required: true
+          required: true,
         },
         {
           type: 'text',
           name: 'country',
-          required: true
+          required: true,
         },
-      ]
+      ],
     },
     {
       type: 'array',
@@ -37,9 +37,9 @@ export const Footer: GlobalConfig = {
       fields: [
         {
           type: 'number',
-          name: 'number'
-        }
-      ]
+          name: 'number',
+        },
+      ],
     },
     {
       type: 'array',
@@ -47,15 +47,15 @@ export const Footer: GlobalConfig = {
       fields: [
         {
           type: 'email',
-          name: 'email'
-        }
-      ]
+          name: 'email',
+        },
+      ],
     },
     {
       type: 'relationship',
       hasMany: true,
       relationTo: 'socials',
-      name: 'socials'
-    }
+      name: 'socials',
+    },
   ],
-};
+}

@@ -3,30 +3,30 @@ import { revalidateProjectList } from './hooks/revalidateProjectList'
 import Button from '@/fields/elements/Button'
 
 export const ProjectList: GlobalConfig = {
-  slug: "projectList",
+  slug: 'projectList',
   access: {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidateProjectList]
+    afterChange: [revalidateProjectList],
   },
   fields: [
     {
-      name: "media",
-      type: "upload",
-      relationTo: "media",
+      name: 'media',
+      type: 'upload',
+      relationTo: 'media',
     },
     {
-      label: "Media URL",
-      name: "mediaUrl",
-      type: "text",
+      label: 'Media URL',
+      name: 'mediaUrl',
+      type: 'text',
     },
     Button,
     {
-      type: "relationship",
-      relationTo: "projects",
-      name: "projectsList",
+      type: 'relationship',
+      relationTo: 'projects',
+      name: 'projectsList',
       hasMany: true,
     },
   ],
-}; 
+}

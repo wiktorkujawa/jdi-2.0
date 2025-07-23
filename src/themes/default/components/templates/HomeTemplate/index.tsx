@@ -1,13 +1,12 @@
-import { Page } from '@/payload-types';
-import { CustomComponents } from '@/themes/default/CustomComponents';
+import { Page } from '@/payload-types'
+import { CustomComponents } from '@/themes/default/CustomComponents'
 
 const HomeTemplate = async ({ data }: { data: Page }) => {
-
-    return (
-        <div className="l-home">
-            {data.customComponents && <CustomComponents blocks={data.customComponents} />}
-        </div>
-    )
+  return (
+    <div className="l-home">
+      {data.customComponents && <CustomComponents blocks={data.customComponents} />}
+    </div>
+  )
 }
 
-export default HomeTemplate;
+export default HomeTemplate

@@ -18,8 +18,8 @@ export const GET = async () => {
         subpages: true,
         slug: true,
         title: true,
-      }
-    }
+      },
+    },
   })
 
   return Response.json(data)

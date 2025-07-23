@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-const TOP_OFFSET = 30;
+const TOP_OFFSET = 30
 const useScrollDetect = () => {
-  const [scrolling, setScrolling] = useState(false);
+  const [scrolling, setScrolling] = useState(false)
   useEffect(() => {
     if (window.scrollY >= TOP_OFFSET) {
-      setScrolling(true);
+      setScrolling(true)
     }
     const handleScroll = () => {
       if (window.scrollY >= TOP_OFFSET) {
-        setScrolling(true);
+        setScrolling(true)
+      } else {
+        setScrolling(false)
       }
-      else {
-        setScrolling(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  return scrolling;
-};
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+  return scrolling
+}
 
-export default useScrollDetect;
+export default useScrollDetect

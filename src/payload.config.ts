@@ -9,12 +9,11 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 
 import { Users, Media, Pages, Socials, Projects, Themes } from './collections'
-import { Navigation, Footer, ProjectList, Experience, Education, Brief, Config } from './globals';
+import { Navigation, Footer, ProjectList, Experience, Education, Brief, Config } from './globals'
 import { cloudinaryPlugin } from './utils/cloudinaryPlugin'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
 
 export default buildConfig({
   admin: {
@@ -38,16 +37,15 @@ export default buildConfig({
     cloudinaryPlugin(),
     payloadCloudPlugin(),
     seoPlugin({
-      collections: ["pages"],
-      uploadsCollection: "media",
+      collections: ['pages'],
+      uploadsCollection: 'media',
       generateTitle: ({ doc }) => {
-        return `just-dev-it.com — ${doc?.title}`;
+        return `just-dev-it.com — ${doc?.title}`
       },
       generateDescription: () => {
-        return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+        return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
       },
-      generateURL: ({ doc }) =>
-        `https://just-dev-it.com/${doc?.slug}`,
+      generateURL: ({ doc }) => `https://just-dev-it.com/${doc?.slug}`,
     }),
   ],
 })

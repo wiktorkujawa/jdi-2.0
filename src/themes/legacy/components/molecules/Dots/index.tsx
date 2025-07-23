@@ -1,17 +1,17 @@
-import React from 'react';
-import { MutableRefObject } from 'react';
-import { KeenSliderInstance } from 'keen-slider/react';
-import clsx from "clsx";
-import styles from './Dots.module.css';
-import { BlockProps } from '@/utils/types';
-type SlidesProps = BlockProps<'Slider'>['slides'];
+import React from 'react'
+import { MutableRefObject } from 'react'
+import { KeenSliderInstance } from 'keen-slider/react'
+import clsx from 'clsx'
+import styles from './Dots.module.css'
+import { BlockProps } from '@/utils/types'
+type SlidesProps = BlockProps<'Slider'>['slides']
 
 const Dots = ({
   slides,
   currentSlide,
   instanceRef,
   isDesktop,
-  isMobile
+  isMobile,
 }: {
   slides: SlidesProps
   currentSlide: number
@@ -19,19 +19,27 @@ const Dots = ({
   isDesktop: boolean
   isMobile: boolean
 }) => {
-  return <div className={clsx(styles.dots, isMobile ? 'block' : 'hidden', isDesktop ? 'lg:block' : 'lg:hidden')}>
-    {slides?.map((_, idx) => {
-      return (
-        <button
-          key={idx}
-          aria-label={`Slide ${idx + 1}`}
-          onClick={() => {
-            instanceRef.current?.moveToIdx(idx)
-          }}
-          className={clsx(styles.dot, currentSlide === idx && styles.active)}
-        ></button>
-      )
-    })}
-  </div>
+  return (
+    <div
+      className={clsx(
+        styles.dots,
+        isMobile ? 'block' : 'hidden',
+        isDesktop ? 'lg:block' : 'lg:hidden',
+      )}
+    >
+      {slides?.map((_, idx) => {
+        return (
+          <button
+            key={idx}
+            aria-label={`Slide ${idx + 1}`}
+            onClick={() => {
+              instanceRef.current?.moveToIdx(idx)
+            }}
+            className={clsx(styles.dot, currentSlide === idx && styles.active)}
+          ></button>
+        )
+      })}
+    </div>
+  )
 }
-export default Dots;
+export default Dots

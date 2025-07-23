@@ -1,4 +1,4 @@
-import type { Block } from 'payload';
+import type { Block } from 'payload'
 
 const WYSIWYGBlock: Block = {
   slug: 'WYSIWYG',
@@ -9,8 +9,8 @@ const WYSIWYGBlock: Block = {
       name: 'copy',
       type: 'richText',
       required: true,
-    }
-  ]
-};
+    },
+  ],
+}
 
-export default WYSIWYGBlock;
+export default WYSIWYGBlock
