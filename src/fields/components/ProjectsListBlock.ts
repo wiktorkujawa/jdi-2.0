@@ -1,10 +1,10 @@
-import type { Block } from 'payload';
+import type { Block } from 'payload'
 
 const ProjectsListBlock: Block = {
   slug: 'ProjectsList',
   // imageURL: TODO - add image,
   // imageAltText: TODO - add alt text,
-  fields: []
-};
+  fields: [],
+}
 
-export default ProjectsListBlock;
+export default ProjectsListBlock

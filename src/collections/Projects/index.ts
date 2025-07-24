@@ -1,44 +1,44 @@
-import { CollectionConfig } from "payload";
-import { Button } from "@/fields/elements";
-import { revalidateProject } from "./hooks/revalidateProject";
+import { CollectionConfig } from 'payload'
+
+import { Button } from '@/fields/elements'
+
+import { revalidateProject } from './hooks/revalidateProject'
 
 export const Projects: CollectionConfig = {
-  slug: "projects",
+  slug: 'projects',
   admin: {
-    useAsTitle: "name",
+    useAsTitle: 'name',
   },
   access: {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidateProject]
+    afterChange: [revalidateProject],
   },
   fields: [
     {
-      name: "name",
-      type: "text",
+      name: 'name',
+      type: 'text',
       unique: true,
     },
     {
-      name: "description",
-      type: "textarea",
+      name: 'description',
+      type: 'textarea',
     },
     {
-      name: "media",
-      type: "upload",
-      relationTo: "media",
+      name: 'media',
+      type: 'upload',
+      relationTo: 'media',
     },
     {
-      label: "Media URL",
-      name: "mediaUrl",
-      type: "text",
+      label: 'Media URL',
+      name: 'mediaUrl',
+      type: 'text',
     },
-      {
-        type: "array",
-        name: "buttons",
-        fields: [
-          Button
-        ],
-      },
+    {
+      type: 'array',
+      name: 'buttons',
+      fields: [Button],
+    },
   ],
-};
+}

@@ -1,7 +1,9 @@
-import type { CollectionConfig } from 'payload';
-import { revalidateSocial } from './hooks/revalidateSocial';
+import type { CollectionConfig } from 'payload'
+
+import { revalidateSocial } from './hooks/revalidateSocial'
+
 export const Socials: CollectionConfig = {
-  slug: "socials",
+  slug: 'socials',
   access: {
     read: () => true,
   },
@@ -9,32 +11,32 @@ export const Socials: CollectionConfig = {
     afterChange: [revalidateSocial],
   },
   admin: {
-    useAsTitle: "name",
+    useAsTitle: 'name',
   },
   fields: [
     {
-      name: "name",
-      type: "select",
+      name: 'name',
+      type: 'select',
       unique: true,
       options: [
         {
-          label: "Linkedin",
-          value: "linkedin",
+          label: 'Linkedin',
+          value: 'linkedin',
         },
         {
-          label: "Github",
-          value: "github",
+          label: 'Github',
+          value: 'github',
         },
         {
-          label: "StackOverflow",
-          value: "stackoverflow",
+          label: 'StackOverflow',
+          value: 'stackoverflow',
         },
       ],
     },
     {
-      name: "url",
-      type: "text",
+      name: 'url',
+      type: 'text',
       unique: true,
     },
   ],
-};
+}

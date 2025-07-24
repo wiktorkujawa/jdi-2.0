@@ -1,10 +1,11 @@
-import { getFooterData } from '@/lib/api/footer';
-import { SocialMedia } from '@/themes/default/components/molecules/SocialMedia'
-import Link from 'next/link';
+import Link from 'next/link'
+
+import { getFooterData } from '@/lib/api/footer'
+
+import SocialMedia from '../../molecules/SocialMedia'
 
 export const Footer = async () => {
-
-  const data = await getFooterData();
+  const data = await getFooterData()
 
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
@@ -28,17 +29,26 @@ export const Footer = async () => {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200">
+                <Link
+                  href="/"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200">
+                <Link
+                  href="/about"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
+                >
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200">
+                <Link
+                  href="/contact"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
+                >
                   Contact
                 </Link>
               </li>
@@ -47,23 +57,21 @@ export const Footer = async () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4">
-              Contact
-            </h4>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4">Contact</h4>
             <div className="space-y-2 text-gray-600 dark:text-gray-300">
-              {data?.emails?.map((emailItem, index) => (
-                <p key={index}>{emailItem.email}</p>
-              )) || <p>contact@company.com</p>}
-              
-              {data?.phone?.map((phoneItem, index) => (
-                <p key={index}>{phoneItem.number}</p>
-              )) || <p>+1 (555) 123-4567</p>}
-              
-              {data?.address && (
+              {data?.emails?.map((emailItem, index) => <p key={index}>{emailItem.email}</p>) || (
+                <p>contact@company.com</p>
+              )}
+
+              {data?.phone?.map((phoneItem, index) => <p key={index}>{phoneItem.number}</p>) || (
+                <p>+1 (555) 123-4567</p>
+              )}
+
+              {(data?.address && (
                 <p>
                   {data.address.street}, {data.address.city}, {data.address.country}
                 </p>
-              ) || <p>123 Main St, City, State</p>}
+              )) || <p>123 Main St, City, State</p>}
             </div>
           </div>
         </div>
@@ -76,4 +84,4 @@ export const Footer = async () => {
       </div>
     </footer>
   )
-} 
+}

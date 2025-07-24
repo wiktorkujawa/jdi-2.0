@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    
+
     .logo {
       height: 60px;
     }
@@ -40,16 +40,16 @@
   border-width: 1px 1px 1px 0;
   display: flex;
   flex-direction: column;
-  
+
   @media (min-width: 1024px) {
     transform: translateX(0);
   }
-  
+
   @media (max-width: 1023px) {
     position: fixed;
     transform: translateX(-100%);
   }
-  
+
   @media (min-width: 1024px) {
     height: auto;
     position: static;
@@ -96,11 +96,11 @@
   height: 2.5rem;
   border: 1px solid;
   border-radius: 0.25rem;
-  
+
   @media (min-width: 1024px) {
     display: none;
   }
-  
+
   @media (max-width: 1023px) {
     display: block;
   }
@@ -110,7 +110,8 @@
     height: 2px;
     margin: 0 auto;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       transition-property: transform;
       transition-duration: 300ms;
       position: absolute;

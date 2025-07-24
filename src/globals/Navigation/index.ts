@@ -1,47 +1,48 @@
-import { GlobalConfig } from "payload";
-import { revalidateNavigation } from "./hooks/revalidateNavigation";
+import { GlobalConfig } from 'payload'
+
+import { revalidateNavigation } from './hooks/revalidateNavigation'
 
 export const Navigation: GlobalConfig = {
-  slug: "navigation",
+  slug: 'navigation',
   access: {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidateNavigation]
+    afterChange: [revalidateNavigation],
   },
   fields: [
     {
-      type: "tabs",
+      type: 'tabs',
       tabs: [
         {
-          label: "Pages",
-          description: "Already defined pages",
+          label: 'Pages',
+          description: 'Already defined pages',
           fields: [
             {
-              name: "page",
-              type: "relationship",
+              name: 'page',
+              type: 'relationship',
               hasMany: true,
               unique: true,
-              relationTo: "pages",
+              relationTo: 'pages',
             },
           ],
         },
         {
-          label: "Custom menu",
-          description: "Custom navigation",
+          label: 'Custom menu',
+          description: 'Custom navigation',
           fields: [
             {
-              type: "array",
-              name: "pages",
+              type: 'array',
+              name: 'pages',
               fields: [
                 {
-                  name: "slug",
-                  type: "text",
+                  name: 'slug',
+                  type: 'text',
                   unique: true,
                 },
                 {
-                  name: "name",
-                  type: "text",
+                  name: 'name',
+                  type: 'text',
                   unique: true,
                 },
               ],
@@ -51,11 +52,10 @@ export const Navigation: GlobalConfig = {
       ],
     },
     {
-      type: "relationship",
+      type: 'relationship',
       hasMany: true,
-      relationTo: "socials",
-      name: "socials",
+      relationTo: 'socials',
+      name: 'socials',
     },
-  ]
-};
-
+  ],
+}

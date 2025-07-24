@@ -1,8 +1,9 @@
-import type { CollectionConfig } from 'payload';
-import { revalidateTheme } from './hooks/revalidateTheme';
+import type { CollectionConfig } from 'payload'
+
+import { revalidateTheme } from './hooks/revalidateTheme'
 
 export const Themes: CollectionConfig = {
-  slug: "themes",
+  slug: 'themes',
   access: {
     read: () => true,
   },
@@ -10,22 +11,22 @@ export const Themes: CollectionConfig = {
     afterChange: [revalidateTheme],
   },
   admin: {
-    useAsTitle: "name",
+    useAsTitle: 'name',
   },
   fields: [
     {
-      type: "text",
-      name: "name",
+      type: 'text',
+      name: 'name',
       required: true,
-      label: "Theme Name",
+      label: 'Theme Name',
     },
     {
-      type: "text",
-      name: "description",
+      type: 'text',
+      name: 'description',
       required: false,
       access: {
         read: ({ req }) => !!req.user,
       },
     },
   ],
-};
+}

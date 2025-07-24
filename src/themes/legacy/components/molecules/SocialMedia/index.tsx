@@ -1,5 +1,5 @@
-import LinkedInIcon from '@/assets/svg/linkedin.svg'
 import GithubIcon from '@/assets/svg/github.svg'
+import LinkedInIcon from '@/assets/svg/linkedin.svg'
 
 interface SocialMediaProps {
   className?: string
@@ -11,14 +11,14 @@ export const SocialMedia = ({ className = '' }: SocialMediaProps) => {
       icon: LinkedInIcon,
       href: 'https://linkedin.com',
       label: 'LinkedIn',
-      color: 'hover:text-cyan-600 dark:hover:text-cyan-400'
+      color: 'hover:text-cyan-600 dark:hover:text-cyan-400',
     },
     {
       icon: GithubIcon,
       href: 'https://github.com',
       label: 'GitHub',
-      color: 'hover:text-cyan-700 dark:hover:text-cyan-300'
-    }
+      color: 'hover:text-cyan-700 dark:hover:text-cyan-300',
+    },
   ]
 
   return (
@@ -37,4 +37,4 @@ export const SocialMedia = ({ className = '' }: SocialMediaProps) => {
       ))}
     </div>
   )
-} 
+}

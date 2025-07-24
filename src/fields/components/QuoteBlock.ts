@@ -1,4 +1,4 @@
-import type { Block } from 'payload';
+import type { Block } from 'payload'
 
 const QuoteBlock: Block = {
   slug: 'Quote',
@@ -17,9 +17,9 @@ const QuoteBlock: Block = {
     },
     {
       name: 'decoration',
-      type: 'checkbox'
+      type: 'checkbox',
     },
-  ]
-};
+  ],
+}
 
-export default QuoteBlock;
+export default QuoteBlock

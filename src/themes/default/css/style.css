@@ -2,12 +2,11 @@
 
 /* define new values */
 @theme {
-
 }
 
 /* override default values */
 @layer theme {
-  body[data-theme="default"] {
+  body[data-theme='default'] {
     --color-main: rgb(1000, 1000, 0); /* The yellow color */
   }
 }

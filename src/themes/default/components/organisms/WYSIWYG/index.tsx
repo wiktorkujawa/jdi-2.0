@@ -1,8 +1,10 @@
-import React from 'react';
-import { RichText } from '@payloadcms/richtext-lexical/react'
-import { BlockProps } from '@/utils/types';
+import React from 'react'
 
-type WYSIWYGProps = BlockProps<'WYSIWYG'>;
+import { RichText } from '@payloadcms/richtext-lexical/react'
+
+import { BlockProps } from '@/utils/types'
+
+type WYSIWYGProps = BlockProps<'WYSIWYG'>
 
 const WYSIWYG: React.FC<WYSIWYGProps> = ({ copy, blockName }) => {
   return (
@@ -11,7 +13,7 @@ const WYSIWYG: React.FC<WYSIWYGProps> = ({ copy, blockName }) => {
         <RichText data={copy} />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default WYSIWYG; 
+export default WYSIWYG

@@ -1,20 +1,21 @@
 import type { GlobalConfig } from 'payload'
-import { revalidateConfig } from './hooks/revalidateConfig';
+
+import { revalidateConfig } from './hooks/revalidateConfig'
 
 export const Config: GlobalConfig = {
-  slug: "config",
+  slug: 'config',
   access: {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidateConfig]
+    afterChange: [revalidateConfig],
   },
   fields: [
     {
-      type: "relationship",
+      type: 'relationship',
       name: 'selectedTheme',
-      relationTo: "themes",
+      relationTo: 'themes',
       hasMany: false,
     },
   ],
-}; 
+}

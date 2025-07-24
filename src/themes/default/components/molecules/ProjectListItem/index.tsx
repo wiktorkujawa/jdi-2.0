@@ -1,38 +1,33 @@
-import { ProjectList, Media } from "@/payload-types";
-import Link from "next/link";
-import Button from "@/themes/legacy/components/atoms/Button";
-import styles from "./ProjectListItem.module.css";
-import clsx from "clsx";
-import Image from "next/image";
-import { TABLET_WIDTH } from "@/utils/consts";
+import Image from 'next/image'
+import Link from 'next/link'
 
+import clsx from 'clsx'
+
+import { Media, ProjectList } from '@/payload-types'
+
+import { TABLET_WIDTH } from '@/utils/consts'
+
+import Button from '../../atoms/Button'
+
+import styles from './ProjectListItem.module.css'
 
 const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
+  const media = field.media as Media
 
-  const media = field.media as Media;
-  
   if (!media || typeof media === 'string') {
-    return null;
+    return null
   }
 
-  const resourceType = media.mimeType?.includes('video') ? 'video' : 'image';
-  const originalFilename = media.filename || '';
+  const resourceType = media.mimeType?.includes('video') ? 'video' : 'image'
+  const originalFilename = media.filename || ''
 
-  const {
-    mediaUrl,
-    button,
-  } = field;
+  const { mediaUrl, button } = field
 
   return (
-    <article
-      className={clsx(
-        styles["m-project-list-item"],
-        "text-center px-2 w-full"
-      )}
-    >
+    <article className={clsx(styles['m-project-list-item'], 'text-center px-2 w-full')}>
       <figure>
-        <Link target="_blank" href={mediaUrl || "#"}>
-          {resourceType === "video" ? (
+        <Link target="_blank" href={mediaUrl || '#'}>
+          {resourceType === 'video' ? (
             <div className="overflow-hidden">
               <video
                 poster={media.thumbnailURL || ''}
@@ -68,7 +63,7 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
         </div>
       </div>
     </article>
-  );
-};
+  )
+}
 
-export default ProjectListItem; 
+export default ProjectListItem

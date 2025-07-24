@@ -1,7 +1,17 @@
 import type { CollectionConfig } from 'payload'
-import { revalidatePage } from './hooks/revalidatePage'
+
+import {
+  HeadingBlock,
+  HeadingCopyBlock,
+  IFrameBlock,
+  ProjectsListBlock,
+  QuoteBlock,
+  SliderBlock,
+  WYSIWYGBlock,
+} from '@/fields/components'
 import MastheadSlider from '@/fields/elements/MastheadSlider'
-import { WYSIWYGBlock, QuoteBlock, HeadingCopyBlock, HeadingBlock, SliderBlock, ProjectsListBlock, IFrameBlock } from '@/fields/components'
+
+import { revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -12,7 +22,7 @@ export const Pages: CollectionConfig = {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidatePage]
+    afterChange: [revalidatePage],
   },
   fields: [
     {
@@ -39,13 +49,13 @@ export const Pages: CollectionConfig = {
       defaultValue: 'slider',
       options: [
         { label: 'Slider', value: 'slider' },
-        { label: 'Banner', value: 'banner' }
-      ]
+        { label: 'Banner', value: 'banner' },
+      ],
     },
     MastheadSlider,
     {
-      name: "customComponents",
-      type: "blocks",
+      name: 'customComponents',
+      type: 'blocks',
       maxRows: 20,
       blocks: [
         WYSIWYGBlock,
@@ -54,14 +64,14 @@ export const Pages: CollectionConfig = {
         HeadingBlock,
         SliderBlock,
         ProjectsListBlock,
-        IFrameBlock
+        IFrameBlock,
       ],
     },
     {
       name: 'subpages',
       type: 'relationship',
       relationTo: 'pages',
-      hasMany: true
-    }
+      hasMany: true,
+    },
   ],
 }

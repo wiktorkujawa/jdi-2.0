@@ -1,6 +1,5 @@
 interface Element {
-    msRequestFullscreen(): void;
-    webkitRequestFullscreen(): void;
-    mozRequestFullScreen(): void;
-  }
-  
+  msRequestFullscreen(): Promise<void>
+  webkitRequestFullscreen(): Promise<void>
+  mozRequestFullScreen(): Promise<void>
+}

@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { HomeIcon, UserIcon, SettingsIcon, MenuIcon, CloseIcon } from '@/assets/svg';
+
+import { CloseIcon, HomeIcon, MenuIcon, SettingsIcon, UserIcon } from '@/assets/svg'
 
 interface NavigationBarProps {
   className?: string
 }
 
-export const NavigationBar = ({ className = '' }: NavigationBarProps) => {
+const NavigationBar = ({ className = '' }: NavigationBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
@@ -17,15 +18,15 @@ export const NavigationBar = ({ className = '' }: NavigationBarProps) => {
   ]
 
   return (
-    <nav className={`bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300 ${className}`}>
+    <nav
+      className={`bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300 ${className}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                Logo
-              </h1>
+              <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">Logo</h1>
             </div>
           </div>
 
@@ -81,4 +82,6 @@ export const NavigationBar = ({ className = '' }: NavigationBarProps) => {
       )}
     </nav>
   )
-} 
+}
+
+export default NavigationBar

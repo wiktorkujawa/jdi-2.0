@@ -1,6 +1,7 @@
-import { STATIC_PAGES } from '@/utils/consts'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+
+import { STATIC_PAGES } from '@/utils/consts'
 
 export const GET = async () => {
   const payload = await getPayload({

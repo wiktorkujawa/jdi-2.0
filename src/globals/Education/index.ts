@@ -1,18 +1,19 @@
 import type { GlobalConfig } from 'payload'
+
 import { revalidateEducation } from './hooks/revalidateEducation'
 
 export const Education: GlobalConfig = {
-  slug: "education",
+  slug: 'education',
   access: {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidateEducation]
+    afterChange: [revalidateEducation],
   },
   fields: [
     {
-      type: "text",
-      name: 'header'
+      type: 'text',
+      name: 'header',
     },
     {
       type: 'array',
@@ -20,13 +21,13 @@ export const Education: GlobalConfig = {
       fields: [
         {
           type: 'text',
-          name: 'name'
+          name: 'name',
         },
         {
           type: 'textarea',
-          name: 'description'
-        }
-      ]
-    }
+          name: 'description',
+        },
+      ],
+    },
   ],
-}; 
+}

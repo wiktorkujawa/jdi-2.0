@@ -1,9 +1,10 @@
 import React from 'react'
-import '@/assets/css/global.css'
-import DynamicTheme from '@/themes/themeMapper'
-import { getConfig } from '@/lib/api/config'
+
 import { Metadata, Viewport } from 'next'
 
+import '@/assets/css/global.css'
+import { getConfig } from '@/lib/api/config'
+import DynamicTheme from '@/themes/themeMapper'
 
 export const metadata: Metadata = {
   manifest: `${process.env.APP_URL}/manifest.webmanifest`,
@@ -19,16 +20,14 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: "dark light",
+  colorScheme: 'dark light',
   themeColor: [
-      { media: "(prefers-color-scheme: dark)", color: "#030303" },
-      { media: "(prefers-color-scheme: light)", color: "#dae0e6" }
-     ],
+    { media: '(prefers-color-scheme: dark)', color: '#030303' },
+    { media: '(prefers-color-scheme: light)', color: '#dae0e6' },
+  ],
 }
 
-
 export default async function RootLayout(props: { children: React.ReactNode }) {
-
   const { children } = props
 
   const config = await getConfig()

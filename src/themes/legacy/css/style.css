@@ -1,23 +1,22 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* define new values */
 @theme {
-
   --spacing-iframe-height: calc(100vh - 15rem);
 
   --header-height: 80px;
 
   --color-dark-bg: #030303;
-  --color-dark-bg-window: #1A1A1B;
-  --color-dark-font-primary: #D7DADC;
+  --color-dark-bg-window: #1a1a1b;
+  --color-dark-font-primary: #d7dadc;
   --color-dark-font-secondary: #818384;
   --color-dark-border: #343536;
 
-  --color-theme-bg: #DAE0E6;
-  --color-theme-bg-window: #FFFFFF;
+  --color-theme-bg: #dae0e6;
+  --color-theme-bg-window: #ffffff;
   --color-theme-font-primary: #222222;
-  --color-theme-font-secondary: #878A8C;
+  --color-theme-font-secondary: #878a8c;
   --color-theme-border: #ccc;
 
   --color-menu: #fdfdfd;
@@ -103,7 +102,7 @@ main {
     font-size: var(--text-h7);
     line-height: var(--text-h7--line-height);
   }
-  
+
   p {
     font-size: var(--text-p1);
     line-height: var(--text-p1--line-height);
@@ -148,10 +147,10 @@ main {
       text-decoration: none;
     }
   }
-
 }
 
-*, html {
+*,
+html {
   scroll-behavior: smooth;
 }
 
@@ -175,11 +174,10 @@ body {
   color: var(--color-dark-font-primary);
 }
 
-
 /* override default values */
 @layer theme {
-  body[data-theme="legacy"] {
-    --color-main: rgb(0, 1000, 1000); /* The cyan color */    
+  body[data-theme='legacy'] {
+    --color-main: rgb(0, 1000, 1000); /* The cyan color */
 
     --container-padding-inline: 20px;
     --container-2xl-content-max-width: 1400px; /* 1440px - 2 * 20px */

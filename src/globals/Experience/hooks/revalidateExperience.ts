@@ -1,6 +1,7 @@
-import { revalidateTag } from "next/cache"
-import { GlobalAfterChangeHook } from "payload"
+import { revalidateTag } from 'next/cache'
+
+import { GlobalAfterChangeHook } from 'payload'
 
 export const revalidateExperience: GlobalAfterChangeHook = async () => {
-    revalidateTag("experience");
-} 
+  revalidateTag('experience')
+}

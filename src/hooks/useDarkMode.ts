@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 type DarkModeHook = {
   isDarkMode: boolean
@@ -16,7 +16,7 @@ export const useDarkMode = (): DarkModeHook => {
   useEffect(() => {
     // Check localStorage first
     const savedMode = localStorage.getItem('darkMode')
-    
+
     if (savedMode !== null) {
       // Use saved preference
       setIsDarkMode(savedMode === 'true')
@@ -25,7 +25,7 @@ export const useDarkMode = (): DarkModeHook => {
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
       setIsDarkMode(systemPrefersDark)
     }
-    
+
     setIsLoaded(true)
   }, [])
 
@@ -43,12 +43,12 @@ export const useDarkMode = (): DarkModeHook => {
   // Save to localStorage
   useEffect(() => {
     if (!isLoaded) return
-    
+
     localStorage.setItem('darkMode', isDarkMode.toString())
   }, [isDarkMode, isLoaded])
 
   const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev)
+    setIsDarkMode((prev) => !prev)
   }
 
   const setDarkMode = (dark: boolean) => {
@@ -58,6 +58,6 @@ export const useDarkMode = (): DarkModeHook => {
   return {
     isDarkMode,
     toggleDarkMode,
-    setDarkMode
+    setDarkMode,
   }
-} 
+}

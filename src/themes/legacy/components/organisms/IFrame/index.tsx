@@ -1,19 +1,17 @@
-'use client';
-import React from 'react';
-import { BlockProps } from '@/utils/types';
-import Button from '../../atoms/Button';
-import FullscreenIcon from '@/assets/svg/fullscreen.svg';
-import { useFrameControls } from '@/hooks/useFrameControls';
+'use client'
 
-type IFrameProps = BlockProps<'IFrame'>;
+import React from 'react'
 
-const IFrame: React.FC<IFrameProps> = ({ 
-  url, 
-  blockName,
-  frameControls,
-  lockKeyboard
-}) => {
-  const { handleFullscreen, iframeRef } = useFrameControls({ lockKeyboard: lockKeyboard || false });
+import FullscreenIcon from '@/assets/svg/fullscreen.svg'
+import { useFrameControls } from '@/hooks/useFrameControls'
+import { BlockProps } from '@/utils/types'
+
+import Button from '../../atoms/Button'
+
+type IFrameProps = BlockProps<'IFrame'>
+
+const IFrame: React.FC<IFrameProps> = ({ url, blockName, frameControls, lockKeyboard }) => {
+  const { handleFullscreen, iframeRef } = useFrameControls({ lockKeyboard: lockKeyboard || false })
 
   return (
     <section id={blockName || undefined} className="c-iframe lg:my-16 my-10">
@@ -28,16 +26,14 @@ const IFrame: React.FC<IFrameProps> = ({
         />
         {frameControls && (
           <div className="o-theme-window rounded-b-lg px-4 justify-end flex w-full relative">
-            <Button
-              onClick={handleFullscreen}
-            >
+            <Button onClick={handleFullscreen}>
               <FullscreenIcon className="w-5 h-5 inline-block align-middle" />
             </Button>
           </div>
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default IFrame;
+export default IFrame

@@ -1,4 +1,4 @@
-import type { Block } from 'payload';
+import type { Block } from 'payload'
 
 const IFrameBlock: Block = {
   slug: 'IFrame',
@@ -8,21 +8,21 @@ const IFrameBlock: Block = {
     {
       type: 'text',
       name: 'url',
-      label: 'URL'
+      label: 'URL',
     },
     {
       type: 'checkbox',
       defaultValue: false,
       name: 'frameControls',
-      label: 'Frame controls'
+      label: 'Frame controls',
     },
     {
       type: 'checkbox',
       defaultValue: false,
       name: 'lockKeyboard',
-      label: 'Lock keyboard'
-    }
-  ]
-};
+      label: 'Lock keyboard',
+    },
+  ],
+}
 
-export default IFrameBlock;
+export default IFrameBlock
