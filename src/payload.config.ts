@@ -7,7 +7,7 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
-import { Media, Pages, Projects, Socials, Themes, Users } from './collections'
+import { Media, Pages, Projects, Skills, Socials, Themes, Users } from './collections'
 import { Brief, Config, Education, Experience, Footer, Navigation, ProjectList } from './globals'
 import { cloudinaryPlugin } from './utils/cloudinaryPlugin'
 
@@ -21,7 +21,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages, Socials, Projects, Themes],
+  collections: [Users, Media, Pages, Socials, Projects, Themes, Skills],
   globals: [Navigation, Footer, ProjectList, Experience, Education, Brief, Config],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
