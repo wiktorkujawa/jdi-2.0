@@ -1,5 +1,3 @@
-import { RequestContext, TextFieldManyValidation, TextFieldSingleValidation } from 'payload'
-
 import { IMAGE_EXTENSIONS, RAW_EXTENSIONS, VIDEO_EXTENSIONS } from './consts'
 
 export const getResourceType = (ext: string): string => {
