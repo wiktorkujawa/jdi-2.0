@@ -5,8 +5,8 @@ import { Project } from '@/payload-types'
 import { getProjectListData } from '@/lib/api/projectList'
 import { BlockProps } from '@/utils/types'
 
+import MainProjectListItem from '../../molecules/MainProjectListItem'
 import ProjectItem from '../../molecules/ProjectItem'
-import ProjectListItem from '../../molecules/ProjectListItem'
 
 import styles from './ProjectsList.module.css'
 
@@ -26,7 +26,7 @@ const ProjectsList = async ({ blockName }: ProjectsListProps) => {
   return (
     <section id={blockName || undefined} className="c-project-list lg:my-16 my-10">
       <div className="o-container o-container--lg">
-        {isMain && <ProjectListItem {...main} />}
+        {isMain && <MainProjectListItem {...main} />}
 
         <div className={styles['c-project-list--list-counter']}>
           {projectsList?.map((field) => (

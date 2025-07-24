@@ -150,7 +150,11 @@ const Slider: React.FC<SliderProps> = ({ slides = [], settings, blockName }) => 
 
                     {button && (
                       <div className="flex gap-2 mt-auto">
-                        <Link target={button.target as HTMLAttributeAnchorTarget} href={button.url}>
+                        <Link
+                          className="mx-auto"
+                          target={button.target as HTMLAttributeAnchorTarget}
+                          href={button.url}
+                        >
                           {button.text}
                         </Link>
                       </div>

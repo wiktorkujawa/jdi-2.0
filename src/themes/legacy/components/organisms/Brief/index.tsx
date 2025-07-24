@@ -9,7 +9,13 @@ type Props = {
 
 const Brief = async ({ arrowScroll }: Props) => {
   const briefData = await getBriefData()
-  return <HeadingCopy {...(briefData as BlockProps<'HeadingCopy'>)} arrowScroll={arrowScroll} />
+  return (
+    <HeadingCopy
+      {...(briefData as BlockProps<'HeadingCopy'>)}
+      align="center"
+      arrowScroll={arrowScroll}
+    />
+  )
 }
 
 export default Brief

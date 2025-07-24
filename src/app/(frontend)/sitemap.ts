@@ -8,7 +8,7 @@ const getPages = async () => {
   const { docs } = await getPagesData()
 
   return docs.map(({ slug, updatedAt }) => ({
-    url: process.env.APP_URL + relativeLink(slug || ''),
+    url: process.env.NEXT_PUBLIC_APP_URL + relativeLink(slug || ''),
     lastModified: updatedAt,
     changeFrequency: 'monthly',
     priority: 1.0,

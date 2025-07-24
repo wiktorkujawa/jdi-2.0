@@ -24,7 +24,7 @@ const Link = ({
   target = '_blank',
 }: LinkProps) => {
   const baseClasses =
-    'flex cursor-pointer hover:text-red-hover o-theme-window border rounded my-4 w-fit mx-auto transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+    'flex cursor-pointer hover:text-red-hover o-theme-window border rounded my-4 w-fit transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
 
   const variantClasses = {
     primary: '',

@@ -5,5 +5,6 @@ import { CollectionAfterChangeHook } from 'payload'
 import { Project } from '@/payload-types'
 
 export const revalidateProject: CollectionAfterChangeHook<Project> = async () => {
-  revalidateTag('projectsList')
+  revalidateTag('projects-list')
+  revalidateTag('projects-block')
 }

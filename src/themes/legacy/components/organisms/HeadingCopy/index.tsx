@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import clsx from 'clsx'
 
 import { BlockProps } from '@/utils/types'
 
@@ -17,6 +18,7 @@ const HeadingCopy: React.FC<HeadingCopyProps> = ({
   copy,
   blockName,
   arrowScroll,
+  align = 'left',
 }) => {
   const renderHeading = () => {
     if (!heading) return null
@@ -54,7 +56,16 @@ const HeadingCopy: React.FC<HeadingCopyProps> = ({
               />
             </a>
           ) : null}
-          <div className="text-center font-bold mb-10">{renderHeading()}</div>
+          <div
+            className={clsx(
+              'text-center font-bold mb-10',
+              align === 'center' && 'text-center',
+              align === 'left' && 'text-left',
+              align === 'right' && 'text-right',
+            )}
+          >
+            {renderHeading()}
+          </div>
           {copy && (
             <div className="o-rich-text">
               <RichText data={copy} />
