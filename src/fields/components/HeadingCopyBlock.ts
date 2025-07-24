@@ -14,6 +14,25 @@ const HeadingCopyBlock: Block = {
         },
         {
           type: 'select',
+          name: 'align',
+          defaultValue: 'left',
+          options: [
+            {
+              value: 'left',
+              label: 'Left',
+            },
+            {
+              value: 'center',
+              label: 'Center',
+            },
+            {
+              value: 'right',
+              label: 'Right',
+            },
+          ],
+        },
+        {
+          type: 'select',
           name: 'level',
           options: [
             {

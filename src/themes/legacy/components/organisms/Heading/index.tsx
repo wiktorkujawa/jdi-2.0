@@ -1,12 +1,14 @@
 import React from 'react'
 
+import clsx from 'clsx'
+
 import { BlockProps } from '@/utils/types'
 
 import Container from '../../templates/ContainerTemplate'
 
 type HeadingProps = BlockProps<'Heading'>
 
-const Heading: React.FC<HeadingProps> = ({ heading, level = 'h2', blockName }) => {
+const Heading: React.FC<HeadingProps> = ({ heading, level = 'h2', blockName, align = 'left' }) => {
   const renderHeading = () => {
     if (!heading) return null
 
@@ -28,7 +30,14 @@ const Heading: React.FC<HeadingProps> = ({ heading, level = 'h2', blockName }) =
 
   return (
     <section id={blockName || undefined} className="c-heading-block lg:my-16 my-10">
-      <div className="o-container o-container--lg">
+      <div
+        className={clsx(
+          'o-container o-container--lg',
+          align === 'center' && 'text-center',
+          align === 'left' && 'text-left',
+          align === 'right' && 'text-right',
+        )}
+      >
         <Container>{renderHeading()}</Container>
       </div>
     </section>

@@ -74,7 +74,7 @@ const ProjectItem = (field: Project) => {
                 aria-label={button.text}
                 href={button.url}
                 target="_blank"
-                className="w-full flex justify-center lg:w-auto"
+                className="w-full flex justify-center lg:w-auto mx-auto"
               >
                 {button.text}
               </Link>

@@ -6,6 +6,7 @@ import {
   IFrameBlock,
   ProjectsListBlock,
   QuoteBlock,
+  SelectedProjectsListBlock,
   SliderBlock,
   WYSIWYGBlock,
 } from '@/fields/components'
@@ -65,6 +66,7 @@ export const Pages: CollectionConfig = {
         SliderBlock,
         ProjectsListBlock,
         IFrameBlock,
+        SelectedProjectsListBlock,
       ],
     },
     {

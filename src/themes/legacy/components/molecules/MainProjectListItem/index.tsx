@@ -9,9 +9,9 @@ import { TABLET_WIDTH } from '@/utils/consts'
 
 import Link from '../../atoms/Link'
 
-import styles from './ProjectListItem.module.css'
+import styles from './MainProjectListItem.module.css'
 
-const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
+const MainProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
   const media = field.media as Media
 
   if (!media || typeof media === 'string') {
@@ -31,7 +31,7 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
             <div className="overflow-hidden">
               <video
                 poster={media.thumbnailURL || ''}
-                className="lazy aspect-2/1 object-contain mx-auto hover:scale-150 transition-transform"
+                className="lazy aspect-2/1 object-cover mx-auto hover:scale-150 transition-transform w-full"
                 autoPlay
                 muted
                 loop
@@ -59,7 +59,7 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
             aria-label={button.text}
             href={button.url}
             target="_blank"
-            className="w-full flex justify-center"
+            className="w-full flex justify-center mx-auto"
           >
             {button.text}
           </Link>
@@ -69,4 +69,4 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
   )
 }
 
-export default ProjectListItem
+export default MainProjectListItem

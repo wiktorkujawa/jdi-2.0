@@ -1,12 +1,19 @@
 import React from 'react'
 
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import clsx from 'clsx'
 
 import { BlockProps } from '@/utils/types'
 
 type HeadingCopyProps = BlockProps<'HeadingCopy'>
 
-const HeadingCopy: React.FC<HeadingCopyProps> = ({ heading, level = 'h2', copy, blockName }) => {
+const HeadingCopy: React.FC<HeadingCopyProps> = ({
+  heading,
+  level = 'h2',
+  copy,
+  blockName,
+  align = 'left',
+}) => {
   const renderHeading = () => {
     if (!heading) return null
 
@@ -29,7 +36,15 @@ const HeadingCopy: React.FC<HeadingCopyProps> = ({ heading, level = 'h2', copy, 
   return (
     <section id={blockName || undefined} className="c-heading-copy-block lg:my-16 my-10">
       <div className="o-container o-container--lg">
-        {renderHeading()}
+        <div
+          className={clsx(
+            align === 'center' && 'text-center',
+            align === 'left' && 'text-left',
+            align === 'right' && 'text-right',
+          )}
+        >
+          {renderHeading()}
+        </div>
         {copy && (
           <div className="copy-content prose prose-lg max-w-none">
             <RichText data={copy} />
