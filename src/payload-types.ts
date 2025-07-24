@@ -70,6 +70,10 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    socials: Social;
+    projects: Project;
+    themes: Theme;
+    skills: Skill;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +83,10 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    socials: SocialsSelect<false> | SocialsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    themes: ThemesSelect<false> | ThemesSelect<true>;
+    skills: SkillsSelect<false> | SkillsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -86,8 +94,24 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    navigation: Navigation;
+    footer: Footer;
+    projectList: ProjectList;
+    experience: Experience;
+    education: Education;
+    brief: Brief;
+    config: Config1;
+  };
+  globalsSelect: {
+    navigation: NavigationSelect<false> | NavigationSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    projectList: ProjectListSelect<false> | ProjectListSelect<true>;
+    experience: ExperienceSelect<false> | ExperienceSelect<true>;
+    education: EducationSelect<false> | EducationSelect<true>;
+    brief: BriefSelect<false> | BriefSelect<true>;
+    config: ConfigSelect<false> | ConfigSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -130,6 +154,13 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
   password?: string | null;
 }
 /**
@@ -158,6 +189,231 @@ export interface Media {
 export interface Page {
   id: string;
   title?: string | null;
+  slug?: string | null;
+  isMasthead?: boolean | null;
+  feature?: ('slider' | 'banner') | null;
+  mastheadSlider?: {
+    slides?:
+      | {
+          media: string | Media;
+          heading?: string | null;
+          copy?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+          attribution?: string | null;
+          button: {
+            text: string;
+            url: string;
+            target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+            ariaLabel?: string | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    settings?: {
+      desktop?: {
+        dots?: boolean | null;
+        loop?: boolean | null;
+        arrows?: boolean | null;
+        draggable?: boolean | null;
+        autoplay?: boolean | null;
+        autoplaySpeed?: number | null;
+        slidesPerRow?: number | null;
+      };
+      mobile?: {
+        dots?: boolean | null;
+        loop?: boolean | null;
+        arrows?: boolean | null;
+        draggable?: boolean | null;
+        autoplay?: boolean | null;
+        autoplaySpeed?: number | null;
+        slidesPerRow?: number | null;
+      };
+    };
+  };
+  customComponents?:
+    | (
+        | {
+            copy: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'WYSIWYG';
+          }
+        | {
+            author: string;
+            quote: string;
+            decoration?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'Quote';
+          }
+        | {
+            heading?: string | null;
+            align?: ('left' | 'center' | 'right') | null;
+            level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
+            copy?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'HeadingCopy';
+          }
+        | {
+            heading?: string | null;
+            align?: ('left' | 'center' | 'right') | null;
+            level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'Heading';
+          }
+        | {
+            slides?:
+              | {
+                  media: string | Media;
+                  heading?: string | null;
+                  copy?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  attribution?: string | null;
+                  button: {
+                    text: string;
+                    url: string;
+                    target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+                    ariaLabel?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            settings?: {
+              desktop?: {
+                dots?: boolean | null;
+                loop?: boolean | null;
+                arrows?: boolean | null;
+                draggable?: boolean | null;
+                autoplay?: boolean | null;
+                autoplaySpeed?: number | null;
+                slidesPerRow?: number | null;
+              };
+              mobile?: {
+                dots?: boolean | null;
+                loop?: boolean | null;
+                arrows?: boolean | null;
+                draggable?: boolean | null;
+                autoplay?: boolean | null;
+                autoplaySpeed?: number | null;
+                slidesPerRow?: number | null;
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'Slider';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ProjectsList';
+          }
+        | {
+            url?: string | null;
+            frameControls?: boolean | null;
+            lockKeyboard?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'IFrame';
+          }
+        | {
+            header?: string | null;
+            selectFrom?: ('type' | 'relation') | null;
+            type?:
+              | (
+                  | 'wasm'
+                  | 'full-stack'
+                  | 'backend'
+                  | 'frontend'
+                  | 'devops'
+                  | 'general programming'
+                  | 'machine learning'
+                  | 'other'
+                )
+              | null;
+            projects?: (string | Project)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'SelectedProjectsList';
+          }
+      )[]
+    | null;
+  subpages?: (string | Page)[] | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: string;
+  name?: string | null;
+  slug?: string | null;
+  description?: string | null;
   content?: {
     root: {
       type: string;
@@ -173,17 +429,65 @@ export interface Page {
     };
     [k: string]: unknown;
   } | null;
-  slug?: string | null;
-  isMasthead?: boolean | null;
-  feature?: ('none' | 'slider' | 'banner') | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | Media;
-  };
+  type?:
+    | (
+        | 'wasm'
+        | 'full-stack'
+        | 'backend'
+        | 'frontend'
+        | 'devops'
+        | 'general programming'
+        | 'machine learning'
+        | 'other'
+      )[]
+    | null;
+  skills?: (string | Skill)[] | null;
+  media?: (string | null) | Media;
+  mediaUrl?: string | null;
+  buttons?:
+    | {
+        button: {
+          text: string;
+          url: string;
+          target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+          ariaLabel?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: string;
+  name: string;
+  icon?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "socials".
+ */
+export interface Social {
+  id: string;
+  name?: ('linkedin' | 'github' | 'stackoverflow') | null;
+  url?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "themes".
+ */
+export interface Theme {
+  id: string;
+  name: string;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -205,6 +509,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'socials';
+        value: string | Social;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: string | Project;
+      } | null)
+    | ({
+        relationTo: 'themes';
+        value: string | Theme;
+      } | null)
+    | ({
+        relationTo: 'skills';
+        value: string | Skill;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -262,6 +582,13 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -287,10 +614,170 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
-  content?: T;
   slug?: T;
   isMasthead?: T;
   feature?: T;
+  mastheadSlider?:
+    | T
+    | {
+        slides?:
+          | T
+          | {
+              media?: T;
+              heading?: T;
+              copy?: T;
+              attribution?: T;
+              button?:
+                | T
+                | {
+                    text?: T;
+                    url?: T;
+                    target?: T;
+                    ariaLabel?: T;
+                  };
+              id?: T;
+            };
+        settings?:
+          | T
+          | {
+              desktop?:
+                | T
+                | {
+                    dots?: T;
+                    loop?: T;
+                    arrows?: T;
+                    draggable?: T;
+                    autoplay?: T;
+                    autoplaySpeed?: T;
+                    slidesPerRow?: T;
+                  };
+              mobile?:
+                | T
+                | {
+                    dots?: T;
+                    loop?: T;
+                    arrows?: T;
+                    draggable?: T;
+                    autoplay?: T;
+                    autoplaySpeed?: T;
+                    slidesPerRow?: T;
+                  };
+            };
+      };
+  customComponents?:
+    | T
+    | {
+        WYSIWYG?:
+          | T
+          | {
+              copy?: T;
+              id?: T;
+              blockName?: T;
+            };
+        Quote?:
+          | T
+          | {
+              author?: T;
+              quote?: T;
+              decoration?: T;
+              id?: T;
+              blockName?: T;
+            };
+        HeadingCopy?:
+          | T
+          | {
+              heading?: T;
+              align?: T;
+              level?: T;
+              copy?: T;
+              id?: T;
+              blockName?: T;
+            };
+        Heading?:
+          | T
+          | {
+              heading?: T;
+              align?: T;
+              level?: T;
+              id?: T;
+              blockName?: T;
+            };
+        Slider?:
+          | T
+          | {
+              slides?:
+                | T
+                | {
+                    media?: T;
+                    heading?: T;
+                    copy?: T;
+                    attribution?: T;
+                    button?:
+                      | T
+                      | {
+                          text?: T;
+                          url?: T;
+                          target?: T;
+                          ariaLabel?: T;
+                        };
+                    id?: T;
+                  };
+              settings?:
+                | T
+                | {
+                    desktop?:
+                      | T
+                      | {
+                          dots?: T;
+                          loop?: T;
+                          arrows?: T;
+                          draggable?: T;
+                          autoplay?: T;
+                          autoplaySpeed?: T;
+                          slidesPerRow?: T;
+                        };
+                    mobile?:
+                      | T
+                      | {
+                          dots?: T;
+                          loop?: T;
+                          arrows?: T;
+                          draggable?: T;
+                          autoplay?: T;
+                          autoplaySpeed?: T;
+                          slidesPerRow?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ProjectsList?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        IFrame?:
+          | T
+          | {
+              url?: T;
+              frameControls?: T;
+              lockKeyboard?: T;
+              id?: T;
+              blockName?: T;
+            };
+        SelectedProjectsList?:
+          | T
+          | {
+              header?: T;
+              selectFrom?: T;
+              type?: T;
+              projects?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  subpages?: T;
   meta?:
     | T
     | {
@@ -298,6 +785,65 @@ export interface PagesSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "socials_select".
+ */
+export interface SocialsSelect<T extends boolean = true> {
+  name?: T;
+  url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
+  content?: T;
+  type?: T;
+  skills?: T;
+  media?: T;
+  mediaUrl?: T;
+  buttons?:
+    | T
+    | {
+        button?:
+          | T
+          | {
+              text?: T;
+              url?: T;
+              target?: T;
+              ariaLabel?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "themes_select".
+ */
+export interface ThemesSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills_select".
+ */
+export interface SkillsSelect<T extends boolean = true> {
+  name?: T;
+  icon?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -332,6 +878,305 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation".
+ */
+export interface Navigation {
+  id: string;
+  page?: (string | Page)[] | null;
+  pages?:
+    | {
+        slug?: string | null;
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socials?: (string | Social)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  address: {
+    street: string;
+    city: string;
+    country: string;
+  };
+  phone?:
+    | {
+        number?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  emails?:
+    | {
+        email?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socials?: (string | Social)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projectList".
+ */
+export interface ProjectList {
+  id: string;
+  media?: (string | null) | Media;
+  mediaUrl?: string | null;
+  button: {
+    text: string;
+    url: string;
+    target?: ('_self' | '_blank' | '_parent' | '_top') | null;
+    ariaLabel?: string | null;
+  };
+  projectsList?: (string | Project)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experience".
+ */
+export interface Experience {
+  id: string;
+  header?: string | null;
+  positions?:
+    | {
+        position?: string | null;
+        company?: string | null;
+        startDate?:
+          | (
+              | '2011'
+              | '2012'
+              | '2013'
+              | '2014'
+              | '2015'
+              | '2016'
+              | '2017'
+              | '2018'
+              | '2019'
+              | '2020'
+              | '2021'
+              | '2022'
+              | '2023'
+              | '2024'
+              | '2025'
+            )
+          | null;
+        endDate?:
+          | (
+              | '2011'
+              | '2012'
+              | '2013'
+              | '2014'
+              | '2015'
+              | '2016'
+              | '2017'
+              | '2018'
+              | '2019'
+              | '2020'
+              | '2021'
+              | '2022'
+              | '2023'
+              | '2024'
+              | '2025'
+              | 'now'
+            )
+          | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "education".
+ */
+export interface Education {
+  id: string;
+  header?: string | null;
+  institutions?:
+    | {
+        name?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brief".
+ */
+export interface Brief {
+  id: string;
+  heading?: string | null;
+  level?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5') | null;
+  copy?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "config".
+ */
+export interface Config1 {
+  id: string;
+  selectedTheme?: (string | null) | Theme;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation_select".
+ */
+export interface NavigationSelect<T extends boolean = true> {
+  page?: T;
+  pages?:
+    | T
+    | {
+        slug?: T;
+        name?: T;
+        id?: T;
+      };
+  socials?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  address?:
+    | T
+    | {
+        street?: T;
+        city?: T;
+        country?: T;
+      };
+  phone?:
+    | T
+    | {
+        number?: T;
+        id?: T;
+      };
+  emails?:
+    | T
+    | {
+        email?: T;
+        id?: T;
+      };
+  socials?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projectList_select".
+ */
+export interface ProjectListSelect<T extends boolean = true> {
+  media?: T;
+  mediaUrl?: T;
+  button?:
+    | T
+    | {
+        text?: T;
+        url?: T;
+        target?: T;
+        ariaLabel?: T;
+      };
+  projectsList?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experience_select".
+ */
+export interface ExperienceSelect<T extends boolean = true> {
+  header?: T;
+  positions?:
+    | T
+    | {
+        position?: T;
+        company?: T;
+        startDate?: T;
+        endDate?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "education_select".
+ */
+export interface EducationSelect<T extends boolean = true> {
+  header?: T;
+  institutions?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brief_select".
+ */
+export interface BriefSelect<T extends boolean = true> {
+  heading?: T;
+  level?: T;
+  copy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "config_select".
+ */
+export interface ConfigSelect<T extends boolean = true> {
+  selectedTheme?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

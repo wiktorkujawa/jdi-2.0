@@ -1,0 +1,11 @@
+.c-project-list {
+  counter-reset: counter;
+}
+
+.c-project-list--list-counter {
+  margin-top: 36px;
+  counter-reset: counter;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+}

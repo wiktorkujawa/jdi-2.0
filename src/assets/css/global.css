@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+@import './object/o-container.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant child (& > *);
+@custom-variant child-hover (& > *:hover);
+
+@theme {
+  --color-main: rgb(0, 1000, 1000);
+  --container-padding-inline: 20px;
+  --container-2xl-content-max-width: 1400px; /* 1440px - 2 * 20px */
+  --container-xl-content-max-width: 1224px; /* 1440px - 2 * 108px */
+  --container-lg-content-max-width: 1016px; /* 1440px - 2 * 212px */
+  --container-md-content-max-width: 808px; /* 1440px - 2 * 316px */
+
+  --color-white: rgb(1000, 1000, 1000);
+  --color-black: rgb(0, 0, 0);
+  --color-gray-60: rgb(60, 60, 60);
+  --color-linkedin: #0e76a8;
+  --color-github: #181717;
+
+  --font-sans: system-ui;
+  --font-mono: 'Roboto Mono', monospace;
+
+  --text-base: 18px;
+  --text-base--line-height: calc(32 / 18);
+
+  --text-lg: 64px;
+  --text-lg--line-height: calc(70 / 64);
+
+  --radius-sm: 4px;
+
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+  --spacing-48: 12rem;
+  --spacing-56: 14rem;
+  --spacing-64: 16rem;
+
+  --breakpoint-sm: 400px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+
+  --container-padding: 1rem;
+  --container-2xl: 1536px;
+  --container-xl: 1280px;
+  --container-lg: 1024px;
+  --container-md: 768px;
+  --container-sm: 640px;
+  --container-xs: 480px;
+}

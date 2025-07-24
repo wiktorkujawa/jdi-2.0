@@ -8,6 +8,10 @@ export const GET = async () => {
 
   const data = await payload.find({
     collection: 'pages',
+    select: {
+      slug: true,
+      updatedAt: true,
+    },
   })
 
   return Response.json(data)

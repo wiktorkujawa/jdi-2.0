@@ -1,0 +1,147 @@
+.wrapperComponent {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    .logo {
+      height: 60px;
+    }
+  }
+}
+
+.navGroup {
+  position: relative;
+}
+
+.navGroup:hover > .submenu {
+  display: block;
+}
+
+.nav {
+  transition-property: transform;
+  transition-duration: 300ms;
+  gap: 1rem;
+  left: 0;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  z-index: 50;
+  position: fixed;
+  width: 250px;
+  font-weight: bold;
+  border-width: 1px 1px 1px 0;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    transform: translateX(0);
+  }
+
+  @media (max-width: 1023px) {
+    position: fixed;
+    transform: translateX(-100%);
+  }
+
+  @media (min-width: 1024px) {
+    height: auto;
+    position: static;
+    flex-direction: row;
+    width: auto;
+    border: none;
+  }
+
+  &.openNav {
+    @media (min-width: 1024px) {
+      overflow-y: visible;
+      border-radius: 0;
+      padding-top: 0;
+    }
+    overflow-y: auto;
+    border-radius: 0 0.25rem 0.25rem 0;
+    transform: translateX(0);
+    padding-top: 0.5rem;
+  }
+
+  .link {
+    display: block;
+    cursor: pointer;
+    padding: 8px 16px;
+    &:hover {
+      color: var(--color-red-hover);
+    }
+  }
+
+  .sublink {
+    display: block;
+    white-space: nowrap;
+    padding: 8px 8px;
+    &:hover {
+      color: var(--color-red-hover);
+    }
+  }
+}
+
+.button {
+  cursor: pointer;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid;
+  border-radius: 0.25rem;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+
+  @media (max-width: 1023px) {
+    display: block;
+  }
+
+  .icon {
+    width: 60%;
+    height: 2px;
+    margin: 0 auto;
+
+    &::before,
+    &::after {
+      transition-property: transform;
+      transition-duration: 300ms;
+      position: absolute;
+      content: '';
+      width: inherit;
+      height: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: inherit;
+    }
+
+    &::before {
+      top: 25%;
+    }
+    &::after {
+      bottom: 25%;
+    }
+  }
+
+  &.openButton {
+    .icon {
+      height: 0;
+      &::before {
+        transform: rotate(45deg) translateX(-0.3rem) translateY(5px);
+        transform-origin: top left;
+      }
+      &::after {
+        transform: rotate(-45deg) translateX(-0.25rem) translateY(-6px);
+        transform-origin: bottom left;
+      }
+    }
+  }
+}

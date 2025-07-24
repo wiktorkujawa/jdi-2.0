@@ -1,4 +1,17 @@
 import type { CollectionConfig } from 'payload'
+
+import {
+  HeadingBlock,
+  HeadingCopyBlock,
+  IFrameBlock,
+  ProjectsListBlock,
+  QuoteBlock,
+  SelectedProjectsListBlock,
+  SliderBlock,
+  WYSIWYGBlock,
+} from '@/fields/components'
+import MastheadSlider from '@/fields/elements/MastheadSlider'
+
 import { revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
@@ -10,17 +23,13 @@ export const Pages: CollectionConfig = {
     read: () => true,
   },
   hooks: {
-    afterChange: [revalidatePage]
+    afterChange: [revalidatePage],
   },
   fields: [
     {
       name: 'title',
       type: 'text',
       unique: true,
-    },
-    {
-      name: 'content',
-      type: 'richText',
     },
     {
       name: 'slug',
@@ -34,19 +43,37 @@ export const Pages: CollectionConfig = {
     },
     {
       name: 'feature',
+      admin: {
+        condition: (data) => data.isMasthead,
+      },
       type: 'select',
       defaultValue: 'slider',
       options: [
-        { label: 'None', value: 'none' },
         { label: 'Slider', value: 'slider' },
-        { label: 'Banner', value: 'banner' }
-      ]
+        { label: 'Banner', value: 'banner' },
+      ],
     },
-    // {
-    //   name: 'subpages',
-    //   type: 'relationship',
-    //   relationTo: 'pages',
-    //   hasMany: true
-    // }
+    MastheadSlider,
+    {
+      name: 'customComponents',
+      type: 'blocks',
+      maxRows: 20,
+      blocks: [
+        WYSIWYGBlock,
+        QuoteBlock,
+        HeadingCopyBlock,
+        HeadingBlock,
+        SliderBlock,
+        ProjectsListBlock,
+        IFrameBlock,
+        SelectedProjectsListBlock,
+      ],
+    },
+    {
+      name: 'subpages',
+      type: 'relationship',
+      relationTo: 'pages',
+      hasMany: true,
+    },
   ],
 }
