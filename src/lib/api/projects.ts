@@ -17,3 +17,14 @@ export const getProjects = async (type?: (typeof PROJECT_TYPES)[number] | null) 
   const projectList: PaginatedDocs<Project> = await projectListRes.json()
   return projectList.docs
 }
+
+export const getProjectBySlug = async (slug: string) => {
+  const projectRes = await fetch(`${serverURL}/read-api/projects/${slug}`, {
+    cache: 'force-cache',
+  })
+  if (!projectRes.ok) {
+    return null
+  }
+  const project: Project = await projectRes.json()
+  return project
+}

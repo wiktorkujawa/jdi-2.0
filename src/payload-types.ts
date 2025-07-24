@@ -73,6 +73,7 @@ export interface Config {
     socials: Social;
     projects: Project;
     themes: Theme;
+    skills: Skill;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,6 +86,7 @@ export interface Config {
     socials: SocialsSelect<false> | SocialsSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     themes: ThemesSelect<false> | ThemesSelect<true>;
+    skills: SkillsSelect<false> | SkillsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -410,7 +412,23 @@ export interface Page {
 export interface Project {
   id: string;
   name?: string | null;
+  slug?: string | null;
   description?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   type?:
     | (
         | 'wasm'
@@ -423,6 +441,7 @@ export interface Project {
         | 'other'
       )[]
     | null;
+  skills?: (string | Skill)[] | null;
   media?: (string | null) | Media;
   mediaUrl?: string | null;
   buttons?:
@@ -436,6 +455,17 @@ export interface Project {
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: string;
+  name: string;
+  icon?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -491,6 +521,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'themes';
         value: string | Theme;
+      } | null)
+    | ({
+        relationTo: 'skills';
+        value: string | Skill;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -770,8 +804,11 @@ export interface SocialsSelect<T extends boolean = true> {
  */
 export interface ProjectsSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   description?: T;
+  content?: T;
   type?: T;
+  skills?: T;
   media?: T;
   mediaUrl?: T;
   buttons?:
@@ -797,6 +834,16 @@ export interface ProjectsSelect<T extends boolean = true> {
 export interface ThemesSelect<T extends boolean = true> {
   name?: T;
   description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills_select".
+ */
+export interface SkillsSelect<T extends boolean = true> {
+  name?: T;
+  icon?: T;
   updatedAt?: T;
   createdAt?: T;
 }
