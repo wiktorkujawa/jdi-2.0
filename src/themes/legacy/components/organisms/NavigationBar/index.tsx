@@ -10,12 +10,11 @@ import useRWD from "@/hooks/useRWD";
 import { Page } from "@/payload-types";
 import { CustomPage } from "@/utils/types";
 import { DarkModeToggle } from "../../molecules/DarkMode/DarkModeToggle";
+import NavItem from "../../molecules/NavItem";
 
 interface Props {
   nav: (Page | CustomPage)[];
 }
-
-const relativeLink = (link: string) => link[0] == "/" ? link : `/${link}`;
 
 const NavigationBar: FC<Props> = ({ nav }) => {
   const pathname = usePathname();
@@ -59,36 +58,12 @@ const NavigationBar: FC<Props> = ({ nav }) => {
           )}
         >
           {nav.map((page) => (
-            <div
-              className="relative group"
-              key={page.id}
-            >
-              <Link
-                onClick={() => setOpenNav(false)}
-                className={clsx(styles.link, pathname == relativeLink(page.slug || "") ? "text-pink-500" : "")}
-                href={relativeLink(page.slug || "")}
-              >
-                {page.title}
-              </Link>
-
-              {"subpages" in page && Array.isArray(page.subpages) && (
-                <div className="lg:hidden block lg:absolute min-w-full lg:text-center lg:pl-0 pl-5 right-0 top-full lg:pt-4 z-50 dark:bg-dark-bg-window bg-theme-bg-window lg:group-hover:block">
-                  {(page.subpages as Page[]).map((subpage) => {
-                    return (
-                      <Link
-                        key={subpage.id}
-                        onClick={() => setOpenNav(false)}
-                        className={clsx(styles.sublink, pathname == relativeLink(subpage.slug || "") ? "text-pink-500" : "")}
-                        href={relativeLink(subpage.slug || "")}
-                      >
-                        {subpage.title}
-                      </Link>
-                    );
-                  })}
-                </div>
-              )}
-              
-            </div>
+            <NavItem
+              key={page.id || page.slug}
+              page={page as Page}
+              closeNav={() => setOpenNav(false)}
+              pathname={pathname}
+            />
           ))}
         </nav>
         <DarkModeToggle />
