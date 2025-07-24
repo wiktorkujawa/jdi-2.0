@@ -6,7 +6,7 @@ type QuoteProps = BlockProps<'Quote'>;
 
 const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockName }) => {
   return (
-    <section id={blockName || undefined} className="c-quote-block my-8">
+    <section id={blockName || undefined} className="c-quote-block lg:my-16 my-10">
       <div className="o-container o-container--md">
         <Container>
           <blockquote className="quote-content">

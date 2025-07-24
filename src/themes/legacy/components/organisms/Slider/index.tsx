@@ -90,7 +90,7 @@ const Slider: React.FC<SliderProps> = ({
   );
 
   return (
-    <section id={blockName || undefined} className="c-slider my-16">
+    <section id={blockName || undefined} className="c-slider lg:my-16 my-10">
       <div className="relative o-container">
         <div ref={sliderRef} className="keen-slider">
           {

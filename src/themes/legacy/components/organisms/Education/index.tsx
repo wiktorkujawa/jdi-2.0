@@ -6,7 +6,8 @@ const Education = async () => {
   const { header, institutions} = await getEducationData();
 
   return (
-    <section className="my-16 o-container o-container--lg">
+    <section className="c-education lg:my-16 my-10">
+      <div className="o-container o-container--lg">
         <Container>
         <h1 className="text-h1 text-center mb-16 font-bold">
             {header}
@@ -20,6 +21,7 @@ const Education = async () => {
             ))}
         </ul>
         </Container>
+      </div>
     </section>
   )
 }

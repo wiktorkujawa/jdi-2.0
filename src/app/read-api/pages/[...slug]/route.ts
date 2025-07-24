@@ -9,8 +9,6 @@ export const GET = async (
 
   const { slug } = await params;
 
-  console.log('WTF slug',slug);
-
   const joinedSlug = Array.isArray(slug) ? slug.join('/') : slug;
 
   const payload = await getPayload({

@@ -28,7 +28,7 @@ const Heading: React.FC<HeadingProps> = ({
   };
 
   return (
-    <section id={blockName || undefined} className="c-heading-block my-8">
+    <section id={blockName || undefined} className="c-heading-block lg:my-16 my-10">
         <div className="o-container o-container--lg">
             {renderHeading()}
         </div>
