@@ -7,7 +7,7 @@
   text-transform: uppercase;
   font-weight: bold;
   &::after {
-    counter-increment: counter + 1;
+    counter-increment: counter+1;
     content: counter(counter) !important;
   }
 }

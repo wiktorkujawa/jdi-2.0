@@ -1,5 +1,7 @@
 import React from 'react'
 
+import clsx from 'clsx'
+
 import { Project } from '@/payload-types'
 
 import { getProjectListData } from '@/lib/api/projectList'
@@ -24,7 +26,10 @@ const ProjectsList = async ({ blockName }: ProjectsListProps) => {
   const isMain = Object.keys(main).length !== 0
 
   return (
-    <section id={blockName || undefined} className="c-project-list lg:my-16 my-10">
+    <section
+      id={blockName || undefined}
+      className={clsx(styles['c-project-list'], 'lg:my-16 my-10')}
+    >
       <div className="o-container o-container--lg">
         {isMain && <MainProjectListItem {...main} />}
 
