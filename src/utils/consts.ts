@@ -13,7 +13,7 @@ export const PROJECT_TYPES = [
   'other',
 ]
 
-export const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+export const serverURL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 export const VIDEO_EXTENSIONS = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'wmv', 'flv', 'mkv', 'm4v']
 export const IMAGE_EXTENSIONS = [
   'jpg',
