@@ -20,12 +20,12 @@ export const useFrameControls = ({ lockKeyboard = false }: { lockKeyboard?: bool
         // Request fullscreen
         if (iframe.requestFullscreen) {
           await iframe.requestFullscreen();
-        } else if ((iframe as any).mozRequestFullScreen) {
-          await (iframe as any).mozRequestFullScreen();
-        } else if ((iframe as any).webkitRequestFullscreen) {
-          await (iframe as any).webkitRequestFullscreen();
-        } else if ((iframe as any).msRequestFullscreen) {
-          await (iframe as any).msRequestFullscreen();
+        } else if ((iframe as Element).mozRequestFullScreen) {
+          await (iframe as Element).mozRequestFullScreen();
+        } else if ((iframe as Element).webkitRequestFullscreen) {
+          await (iframe as Element).webkitRequestFullscreen();
+        } else if ((iframe as Element).msRequestFullscreen) {
+          await (iframe as Element).msRequestFullscreen();
         }
 
         if (lockKeyboard) {

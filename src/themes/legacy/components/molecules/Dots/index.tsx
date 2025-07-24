@@ -1,7 +1,9 @@
-import clsx from "clsx"
+import React from 'react';
+import { MutableRefObject } from 'react';
+import { KeenSliderInstance } from 'keen-slider/react';
+import clsx from "clsx";
 import styles from './Dots.module.css';
-import { BlockProps } from "@/utils/types";
-
+import { BlockProps } from '@/utils/types';
 type SlidesProps = BlockProps<'Slider'>['slides'];
 
 const Dots = ({
@@ -11,14 +13,14 @@ const Dots = ({
   isDesktop,
   isMobile
 }: {
-  slides: SlidesProps[]
+  slides: SlidesProps
   currentSlide: number
-  instanceRef: any
+  instanceRef: MutableRefObject<KeenSliderInstance | null>
   isDesktop: boolean
   isMobile: boolean
 }) => {
   return <div className={clsx(styles.dots, isMobile ? 'block' : 'hidden', isDesktop ? 'lg:block' : 'lg:hidden')}>
-    {slides.map((_, idx) => {
+    {slides?.map((_, idx) => {
       return (
         <button
           key={idx}

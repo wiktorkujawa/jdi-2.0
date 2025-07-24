@@ -3,6 +3,7 @@ import { CustomComponents } from '@/themes/legacy/CustomComponents';
 import Education from '../../organisms/Education';
 import Experience from '../../organisms/Experience';
 import Masthead from '../../organisms/MastHead';
+
 const ExperienceTemplate = async ({ data }: { data: Page }) => {
 
     return (

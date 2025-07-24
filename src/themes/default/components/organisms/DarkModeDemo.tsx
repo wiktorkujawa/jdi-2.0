@@ -23,7 +23,7 @@ export const DarkModeDemo = () => {
             Current Mode: {isDarkMode ? 'Dark' : 'Light'}
           </h2>
           <p className="text-lg text-gray-900 dark:text-gray-100 opacity-80">
-            This demo shows how the dark mode system works using Tailwind's dark mode directive.
+            This demo shows how the dark mode system works using Tailwind&apos;s dark mode directive.
           </p>
         </div>
 

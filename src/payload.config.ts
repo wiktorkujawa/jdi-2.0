@@ -40,15 +40,14 @@ export default buildConfig({
     seoPlugin({
       collections: ["pages"],
       uploadsCollection: "media",
-      generateTitle: ({ doc }: any) => {
+      generateTitle: ({ doc }) => {
         return `just-dev-it.com — ${doc?.title}`;
       },
-      generateDescription: ({ doc }) => {
+      generateDescription: () => {
         return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
       },
-      generateURL: ({ doc, locale }: any ) =>
+      generateURL: ({ doc }) =>
         `https://just-dev-it.com/${doc?.slug}`,
     }),
-    // storage-adapter-placeholder
   ],
 })

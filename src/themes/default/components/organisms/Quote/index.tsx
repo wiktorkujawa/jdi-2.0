@@ -10,7 +10,7 @@ const Quote: React.FC<QuoteProps> = ({ author, quote, decoration = false, blockN
         <blockquote className="quote-block my-8 p-6 border-l-4 border-primary bg-gray-50">
         {decoration && (
             <div className="quote-decoration text-4xl text-primary mb-2">
-            "
+            &ldquo;
             </div>
         )}
         <p className="quote-text text-lg italic mb-4">

@@ -16,7 +16,7 @@ const Dots = dynamic(() => import('./partials/Dots'));
 // TODO - in progress
 // const Arrows = dynamic(() => import('./partials/Arrows'));
 
-type SliderProps = Page['mastheadSlider'] & {
+type SliderProps = NonNullable<Page['mastheadSlider']> & {
   lazy?: boolean;
 }
 
@@ -130,16 +130,14 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
         </div>
 
         {
-          loaded && instanceRef.current && (
-            <>
+          loaded && instanceRef.current && slides && slides?.length > 1 && (
             <Dots 
               isDesktop={!!settings?.desktop?.dots} 
               isMobile={!!settings?.mobile?.dots} 
-              slides={slides as any} 
+              slides={slides} 
               currentSlide={currentSlide} 
               instanceRef={instanceRef} 
             />
-            </>
           )
         }
       </div>
