@@ -12,6 +12,8 @@ export const useIsVisible = (options?: IntersectionObserverOptions, once = false
   const targetRef = useRef<Element | null>(null)
 
   useEffect(() => {
+    const currentTarget = targetRef.current
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -26,13 +28,13 @@ export const useIsVisible = (options?: IntersectionObserverOptions, once = false
       })
     }, optionsRef.current)
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current)
+    if (currentTarget) {
+      observer.observe(currentTarget)
     }
 
     return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current)
+      if (currentTarget) {
+        observer.unobserve(currentTarget)
       }
       observer.disconnect()
     }
