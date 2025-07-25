@@ -7,6 +7,7 @@ import { Media, ProjectList } from '@/payload-types'
 
 import { TABLET_WIDTH } from '@/utils/consts'
 
+import LazyVideo from '../../atoms/LazyVideo'
 import Link from '../../atoms/Link'
 
 import styles from './MainProjectListItem.module.css'
@@ -29,14 +30,12 @@ const MainProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
         <NextLink target="_blank" href={mediaUrl || '#'}>
           {resourceType === 'video' ? (
             <div className="overflow-hidden">
-              <video
-                poster={media.thumbnailURL || ''}
-                className="lazy aspect-2/1 object-cover mx-auto hover:scale-150 transition-transform w-full"
-                autoPlay
-                muted
-                loop
-                playsInline
+              <LazyVideo
                 src={media.url || ''}
+                type={media.mimeType || 'video/mp4'}
+                poster={media.thumbnailURL || ''}
+                className="aspect-2/1 object-cover mx-auto hover:scale-150 transition-transform w-full"
+                muted
               />
             </div>
           ) : (

@@ -13,6 +13,7 @@ import useRWD from '@/hooks/useRWD'
 import { TABLET_WIDTH } from '@/utils/consts'
 import { BlockProps } from '@/utils/types'
 
+import LazyVideo from '../../atoms/LazyVideo'
 import Link from '../../atoms/Link'
 import Dots from '../../molecules/Dots'
 
@@ -116,14 +117,13 @@ const Slider: React.FC<SliderProps> = ({ slides = [], settings, blockName }) => 
                   <div className="flex-shrink-0 mb-4">
                     {resourceType === 'video' ? (
                       <div className="aspect-video rounded-lg overflow-hidden">
-                        <video
-                          poster={media.thumbnailURL || ''}
-                          className="w-full h-full object-cover"
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
+                        <LazyVideo
                           src={media?.url || ''}
+                          type={media.mimeType || 'video/mp4'}
+                          poster={media.thumbnailURL || ''}
+                          alt={media.alt || ''}
+                          className="w-full h-full object-cover"
+                          muted
                         />
                       </div>
                     ) : (

@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import { Project } from '@/payload-types'
 
+import LazyVideo from '../../atoms/LazyVideo'
 import Link from '../../atoms/Link'
 
 type ProjectCardProps = {
@@ -20,14 +21,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     if (resourceType === 'video') {
       return (
         <div className="relative h-48 overflow-hidden">
-          <video
-            poster={project.media.thumbnailURL || ''}
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
+          <LazyVideo
             src={project.media.url || ''}
+            type={project.media.mimeType || 'video/mp4'}
+            poster={project.media.thumbnailURL || ''}
+            alt={project.media.alt || ''}
+            muted
+            className="w-full h-full object-cover"
           />
         </div>
       )
