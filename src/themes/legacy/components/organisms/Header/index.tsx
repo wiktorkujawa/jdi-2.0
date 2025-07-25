@@ -6,7 +6,13 @@ import { CustomPage } from '@/utils/types'
 import NavigationBar from '../../organisms/NavigationBar'
 
 const Header = async () => {
-  const { page, pages } = await getHeaderData()
+  const data = await getHeaderData()
+
+  if (!data) {
+    return null
+  }
+
+  const { page, pages } = data
 
   return (
     <header className="c-header w-full fixed top-0 z-50 dark:text-dark-font-primary text-theme-font-primary">
