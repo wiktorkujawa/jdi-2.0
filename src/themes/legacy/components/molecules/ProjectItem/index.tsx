@@ -7,6 +7,7 @@ import { Media, Project } from '@/payload-types'
 
 import { TABLET_WIDTH } from '@/utils/consts'
 
+import LazyVideo from '../../atoms/LazyVideo'
 import Link from '../../atoms/Link'
 
 import styles from './ProjectItem.module.css'
@@ -34,14 +35,13 @@ const ProjectItem = (field: Project) => {
 
           {resourceType === 'video' ? (
             <div className="overflow-hidden">
-              <video
-                poster={media.thumbnailURL || ''}
-                className="lazy aspect-2/1 object-contain mx-auto hover:scale-150 transition-transform"
-                autoPlay
-                muted
-                loop
-                playsInline
+              <LazyVideo
                 src={media.url || ''}
+                type={media.mimeType || 'video/mp4'}
+                poster={media.thumbnailURL || ''}
+                alt={media.alt || ''}
+                className="lazy aspect-2/1 object-contain mx-auto hover:scale-150 transition-transform"
+                muted
               />
             </div>
           ) : (
