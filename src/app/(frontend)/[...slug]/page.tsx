@@ -12,53 +12,58 @@ import { serverURL } from '@/utils/consts'
 import { generateMeta } from '@/utils/generateMetadata'
 
 export async function generateStaticParams() {
-  const pagesRes = await fetch(`${serverURL}/read-api/pages/top-level`, {
-    cache: 'force-cache',
-  })
-  const pagesCollection: PaginatedDocs<PageType> = await pagesRes.json()
+  try {
+    const pagesRes = await fetch(`${serverURL}/read-api/pages/top-level`, {
+      cache: 'force-cache',
+    })
+    const pagesCollection: PaginatedDocs<PageType> = await pagesRes.json()
 
-  const params: { slug: string[] }[] = []
-  const processedPaths = new Set<string>()
+    const params: { slug: string[] }[] = []
+    const processedPaths = new Set<string>()
 
-  // Helper function to get the path for a page
-  const getPagePath = (pageSlug: string): string[] => {
-    if (pageSlug.includes('/')) {
-      return pageSlug.split('/')
+    // Helper function to get the path for a page
+    const getPagePath = (pageSlug: string): string[] => {
+      if (pageSlug.includes('/')) {
+        return pageSlug.split('/')
+      }
+      return [pageSlug]
     }
-    return [pageSlug]
+
+    // Helper function to process a page and its subpages
+    const processPage = (page: PageType) => {
+      if (!page.slug) return
+
+      // Get the path for this page
+      const pagePath = getPagePath(page.slug)
+      const fullPath = pagePath.join('/')
+
+      // Add this page if not already processed
+      if (!processedPaths.has(fullPath)) {
+        params.push({ slug: pagePath })
+        processedPaths.add(fullPath)
+      }
+
+      // Process subpages
+      if (page.subpages && Array.isArray(page.subpages)) {
+        page.subpages.forEach((subpage) => {
+          if (typeof subpage === 'object' && subpage.slug) {
+            // This is a Page object
+            processPage(subpage)
+          }
+        })
+      }
+    }
+
+    // Process all top-level pages (API already filters them)
+    pagesCollection.docs.forEach((page) => {
+      processPage(page)
+    })
+
+    return params
+  } catch (error) {
+    console.error('Error generating static params:', error)
+    return []
   }
-
-  // Helper function to process a page and its subpages
-  const processPage = (page: PageType) => {
-    if (!page.slug) return
-
-    // Get the path for this page
-    const pagePath = getPagePath(page.slug)
-    const fullPath = pagePath.join('/')
-
-    // Add this page if not already processed
-    if (!processedPaths.has(fullPath)) {
-      params.push({ slug: pagePath })
-      processedPaths.add(fullPath)
-    }
-
-    // Process subpages
-    if (page.subpages && Array.isArray(page.subpages)) {
-      page.subpages.forEach((subpage) => {
-        if (typeof subpage === 'object' && subpage.slug) {
-          // This is a Page object
-          processPage(subpage)
-        }
-      })
-    }
-  }
-
-  // Process all top-level pages (API already filters them)
-  pagesCollection.docs.forEach((page) => {
-    processPage(page)
-  })
-
-  return params
 }
 
 type Props = {

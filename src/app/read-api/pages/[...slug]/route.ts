@@ -7,26 +7,31 @@ export const GET = async (
   _: NextRequest,
   { params }: { params: Promise<{ slug: string | string[] }> },
 ) => {
-  const { slug } = await params
+  try {
+    const { slug } = await params
 
-  const joinedSlug = Array.isArray(slug) ? slug.join('/') : slug
+    const joinedSlug = Array.isArray(slug) ? slug.join('/') : slug
 
-  const payload = await getPayload({
-    config: configPromise,
-  })
+    const payload = await getPayload({
+      config: configPromise,
+    })
 
-  const data = await payload.find({
-    collection: 'pages',
-    where: {
-      slug: {
-        equals: joinedSlug === 'home' ? '' : joinedSlug,
+    const data = await payload.find({
+      collection: 'pages',
+      where: {
+        slug: {
+          equals: joinedSlug === 'home' ? '' : joinedSlug,
+        },
       },
-    },
-  })
+    })
 
-  if (!data.docs[0]) {
-    return Response.json({ error: 'Page not found' }, { status: 404 })
+    if (!data.docs[0]) {
+      return Response.json({ error: 'Page not found' }, { status: 404 })
+    }
+
+    return Response.json(data.docs[0])
+  } catch (error) {
+    console.error('Error fetching page:', error)
+    return Response.json({ error: 'Error fetching page' }, { status: 500 })
   }
-
-  return Response.json(data.docs[0])
 }
