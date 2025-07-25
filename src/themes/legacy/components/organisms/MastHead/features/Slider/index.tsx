@@ -7,7 +7,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import clsx from 'clsx'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 
@@ -15,6 +14,8 @@ import { Page } from '@/payload-types'
 
 import useRWD from '@/hooks/useRWD'
 import { TABLET_WIDTH } from '@/utils/consts'
+
+import LazyVideo from '../../../../atoms/LazyVideo'
 
 import styles from './Slider.module.css'
 
@@ -124,17 +125,13 @@ const Slider = ({ slides, settings, lazy = true }: SliderProps) => {
 
               {resourceType === 'video' ? (
                 <div className="overflow-hidden">
-                  <video
-                    poster={media.thumbnailURL || ''}
-                    className={clsx(
-                      'aspect-2/1 w-full max-h-screen min-h-80 overflow-hidden opacity-50 object-cover mx-auto transition-transform',
-                      lazy && 'lazy',
-                    )}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                  <LazyVideo
                     src={media?.url || ''}
+                    type={media.mimeType || 'video/mp4'}
+                    poster={media.thumbnailURL || ''}
+                    alt={media.alt || ''}
+                    muted
+                    className="aspect-2/1 w-full max-h-screen min-h-80 overflow-hidden opacity-50 object-cover mx-auto transition-transform"
                   />
                 </div>
               ) : (
