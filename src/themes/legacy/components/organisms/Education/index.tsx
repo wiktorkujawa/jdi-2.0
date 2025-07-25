@@ -3,7 +3,13 @@ import { getEducationData } from '@/lib/api/education'
 import Container from '../../templates/ContainerTemplate'
 
 const Education = async () => {
-  const { header, institutions } = await getEducationData()
+  const data = await getEducationData()
+
+  if (!data) {
+    return null
+  }
+
+  const { header, institutions } = data
 
   return (
     <section className="c-education lg:my-16 my-10">

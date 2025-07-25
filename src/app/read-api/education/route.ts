@@ -2,13 +2,18 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 export const GET = async () => {
-  const payload = await getPayload({
-    config: configPromise,
-  })
+  try {
+    const payload = await getPayload({
+      config: configPromise,
+    })
 
-  const data = await payload.findGlobal({
-    slug: 'education',
-  })
+    const data = await payload.findGlobal({
+      slug: 'education',
+    })
 
-  return Response.json(data)
+    return Response.json(data)
+  } catch (error) {
+    console.error('Error fetching education:', error)
+    return Response.json({ error: 'Error fetching education' }, { status: 500 })
+  }
 }
