@@ -5,7 +5,7 @@ import { serverURL } from '@/utils/consts'
 export const getHeaderData = async () => {
   try {
     const headerRes = await fetch(`${serverURL}/read-api/navigation`, {
-      cache: 'no-store',
+      cache: 'force-cache',
       next: {
         tags: ['navigation'],
       },

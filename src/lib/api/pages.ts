@@ -7,7 +7,7 @@ import { serverURL } from '@/utils/consts'
 export const getPageData = async (slug: string = 'home') => {
   try {
     const pageRes = await fetch(`${serverURL}/read-api/pages/${slug}`, {
-      cache: 'no-store',
+      cache: 'force-cache',
     })
     const page: Page = await pageRes.json()
 
