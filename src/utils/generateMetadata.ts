@@ -14,16 +14,16 @@ export const generateMeta = (meta: Page['meta'], slug: string): Metadata => {
     title: meta?.title,
     authors: {
       name: 'Wiktor Kujawa',
-      url: 'https://just-dev-it.com',
+      url: `${process.env.NEXT_PUBLIC_APP_URL}`,
     },
     alternates: {
-      canonical: `https://just-dev-it.com/${slug}`,
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${slug}`,
     },
     description: meta?.description || undefined,
     openGraph: {
       title: meta?.title || undefined,
       description: meta?.description || undefined,
-      url: `https://just-dev-it.com/${slug}`,
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/${slug}`,
       creators: '@just-dev-it',
       siteName: 'JUST-DEV-IT',
       ...getImageMetadata(meta?.image),
