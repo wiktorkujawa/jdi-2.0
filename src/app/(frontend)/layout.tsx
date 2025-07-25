@@ -7,7 +7,7 @@ import { getConfig } from '@/lib/api/config'
 import DynamicTheme from '@/themes/themeMapper'
 
 export const metadata: Metadata = {
-  manifest: `${process.env.NEXT_PUBLIC_APP_URL}/manifest.webmanifest`,
+  manifest: `${process.env.NEXT_PUBLIC_APP_URL}/manifest.json`,
   icons: {
     icon: '/favicon-32x32.png',
     shortcut: '/favicon-32x32.png',
