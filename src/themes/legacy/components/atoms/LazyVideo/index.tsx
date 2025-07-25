@@ -9,7 +9,6 @@ type VideoComponentProps = {
   poster?: string
   alt?: string
   muted?: boolean
-  style?: React.CSSProperties
   className?: string
   type?: string
 }
@@ -20,7 +19,6 @@ const LazyVideo = ({
   alt,
   type,
   muted = true,
-  style,
   className,
   ...rest
 }: VideoComponentProps) => {
@@ -38,7 +36,7 @@ const LazyVideo = ({
   const startVideoOnMouseMove = useCallback(async () => {
     try {
       await videoRef.current?.play()
-    } catch (e) {
+    } catch (_e) {
       // do nothing
     }
   }, [])
@@ -46,7 +44,7 @@ const LazyVideo = ({
   const stopVideoOnMove = useCallback(() => {
     try {
       videoRef.current?.pause()
-    } catch (e) {
+    } catch (_e) {
       // do nothing
     }
   }, [])
