@@ -5,7 +5,7 @@ import { serverURL } from '@/utils/consts'
 export const getFooterData = async () => {
   try {
     const footerRes = await fetch(`${serverURL}/read-api/footer`, {
-      cache: 'no-store',
+      cache: 'force-cache',
       next: {
         tags: ['footer'],
       },

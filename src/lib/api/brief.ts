@@ -5,7 +5,7 @@ import { serverURL } from '@/utils/consts'
 export const getBriefData = async () => {
   try {
     const briefRes = await fetch(`${serverURL}/read-api/brief`, {
-      cache: 'no-store',
+      cache: 'force-cache',
       next: {
         tags: ['brief'],
       },

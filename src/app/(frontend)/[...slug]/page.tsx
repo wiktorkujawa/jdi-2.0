@@ -14,7 +14,7 @@ import { generateMeta } from '@/utils/generateMetadata'
 export async function generateStaticParams() {
   try {
     const pagesRes = await fetch(`${serverURL}/read-api/pages/top-level`, {
-      cache: 'no-store',
+      cache: 'force-cache',
     })
     const pagesCollection: PaginatedDocs<PageType> = await pagesRes.json()
 
