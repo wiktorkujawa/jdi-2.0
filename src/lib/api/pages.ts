@@ -5,19 +5,26 @@ import { Page } from '@/payload-types'
 import { serverURL } from '@/utils/consts'
 
 export const getPageData = async (slug: string = 'home') => {
-  const pageRes = await fetch(`${serverURL}/read-api/pages/${slug}`, {
-    cache: 'force-cache',
-  })
-  const page: Page = await pageRes.json()
+  try {
+    const pageRes = await fetch(`${serverURL}/read-api/pages/${slug}`, {
+      cache: 'force-cache',
+    })
+    const page: Page = await pageRes.json()
 
-  if (!pageRes.ok) {
+    return page
+  } catch (error) {
+    console.error('Error fetching page:', error)
     return null
   }
-  return page
 }
 
 export const getPagesData = async () => {
-  const pageRes = await fetch(`${serverURL}/read-api/pages`)
-  const pages: PaginatedDocs<Page> = await pageRes.json()
-  return pages
+  try {
+    const pageRes = await fetch(`${serverURL}/read-api/pages`)
+    const pages: PaginatedDocs<Page> = await pageRes.json()
+    return pages
+  } catch (error) {
+    console.error('Error fetching pages:', error)
+    return null
+  }
 }

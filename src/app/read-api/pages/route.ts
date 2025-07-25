@@ -2,17 +2,22 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 export const GET = async () => {
-  const payload = await getPayload({
-    config: configPromise,
-  })
+  try {
+    const payload = await getPayload({
+      config: configPromise,
+    })
 
-  const data = await payload.find({
-    collection: 'pages',
-    select: {
-      slug: true,
-      updatedAt: true,
-    },
-  })
+    const data = await payload.find({
+      collection: 'pages',
+      select: {
+        slug: true,
+        updatedAt: true,
+      },
+    })
 
-  return Response.json(data)
+    return Response.json(data)
+  } catch (error) {
+    console.error('Error fetching pages:', error)
+    return Response.json({ error: 'Error fetching pages' }, { status: 500 })
+  }
 }

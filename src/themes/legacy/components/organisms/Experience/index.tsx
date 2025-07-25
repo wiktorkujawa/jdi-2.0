@@ -3,7 +3,13 @@ import { getExperienceData } from '@/lib/api/experience'
 import Container from '../../templates/ContainerTemplate'
 
 const Experience = async () => {
-  const { header, positions } = await getExperienceData()
+  const data = await getExperienceData()
+
+  if (!data) {
+    return null
+  }
+
+  const { header, positions } = data
 
   return (
     <section className="c-experience lg:my-16 my-10">
