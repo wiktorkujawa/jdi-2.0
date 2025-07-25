@@ -5,7 +5,7 @@ import { serverURL } from '@/utils/consts'
 export const getEducationData = async () => {
   try {
     const educationRes = await fetch(`${serverURL}/read-api/education`, {
-      cache: 'force-cache',
+      cache: 'no-store',
       next: {
         tags: ['education'],
       },

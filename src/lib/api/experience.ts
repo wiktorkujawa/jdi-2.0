@@ -5,7 +5,7 @@ import { serverURL } from '@/utils/consts'
 export const getExperienceData = async () => {
   try {
     const experienceRes = await fetch(`${serverURL}/read-api/experience`, {
-      cache: 'force-cache',
+      cache: 'no-store',
       next: {
         tags: ['experience'],
       },

@@ -7,7 +7,7 @@ import { PROJECT_TYPES, serverURL } from '@/utils/consts'
 export const getProjects = async (type?: (typeof PROJECT_TYPES)[number] | null) => {
   try {
     const projectListRes = await fetch(`${serverURL}/read-api/projects?type=${type}`, {
-      cache: 'force-cache',
+      cache: 'no-store',
       next: {
         tags: ['projects-block'],
       },
@@ -23,7 +23,7 @@ export const getProjects = async (type?: (typeof PROJECT_TYPES)[number] | null) 
 export const getProjectBySlug = async (slug: string) => {
   try {
     const projectRes = await fetch(`${serverURL}/read-api/projects/${slug}`, {
-      cache: 'force-cache',
+      cache: 'no-store',
     })
     const project: Project = await projectRes.json()
     return project

@@ -5,7 +5,7 @@ import { serverURL } from '@/utils/consts'
 export const getProjectListData = async () => {
   try {
     const projectListRes = await fetch(`${serverURL}/read-api/project-list`, {
-      cache: 'force-cache',
+      cache: 'no-store',
       next: {
         tags: ['project-list'],
       },
