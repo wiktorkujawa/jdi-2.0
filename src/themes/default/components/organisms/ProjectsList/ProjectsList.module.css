@@ -3,9 +3,15 @@
 }
 
 .c-project-list--list-counter {
-  margin-top: 36px;
+  margin-top: 0;
   counter-reset: counter;
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .c-project-list--list-counter {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
