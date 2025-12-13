@@ -16,61 +16,55 @@ const Slider: React.FC<SliderProps> = ({ blockName, slides = [], settings }) => 
   }
 
   return (
-    <section id={blockName || undefined} className="c-slider-block lg:my-16 my-10">
-      <div className="slider-container relative">
+    <section id={blockName || undefined} className="c-slider-block lg:my-20 my-12">
+      <div className="slider-container relative o-container o-container--lg">
         {/* For now, we'll render slides as a simple list */}
         {/* TODO: Implement proper slider functionality with settings */}
-        <div className="slides-list space-y-4">
+        <div className="slides-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {slides.map((slide, index) => (
-            <div key={slide.id || index} className="slide-item border rounded-lg p-4">
-              <div className="slide-media mb-4">
+            <div
+              key={slide.id || index}
+              className="slide-item card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+            >
+              <div className="slide-media mb-4 bg-linear-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 h-48 rounded-t-xl flex items-center justify-center">
                 {/* TODO: Implement proper media rendering */}
-                <div className="bg-gray-200 h-48 rounded flex items-center justify-center">
-                  <span className="text-gray-500">
-                    Media: {typeof slide.media === 'string' ? slide.media : 'Media Object'}
-                  </span>
-                </div>
+                <span className="text-gray-500 dark:text-gray-400">
+                  Media: {typeof slide.media === 'string' ? slide.media : 'Media Object'}
+                </span>
               </div>
 
-              {slide.heading && (
-                <h3 className="slide-heading text-xl font-bold mb-2">{slide.heading}</h3>
-              )}
+              <div className="p-6">
+                {slide.heading && (
+                  <h3 className="slide-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+                    {slide.heading}
+                  </h3>
+                )}
 
-              {slide.copy && (
-                <div className="slide-copy mb-4">
-                  <RichText data={slide.copy} />
-                </div>
-              )}
+                {slide.copy && (
+                  <div className="slide-copy mb-4 prose prose-sm dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                    <RichText data={slide.copy} />
+                  </div>
+                )}
 
-              {slide.attribution && (
-                <p className="slide-attribution text-sm text-gray-600 mb-4">{slide.attribution}</p>
-              )}
+                {slide.attribution && (
+                  <p className="slide-attribution text-sm text-indigo-600 dark:text-indigo-400 mb-4 font-medium">
+                    {slide.attribution}
+                  </p>
+                )}
 
-              <a
-                href={slide.button.url}
-                target={slide.button.target || '_self'}
-                aria-label={slide.button.ariaLabel || undefined}
-                className="slide-button inline-block bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors"
-              >
-                {slide.button.text}
-              </a>
+                {slide.button && (
+                  <a
+                    href={slide.button.url}
+                    target={slide.button.target || '_self'}
+                    aria-label={slide.button.ariaLabel || undefined}
+                    className="slide-button inline-block bg-linear-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg"
+                  >
+                    {slide.button.text}
+                  </a>
+                )}
+              </div>
             </div>
           ))}
-        </div>
-
-        {/* Settings display for debugging */}
-        <div className="slider-settings mt-4 p-4 bg-gray-100 rounded text-sm">
-          <h4 className="font-bold mb-2">Slider Settings:</h4>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <strong>Desktop:</strong>
-              <pre>{JSON.stringify(settings?.desktop, null, 2)}</pre>
-            </div>
-            <div>
-              <strong>Mobile:</strong>
-              <pre>{JSON.stringify(settings?.mobile, null, 2)}</pre>
-            </div>
-          </div>
         </div>
       </div>
     </section>
