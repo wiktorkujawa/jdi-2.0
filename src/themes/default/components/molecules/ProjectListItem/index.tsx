@@ -24,14 +24,19 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
   const { mediaUrl, button } = field
 
   return (
-    <article className={clsx(styles['m-project-list-item'], 'text-center px-2 w-full')}>
-      <figure>
+    <article
+      className={clsx(
+        styles['m-project-list-item'],
+        'group card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 text-center w-full',
+      )}
+    >
+      <figure className="relative overflow-hidden bg-linear-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20">
         <Link target="_blank" href={mediaUrl || '#'}>
           {resourceType === 'video' ? (
-            <div className="overflow-hidden">
+            <div className="overflow-hidden aspect-video">
               <video
                 poster={media.thumbnailURL || ''}
-                className="lazy aspect-2/1 object-contain mx-auto hover:scale-150 transition-transform"
+                className="lazy w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 autoPlay
                 muted
                 loop
@@ -40,12 +45,12 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
               />
             </div>
           ) : (
-            <div className="aspect-2/1 relative overflow-hidden">
+            <div className="aspect-video relative overflow-hidden">
               <Image
                 fill
                 src={media.filename || ''}
-                sizes={`(max-width: ${TABLET_WIDTH}px) 100vw, 50vw`}
-                className="object-contain mx-auto hover:scale-150 transition-transform"
+                sizes={`(max-width: ${TABLET_WIDTH}px) 100vw, 100vw`}
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
                 alt={originalFilename}
               />
             </div>
@@ -53,10 +58,10 @@ const ProjectListItem = (field: Omit<ProjectList, 'projectsList'>) => {
         </Link>
       </figure>
 
-      <div className="flex flex-col justify-between">
-        <div className="flex flex-wrap justify-between">
-          <Link href={button.url} target="_blank" className="w-full flex justify-center">
-            <Button aria-label={button.text} className="w-full">
+      <div className="p-6 flex flex-col justify-center">
+        <div className="flex justify-center">
+          <Link href={button.url} target="_blank" className="w-full max-w-xs">
+            <Button aria-label={button.text} variant="primary" className="w-full">
               {button.text}
             </Button>
           </Link>
