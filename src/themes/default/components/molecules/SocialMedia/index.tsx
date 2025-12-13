@@ -28,7 +28,7 @@ const SocialMedia = ({ data }: { data?: (string | Social)[] }) => {
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+          className="group text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
           aria-label={social.label}
         >
           <SVG

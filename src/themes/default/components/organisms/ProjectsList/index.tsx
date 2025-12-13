@@ -24,15 +24,21 @@ const ProjectsList = async ({ blockName }: ProjectsListProps) => {
   const isMain = Object.keys(main).length !== 0
 
   return (
-    <section id={blockName || undefined} className="c-project-list lg:my-16 my-10">
+    <section id={blockName || undefined} className="c-project-list lg:my-20 my-12">
       <div className="o-container o-container--lg">
-        {isMain && <ProjectListItem {...main} />}
+        {isMain && (
+          <div className="mb-16">
+            <ProjectListItem {...main} />
+          </div>
+        )}
 
-        <div id="list" className={styles['c-project-list--list-counter']}>
-          {projectsList?.map((field) => (
-            <ProjectItem key={(field as Project).id} {...(field as Project)} />
-          ))}
-        </div>
+        {projectsList && projectsList.length > 0 && (
+          <div id="list" className={styles['c-project-list--list-counter']}>
+            {projectsList.map((field) => (
+              <ProjectItem key={(field as Project).id} {...(field as Project)} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
