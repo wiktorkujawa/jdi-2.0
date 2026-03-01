@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 
 import { getConfig } from '@/lib/api/config'
 import { getPageData } from '@/lib/api/pages'
-import DynamicTemplateComponent from '@/themes/templateMapper'
+import DynamicTemplateComponent from '@/themes/TemplateResolver'
 import { generateMeta } from '@/utils/generateMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {

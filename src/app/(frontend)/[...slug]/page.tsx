@@ -7,7 +7,7 @@ import { Page as PageType } from '@/payload-types'
 
 import { getConfig } from '@/lib/api/config'
 import { getPageData } from '@/lib/api/pages'
-import DynamicTemplateComponent from '@/themes/templateMapper'
+import DynamicTemplateComponent from '@/themes/TemplateResolver'
 import { serverURL } from '@/utils/consts'
 import { generateMeta } from '@/utils/generateMetadata'
 

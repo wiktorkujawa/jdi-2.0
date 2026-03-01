@@ -9,8 +9,8 @@ export const getPageData = async (slug: string = 'home') => {
     const pageRes = await fetch(`${serverURL}/read-api/pages/${slug}`, {
       cache: 'force-cache',
     })
+    if (!pageRes.ok) return null
     const page: Page = await pageRes.json()
-
     return page
   } catch (error) {
     console.error('Error fetching page:', error)
