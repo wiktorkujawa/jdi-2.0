@@ -176,7 +176,7 @@ body {
 
 /* override default values */
 @layer theme {
-  body[data-theme='legacy'] {
+  body {
     --color-main: rgb(0, 1000, 1000); /* The cyan color */
 
     --container-padding-inline: 20px;
