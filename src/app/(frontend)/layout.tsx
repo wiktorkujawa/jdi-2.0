@@ -4,7 +4,7 @@ import { Metadata, Viewport } from 'next'
 
 import '@/assets/css/global.css'
 import { getConfig } from '@/lib/api/config'
-import DynamicTheme from '@/themes/themeMapper'
+import DynamicTheme from '@/themes/ThemeResolver'
 
 export const metadata: Metadata = {
   manifest: `${process.env.NEXT_PUBLIC_APP_URL}/manifest.webmanifest`,

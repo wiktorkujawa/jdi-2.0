@@ -52,13 +52,13 @@
 
 /* override default values */
 @layer theme {
-  body[data-theme='default'] {
+  body {
     --color-main: var(--color-primary);
     color: var(--color-text-primary);
     background: var(--color-bg-primary);
   }
 
-  body[data-theme='default'].dark {
+  body.dark {
     --color-text-primary: #f9fafb;
     --color-text-secondary: #d1d5db;
     --color-bg-primary: #111827;
