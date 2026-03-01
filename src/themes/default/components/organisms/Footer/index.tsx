@@ -1,11 +1,19 @@
 import Link from 'next/link'
 
+import { Page } from '@/payload-types'
+
 import { getFooterData } from '@/lib/api/footer'
+import { getHeaderData } from '@/lib/api/header'
+import { CustomPage } from '@/utils/types'
 
 import SocialMedia from '../../molecules/SocialMedia'
 
+const relativeLink = (link: string) => (link[0] === '/' ? link : `/${link}`)
+
 export const Footer = async () => {
   const data = await getFooterData()
+  const navData = await getHeaderData()
+  const nav = navData ? [...(navData.page as Page[]), ...(navData.pages as CustomPage[])] : []
 
   return (
     <footer className="relative bg-linear-to-br from-gray-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 border-t border-gray-200/50 dark:border-gray-700/50">
@@ -23,7 +31,7 @@ export const Footer = async () => {
             {data?.socials && <SocialMedia data={data.socials} />}
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links – tylko strony z nawigacji (CMS) */}
           <div>
             <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
               Quick Links
@@ -37,30 +45,25 @@ export const Footer = async () => {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 inline-block hover:translate-x-1 transform"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/projects"
-                  className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 inline-block hover:translate-x-1 transform"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 inline-block hover:translate-x-1 transform"
-                >
-                  Contact
-                </Link>
-              </li>
+              {nav.map((page) => {
+                const href = relativeLink(page.slug || '')
+                const label: string =
+                  ('title' in page && typeof page.title === 'string' && page.title) ||
+                  ('name' in page && typeof page.name === 'string' && page.name) ||
+                  (typeof page.slug === 'string' && page.slug) ||
+                  ''
+                if (!href || href === '/') return null
+                return (
+                  <li key={page.id || href}>
+                    <Link
+                      href={href}
+                      className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 inline-block hover:translate-x-1 transform"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 
@@ -78,14 +81,7 @@ export const Footer = async () => {
                 >
                   {emailItem.email}
                 </a>
-              )) || (
-                <a
-                  href="mailto:contact@company.com"
-                  className="block hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
-                >
-                  contact@company.com
-                </a>
-              )}
+              ))}
 
               {data?.phone?.map((phoneItem, index) => (
                 <a
