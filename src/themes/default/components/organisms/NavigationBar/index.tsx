@@ -33,8 +33,11 @@ const NavigationBar = ({ nav, className = '' }: NavigationBarProps) => {
           <div className="flex items-center">
             <div className="shrink-0">
               <Link href="/" aria-label="Homepage">
-                <h1 className="text-2xl font-bold bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-                  Portfolio
+                <h1 className="text-2xl font-bold">
+                  <span className="text-gray-900 dark:text-white">just-dev-it.</span>
+                  <span className="bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    com
+                  </span>
                 </h1>
               </Link>
             </div>
