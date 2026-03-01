@@ -57,3 +57,10 @@
   --container-sm: 640px;
   --container-xs: 480px;
 }
+
+body:not([data-theme-styles-ready]) {
+  visibility: hidden;
+}
+body[data-theme-styles-ready] {
+  visibility: visible;
+}

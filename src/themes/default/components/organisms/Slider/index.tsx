@@ -6,7 +6,7 @@ import { BlockProps } from '@/utils/types'
 
 type SliderProps = BlockProps<'Slider'>
 
-const Slider: React.FC<SliderProps> = ({ blockName, slides = [], settings }) => {
+const Slider: React.FC<SliderProps> = ({ blockName, slides = [] }) => {
   if (!slides || slides.length === 0) {
     return (
       <div id={blockName || undefined} className="c-slider-block lg:my-16 my-10">
